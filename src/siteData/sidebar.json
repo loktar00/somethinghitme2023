@@ -1,0 +1,64 @@
+{
+    "sidebar": {
+        "sections": [
+            {
+                "title": "Find Me",
+                "links": [
+                    {
+                        "title": "@loktar00",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "Codepen",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "Github",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "Stackoverflow",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "Dwitter",
+                        "url": "question1"
+                    }
+                ]
+            },
+            {
+                "title": "Projects",
+                "links": [
+                    {
+                        "title": "react-lazy-load",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "Cat Brown Realtor",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "Jest Game Framework",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "gui hacker",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "jQuery Snowfall",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "RetroShips",
+                        "url": "question1"
+                    },
+                    {
+                        "title": "Zombiegames.net",
+                        "url": "question1"
+                    }
+                ]
+            }
+        ]
+    }
+}

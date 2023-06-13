@@ -1,0 +1,14 @@
+<%- 
+    sidebar.sections.map(section => 
+        `<aside class="aside-list">
+            <h3>${section.title}</h3>
+            <ol>
+                ${
+                    section.links.map(link => 
+                        `<li><a href="${link.url}">${link.title}</a></li>`
+                    ).join('')
+                }
+            </ol>
+        </aside>`
+    ).join('')
+-%>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('/src/templates/partials/head', {title: `${data.main.title} - ${data.main.tagline}`}) -%>
+    <body>
+        <div class="layout">
+            <%- include('/src/templates/partials/header') -%>
+            <main class="main">
+                <section class="primary">
+                    <%- 
+                        data.articles.map(article => 
+                            `<article class="article">
+                                <h3><a href="/${article.path}">${article.title}</a></h3>
+                                <small>Posted 
+                                    <a href=${article.path}>
+                                        ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+                                    </a>
+                                    </small>
+                                <p>
+                                    ${article.teaser}
+                                </p>
+                                <a class="link-button" href="/${article.path}">Reading Article</a>
+                            </article>`
+                        ).join('') 
+                    -%>
+                </section>
+                <section class="secondary">
+                    <%- include('/src/templates/sidebar', {sidebar: data.sidebar}) -%>
+                </section>
+            </main>
+            <%- include('/src/templates/partials/footer') -%>
+        </div>
+    </body>

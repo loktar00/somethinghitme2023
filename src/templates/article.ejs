@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('/src/templates/partials/head', {title: `${data.title} - ${data.main.title}`}) -%>
+  <body>
+    <div class="layout">
+        <%- include('/src/templates/partials/header') -%>
+        <main class="main">
+            <section class="primary">
+                <article class="blog-post">
+                    <header>
+                        <h3><%-data.title -%></h3>
+                        <p>
+                            <%- new Date(data.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"}) -%>
+                        </p>
+                    </header>
+                    <section>
+                        <%- data.html -%>
+                    </section>
+                    <hr/>
+                    <footer>
+                        <%- include('/src/templates/partials/social') -%>
+                    </footer>
+                </article>
+            </section>
+            <section class="secondary">
+                <%- include('/src/templates/sidebar', {sidebar: data.sidebar}) -%>
+            </section>
+        </main>
+        <%- include('/src/templates/partials/footer') -%>
+    </div>
+  </body>
