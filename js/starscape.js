@@ -13,10 +13,6 @@ background.style.position = 'absolute';
 background.style.top = '0';
 background.style.left = '0';
 
-window.addEventListener('resize', () => {
-    background.width = window.innerWidth;
-});
-
 function Terrain(options = {}) {
     this.terrain = document.createElement("canvas");
     this.terCtx = this.terrain.getContext("2d");
@@ -99,7 +95,7 @@ Terrain.prototype.update = function () {
     // draw the terrain
     this.terCtx.clearRect(0, 0, width, height);
     this.terCtx.fillStyle = this.lightFillStyle;
-    
+
     if (lightMode === 'dark') {
         this.terCtx.fillStyle = this.darkFillStyle;
     }
