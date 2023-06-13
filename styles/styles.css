@@ -1,13 +1,32 @@
+html[data-theme='dark'],
 :root {
+    color-scheme: dark;
     --link-color: #bb86fc;
     --text-color: rgb(240, 240, 240);
     --contrast-color: #000;
     --background-color: rgb(10,10,5);
-    --input-bg-color: rgb(20,20,15);
+    --container-background-color: rgb(40 40 40/0.6);
+    --container-background-highlight-color: rgb(40 40 40);
     
     --highlight-color-1: #bb86fc;
     --highlight-color-2: #6200ee;
     --highlight-color-3: #03dac5;
+}
+
+@media screen and (prefers-color-scheme: light) {
+    :root {
+        color-scheme: light;
+        --link-color: #bb86fc;
+        --text-color: rgb(50, 50, 50);
+        --contrast-color: #fff;
+        --background-color: #fff;
+        --container-background-color: rgb(240 240 240/0.8);
+        --container-background-highlight-color: rgb(240 240 240);
+        
+        --highlight-color-1: #ff9e05;
+        --highlight-color-2: #0592ff;
+        --highlight-color-3: #03dac5;
+    }
 }
 
 body {
@@ -20,7 +39,7 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--highlight-color-1);
 }
 
 p {
@@ -76,7 +95,7 @@ h3 {
 }
 
 h3 a {
-    color: rgb(250, 250, 250);
+    color: var(--text-color);
 }
 
 .primary h2 {
@@ -84,6 +103,7 @@ h3 a {
 }
 
 .layout {
+    padding: 0 40px;
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
@@ -126,7 +146,7 @@ small {
 .blog-post {
     margin: 4rem 0;
     padding: 10px 16px 16px;
-    background-color: rgb(40 40 40/0.6);
+    background-color: var(--container-background-color);
     border-left: 5px solid var(--highlight-color-1);
     border-radius: 5px;
     transition: all 0.2s ease-in-out;
@@ -138,7 +158,7 @@ small {
 }
 
 .article:hover {
-    background-color: rgb(40 40 40);
+    background-color: var(--container-background-highlight-color);
 }
 
 .article:first-child {
@@ -187,3 +207,52 @@ small {
     list-style: none;
     justify-content: space-between;
 }
+
+/* Light Dark Toggle */
+.toggle {
+    --size: 2rem;
+    --width: calc(2rem * 2);
+    display: inline-grid;
+    align-items: center;
+    width: var(--width);
+    height: var(--size);
+    cursor: pointer;
+  }
+  
+  .toggle::before {
+    content: "🌞🌙";
+    font-size: 1.45rem;
+    grid-area: 1 / -1;
+    padding: 1px;
+    width: var(--width);
+    height: var(--size);
+    transition: all 250ms ease;
+    border-radius: var(--width);
+    background-color: var(--text-color);
+  }
+  
+  .toggle:hover::before {
+    box-shadow: 0 0 0 2px var(--highlight-color-2);
+  }
+  
+  .toggle::after {
+    content: "";
+    grid-area: 1 / -1;
+    width: calc(var(--size) * 0.9);
+    height: calc(var(--size) * 0.9);
+    transform: translateX(10%);
+    transform-origin: center center;
+    transition: all 250ms ease;
+    border-radius: 100%;
+    background: var(--contrast-color);
+  }
+  
+  .toggle:checked::before {
+    background-color: var(--highlight-color-2);
+  }
+  
+  .toggle:checked::after {
+    transform: translateX(calc(var(--width) - var(--size) * 0.95));
+  }
+
+  
