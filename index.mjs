@@ -115,6 +115,9 @@ copyFiles(`./${sourcePath}/styles`, path.join(publicPath, 'styles'));
 // Copy over any static JS we have
 copyFiles(`./${sourcePath}/js`, path.join(publicPath, 'js'));
 
+// Copy over any assets we have
+copyFiles(`./${sourcePath}/assets`, path.join(publicPath, 'assets'));
+
 // Prepare the site data
 // Merge the data files and article data into a single json file to use with ejs
 const siteDataPath = 'siteData';
