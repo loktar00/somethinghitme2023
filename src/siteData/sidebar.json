@@ -6,23 +6,23 @@
                 "links": [
                     {
                         "title": "@loktar00",
-                        "url": "question1"
+                        "url": "https://twitter.com/loktar00"
                     },
                     {
                         "title": "Codepen",
-                        "url": "question1"
+                        "url": "https://codepen.io/loktar00"
                     },
                     {
                         "title": "Github",
-                        "url": "question1"
+                        "url": "https://github.com/loktar00"
                     },
                     {
                         "title": "Stackoverflow",
-                        "url": "question1"
+                        "url": "https://stackoverflow.com/users/322395/loktar"
                     },
                     {
                         "title": "Dwitter",
-                        "url": "question1"
+                        "url": "https://www.dwitter.net/u/loktar"
                     }
                 ]
             },
@@ -31,31 +31,31 @@
                 "links": [
                     {
                         "title": "react-lazy-load",
-                        "url": "question1"
+                        "url": "https://github.com/loktar00/react-lazy-load"
                     },
                     {
                         "title": "Cat Brown Realtor",
-                        "url": "question1"
+                        "url": "https://catbrownrealtor.com/"
                     },
                     {
                         "title": "Jest Game Framework",
-                        "url": "question1"
+                        "url": "https://github.com/loktar00/jest"
                     },
                     {
                         "title": "gui hacker",
-                        "url": "question1"
+                        "url": "https://codegolf.stackexchange.com/questions/30322/make-it-look-like-im-working/30335#30335"
                     },
                     {
                         "title": "jQuery Snowfall",
-                        "url": "question1"
+                        "url": "https://github.com/loktar00/JQuery-Snowfall"
                     },
                     {
                         "title": "RetroShips",
-                        "url": "question1"
+                        "url": "http://www.retroships.com/"
                     },
                     {
                         "title": "Zombiegames.net",
-                        "url": "question1"
+                        "url": "https://zombiegames.net/"
                     }
                 ]
             }

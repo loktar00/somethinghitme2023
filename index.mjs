@@ -135,22 +135,22 @@ const templatePath = 'templates';
 // Render EJS templates
 const indexHtml = ejs.render(fs.readFileSync(`./${sourcePath}/${templatePath}/index.ejs`, 'utf8'), 
     {data: siteData},
-    {
-        root: process.cwd()
-    }
+    {root: process.cwd()}
 );
 
 // Save the main index.html file
 fs.writeFileSync(path.join(publicPath, 'index.html'), indexHtml);
 
 // Iterate over our files convert to html and save them in the appropriate location.
-articleData.forEach(article => {
+articleData.forEach((article, idx) => {
     createDirectory(path.join(publicPath, article.path));
+
+    const previousArticle = idx && articleData[idx - 1] || {};
+    const nextArticle = idx < articleData.length - 1 && articleData[idx + 1] || {};
+
     const articlePost = ejs.render(fs.readFileSync(`./${sourcePath}/${templatePath}/article.ejs`, 'utf8'),
-        {data: {...siteData, ...article}},
-        {
-            root: process.cwd()
-        }
+        {data: {...siteData, ...article, ...{previousArticle: previousArticle}, ...{nextArticle: nextArticle}}},
+        { root: process.cwd()}
     );
     // Save the article to the appropriate location
     fs.writeFileSync(path.join(publicPath, `${article.path}/index.html`), articlePost);

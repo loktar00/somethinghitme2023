@@ -21,6 +21,7 @@
                         <%- include('/src/templates/partials/social') -%>
                     </footer>
                 </article>
+                <%- include('/src/templates/partials/navigation', {previousArticle: data.previousArticle, nextArticle: data.nextArticle}) -%>
             </section>
             <section class="secondary">
                 <%- include('/src/templates/sidebar', {sidebar: data.sidebar}) -%>
