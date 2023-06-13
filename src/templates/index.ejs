@@ -8,18 +8,20 @@
                 <section class="primary">
                     <%- 
                         data.articles.map(article => 
-                            `<article class="article">
-                                <h3><a href="/${article.path}">${article.title}</a></h3>
-                                <small>Posted 
-                                    <a href=${article.path}>
+                            `<a href="/${article.path}">
+                                <article class="article">
+                                    <h3>${article.title}</h3>
+                                    <small> 
                                         ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
-                                    </a>
                                     </small>
-                                <p>
-                                    ${article.teaser}
-                                </p>
-                                <a class="link-button" href="/${article.path}">Read Article</a>
-                            </article>`
+                                    <p>
+                                        ${article.teaser}
+                                    </p>
+                                    <footer class="article__footer">
+                                        <span class="read-more">Read Article →</span>
+                                    </footer>
+                                </article>
+                            </a>`
                         ).join('') 
                     -%>
                 </section>

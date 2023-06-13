@@ -9,9 +9,9 @@
                 <article class="blog-post">
                     <header>
                         <h3><%-data.title -%></h3>
-                        <p>
+                        <small>
                             <%- new Date(data.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"}) -%>
-                        </p>
+                        </small>
                     </header>
                     <section>
                         <%- data.html -%>
