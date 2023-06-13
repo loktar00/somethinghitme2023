@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charSet="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="/assets/favicon-32x32.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+    </style>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script type='module' src='/js/starscape.js'></script>
+    <script src='/js/prism.js'></script>
+    <title>Fake 2d Lighting with javascript - Somethinghitme</title>
+</head>  <body>
+    <div class="layout">
+        <header class="header">
+    <h1><a aria-current="page" href="/">Somethinghitme</a></h1>
+    <h2>Code, demos and ideas.</h2>
+</header>        <main class="main">
+            <section class="primary">
+                <article class="blog-post">
+                    <header>
+                        <h3>Fake 2d Lighting with javascript</h3>
+                        <p>
+                            Wednesday, Nov 16, 2011                        </p>
+                    </header>
+                    <section>
+                        <p>Just started messing with realtime 2d raycasting for lighting today, used a pretty good code example from <a href="http://www.facepunch.com/threads/1011659">facepunch.com/threads/1011659</a>. <a href="http://www.somethinghitme.com/projects/2d%20lighting/fakelight.html">Heres my version in JS</a>, and <a href="http://jsfiddle.net/loktar/VY75L/16/">a fiddle to play with</a>. If you look at the code youll notice I added a portion to keep track of the closest block per ray so you can light up only that block and not the others. However doing this got me to thinking, this method can be used to make a vision cone for AI. Ive seen this raycasting method used before I just never implemented it myself.. besides my *really* slow implementation for lighting on my <a href="http://www.somethinghitme.com/projects/canvasterrain/">canvas terrian.</a></p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2011/11/2dlighting.png"><img src="/src/blog/2011/11/16/fake-2d-lighting-with-javascript/images/2dlighting.png" alt="" title="2dlighting" /></a></p>
+<p>I might mess with this some more, got a few ideas for a small game or two, but who knows if Ill actually get around to it before finding something else that's shiny. Feel free to do whatever with the code. Theres a lot of room for optimization.</p>
+<p>Figured I might as well post this thing I was messing around with. <a href="http://jsfiddle.net/loktar/PyW5d/19/">Same concept but much slower</a> .</p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2011/11/pyramid.png"><img src="/src/blog/2011/11/16/fake-2d-lighting-with-javascript/images/pyramid.png" alt="" title="pyramid" /></a></p>                    </section>
+                    <hr/>
+                    <footer>
+                                            </footer>
+                </article>
+                <nav class="nav">
+    <ul>
+        <li><a class="link-button" rel="prev" href="/src/blog/2012/01/01/alpha-centauri-alien-crossfire-on-windows-7/">← Installing Alpha Centauri Alien Crossfire on Windows 7</a></li>        <li><a class="link-button" rel="prev" href="/src/blog/2011/10/30/meat-boy-pumpkin/">Meat Boy Pumpkin! →</a></li>    </ul>
+</nav>            </section>
+            <section class="secondary">
+                <aside class="aside-list">
+            <h3>Find Me</h3>
+            <ol>
+                <li><a href="https://twitter.com/loktar00">@loktar00</a></li><li><a href="https://codepen.io/loktar00">Codepen</a></li><li><a href="https://github.com/loktar00">Github</a></li><li><a href="https://stackoverflow.com/users/322395/loktar">Stackoverflow</a></li><li><a href="https://www.dwitter.net/u/loktar">Dwitter</a></li>
+            </ol>
+        </aside><aside class="aside-list">
+            <h3>Projects</h3>
+            <ol>
+                <li><a href="https://github.com/loktar00/react-lazy-load">react-lazy-load</a></li><li><a href="https://catbrownrealtor.com/">Cat Brown Realtor</a></li><li><a href="https://github.com/loktar00/jest">Jest Game Framework</a></li><li><a href="https://codegolf.stackexchange.com/questions/30322/make-it-look-like-im-working/30335#30335">gui hacker</a></li><li><a href="https://github.com/loktar00/JQuery-Snowfall">jQuery Snowfall</a></li><li><a href="http://www.retroships.com/">RetroShips</a></li><li><a href="https://zombiegames.net/">Zombiegames.net</a></li>
+            </ol>
+        </aside>            </section>
+        </main>
+        <footer class="footer">
+    © 2023, Built by <a href="https://github.com/loktar00">Loktar</a>
+</footer>    </div>
+  </body>

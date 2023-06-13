@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charSet="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="/assets/favicon-32x32.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+    </style>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script type='module' src='/js/starscape.js'></script>
+    <script src='/js/prism.js'></script>
+    <title>Quick Sort algorithm comparison - Somethinghitme</title>
+</head>  <body>
+    <div class="layout">
+        <header class="header">
+    <h1><a aria-current="page" href="/">Somethinghitme</a></h1>
+    <h2>Code, demos and ideas.</h2>
+</header>        <main class="main">
+            <section class="primary">
+                <article class="blog-post">
+                    <header>
+                        <h3>Quick Sort algorithm comparison</h3>
+                        <p>
+                            Wednesday, Apr 21, 2010                        </p>
+                    </header>
+                    <section>
+                        <p>I've been trying to do regular programming exercises lately just to stay sharp and recently I decided to take on sorting algorithms. I used my current language of choice (javascript) and set out to implement the <a href="http://en.wikipedia.org/wiki/Quicksort">quick sort algorithm</a>. Below is the portion of my code that completes this.</p>
+<p>[sourcecode language="js"] sorting.qSort = function (sortItems, _left, _right) { var left = _left, right = _right, pivot = right;</p>
+<p>if(right &gt; left){ do{ // From left for(var i = left; i &lt; pivot; i+=1){ left = i;</p>
+<p>if(sortItems[i] &gt; sortItems[pivot]){ pivot = i; break; } }</p>
+<p>// From right for(var i = right; i &gt; pivot; i-=1){ right = i;</p>
+<p>if(sortItems[i] < sortItems[pivot]){ // swap sortItems.swap(i, pivot); pivot = i; break; } } }while((right - left) > 1);</p>
+<p>this.qSort(sortItems, _left , pivot - 1); this.qSort(sortItems, pivot + 1, _right);</p>
+<p>return true; }</p>
+<p>return false; } [/sourcecode]</p>
+<p>The funny thing is really how much quicker this was than the <a href="http://en.wikipedia.org/wiki/Bubble_sort">Bubble sort algorithm</a>. The only benefit I can find to bubble sort is it is much faster to implement</p>
+<p>[sourcecode language="js"] sorting.bubSort = function (sortItems) { for(var i = 0; i < sortItems.length; i+=1){ if(sortItems[i] > sortItems[i+1]){ //swap change the incrementor to -1 sortItems.swap(i, i+1); i=-1; } } } [/sourcecode]</p>
+<p>But like many I recommend you never use it. Using quick sort and sorting 2000 items in random order I get an average of 0.08 with bubble sort this increases to 20 seconds! Also I recommend for javascript using the built in sorting function for arrays the below code beat out my implementation of quick sort everytime with an average speed of 0.01 seconds. Of course its also much easier to implement.</p>
+<p>[sourcecode language="js"] sorting.internalSort = function sortNumber(a,b){ return a - b; } [/sourcecode]</p>
+<p>All tests were performed in Chrome. It was a fun exercise overall and helped me brush up on my recursion skills.</p>                    </section>
+                    <hr/>
+                    <footer>
+                                            </footer>
+                </article>
+                <nav class="nav">
+    <ul>
+        <li><a class="link-button" rel="prev" href="/src/blog/2010/04/26/game-related-snippets-i-always-forget/">← Game Related Snippets I always Forget</a></li>        <li><a class="link-button" rel="prev" href="/src/blog/2010/04/14/how-to-get-the-week-in-a-month-for-a-date-with-javascript/">How to get the week in a month for a date with Javascript →</a></li>    </ul>
+</nav>            </section>
+            <section class="secondary">
+                <aside class="aside-list">
+            <h3>Find Me</h3>
+            <ol>
+                <li><a href="https://twitter.com/loktar00">@loktar00</a></li><li><a href="https://codepen.io/loktar00">Codepen</a></li><li><a href="https://github.com/loktar00">Github</a></li><li><a href="https://stackoverflow.com/users/322395/loktar">Stackoverflow</a></li><li><a href="https://www.dwitter.net/u/loktar">Dwitter</a></li>
+            </ol>
+        </aside><aside class="aside-list">
+            <h3>Projects</h3>
+            <ol>
+                <li><a href="https://github.com/loktar00/react-lazy-load">react-lazy-load</a></li><li><a href="https://catbrownrealtor.com/">Cat Brown Realtor</a></li><li><a href="https://github.com/loktar00/jest">Jest Game Framework</a></li><li><a href="https://codegolf.stackexchange.com/questions/30322/make-it-look-like-im-working/30335#30335">gui hacker</a></li><li><a href="https://github.com/loktar00/JQuery-Snowfall">jQuery Snowfall</a></li><li><a href="http://www.retroships.com/">RetroShips</a></li><li><a href="https://zombiegames.net/">Zombiegames.net</a></li>
+            </ol>
+        </aside>            </section>
+        </main>
+        <footer class="footer">
+    © 2023, Built by <a href="https://github.com/loktar00">Loktar</a>
+</footer>    </div>
+  </body>
