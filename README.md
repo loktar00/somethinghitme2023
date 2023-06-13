@@ -7,3 +7,5 @@ Personal blog updated to use markdown, and node
 * `node index.mjs`
 
 Static content will exist in the public directory which can be deployed.
+
+Site located at https://somethinghitme.com
