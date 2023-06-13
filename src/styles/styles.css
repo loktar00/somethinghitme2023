@@ -1,6 +1,34 @@
-html[data-theme='dark'],
-:root {
-    color-scheme: dark;
+@media screen and (prefers-color-scheme: light) {
+    :root:not(:root[data-theme='dark']) {
+        --link-color: #bb86fc;
+        --text-color: rgb(50, 50, 50);
+        --contrast-color: #fff;
+        --background-color: #fff;
+        --container-background-color: rgb(240 240 240/0.8);
+        --container-background-highlight-color: rgb(240 240 240);
+        
+        --highlight-color-1: #ff9e05;
+        --highlight-color-2: #0592ff;
+        --highlight-color-3: #03dac5;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root:not(:root[data-theme='light']) {
+        --link-color: #bb86fc;
+        --text-color: rgb(240, 240, 240);
+        --contrast-color: #000;
+        --background-color: rgb(10,10,5);
+        --container-background-color: rgb(40 40 40/0.6);
+        --container-background-highlight-color: rgb(40 40 40);
+        
+        --highlight-color-1: #bb86fc;
+        --highlight-color-2: #6200ee;
+        --highlight-color-3: #03dac5;
+    }
+}
+
+:root[data-theme='dark'] {
     --link-color: #bb86fc;
     --text-color: rgb(240, 240, 240);
     --contrast-color: #000;
@@ -13,20 +41,17 @@ html[data-theme='dark'],
     --highlight-color-3: #03dac5;
 }
 
-@media screen and (prefers-color-scheme: light) {
-    :root {
-        color-scheme: light;
-        --link-color: #bb86fc;
-        --text-color: rgb(50, 50, 50);
-        --contrast-color: #fff;
-        --background-color: #fff;
-        --container-background-color: rgb(240 240 240/0.8);
-        --container-background-highlight-color: rgb(240 240 240);
-        
-        --highlight-color-1: #ff9e05;
-        --highlight-color-2: #0592ff;
-        --highlight-color-3: #03dac5;
-    }
+:root[data-theme='light'] {
+    --link-color: #bb86fc;
+    --text-color: rgb(50, 50, 50);
+    --contrast-color: #fff;
+    --background-color: #fff;
+    --container-background-color: rgb(240 240 240/0.8);
+    --container-background-highlight-color: rgb(240 240 240);
+    
+    --highlight-color-1: #ff9e05;
+    --highlight-color-2: #0592ff;
+    --highlight-color-3: #03dac5;
 }
 
 body {
@@ -53,11 +78,18 @@ img {
 }
 
 canvas {
-    pointer-events: none;;
+    pointer-events: none;
+    width:100%;
 }
 
 .header {
-    margin-bottom: 5rem;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.header__toggle {
+    display: flex;
+    align-items: center;
 }
 
 .footer {
@@ -70,7 +102,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 6.5rem;
+    font-size: clamp(3rem, 8vw, 6.5rem);
     text-shadow:
        5px 5px 0 #000,
      -2px -2px 0 #000,
@@ -120,7 +152,8 @@ h3 a {
     display: flex;
 }
 
-.primary {
+.primary,
+.header__headings {
     flex-basis: 70%;
     max-width: 70%;
     margin-right: 4rem;
@@ -130,6 +163,7 @@ h3 a {
     position: sticky;
     top: 25px;
     height: fit-content;
+    max-width: 30%;
 }
 
 .read-more {
