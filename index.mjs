@@ -102,10 +102,16 @@ const createDirectory = (dirPath) => {
     }
 }
 
-// copy over all assets
+// copy over all article internal assets
 assetFiles.forEach(file => {
-     // Path to save the assets
-    const savePath = file.replace(`${sourcePath}\\${sharedPath}\\`, '');
+    // Path to save the assets
+    let savePath = file.replace(`${sourcePath}/${sharedPath}/`, '');
+
+     // We're in windows.
+    if (file.includes(`${sourcePath}\\${sharedPath}\\`)) {
+        savePath = file.replace(`${sourcePath}\\${sharedPath}\\`, '');
+    }
+
     fs.cpSync(file, path.join(publicPath, savePath));
 });
 
