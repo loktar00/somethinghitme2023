@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
     <%- include('/src/templates/partials/head', {title: `${data.main.title} - ${data.main.tagline}`}) -%>
     <body>
         <div class="layout">
@@ -31,4 +31,6 @@
             </main>
             <%- include('/src/templates/partials/footer') -%>
         </div>
+        <script src='/js/main.js'></script>
+        <script type='module' src='/js/starscape.js'></script>
     </body>
