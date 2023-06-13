@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charSet="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="/assets/favicon-32x32.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+    </style>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script type='module' src='/js/starscape.js'></script>
+    <script src='/js/prism.js'></script>
+    <title>MySQL Stored Procedures IF NOT EXISTS() - Somethinghitme</title>
+</head>  <body>
+    <div class="layout">
+        <header class="header">
+    <h1><a aria-current="page" href="/">Somethinghitme</a></h1>
+    <h2>Code, demos and ideas.</h2>
+</header>        <main class="main">
+            <section class="primary">
+                <article class="blog-post">
+                    <header>
+                        <h3>MySQL Stored Procedures IF NOT EXISTS()</h3>
+                        <p>
+                            Thursday, May 6, 2010                        </p>
+                    </header>
+                    <section>
+                        <p>I have been using MSSQL with ASP.NET alot lately, and I really wanted to get some of the benefits of stored procedures into a PHP application I'm writing. I've known MySQL has supported them for a while but I guess I was always a bit too lazy to go through old code and convert it. I used the tool <a href="http://www.heidisql.com/">HeidiSQL</a> to make the process a bit more painless.</p>
+<p>The first stored procedure I attempted to write accepted 3 parameters and based on one of them checks a lookup table, and creates a new value in it if the same value does not already exist. Normally I would use an IF NOT EXISTS clause, which in Microsoft SQL would look like this</p>
+<pre><code class="sql language-sql">CREATE PROCEDURE someProc
+@SomeParam varchar(50),
+AS
+BEGIN
+    DECLARE @SomeId int
+
+    IF  NOT EXISTS(SELECT (1) FROM lookup_table WHERE someField = @SomeParam )
+        BEGIN
+            INSERT INTO lookup_table (someField) VALUES(@someParam)
+            SELECT @SomeId = @@identity
+        END
+    ELSE
+        BEGIN
+            SELECT @SomeId = id FROM lookup_table WHERE someField = @SomeParam
+        END
+
+    -- Do some other stuff here with the id you just received and other data
+END
+</code></pre>
+<p>The above snippet would take a value, check a table for it, get its id, and if the record doesn't exist in the database create it and return the id. Then you could continue on and insert that id into another table or what have you.</p>
+<p>Accomplishing the same thing with a MySQL stored procedure is a bit different. The code below shows how you would accomplish the same task.</p>
+<pre><code class="sql language-sql">CREATE PROCEDURE 'someProc' (IN 'in_SomeParam' INT)
+LANGUAGE SQL
+NOT DETERMINISTIC
+CONTAINS SQL
+SQL SECURITY DEFINER
+BEGIN
+    DECLARE SomeId int;
+    DECLARE CheckExists int;
+    SET CheckExists = 0;
+
+    SELECT count(*) INTO CheckExists from lookup_table WHERE someField = in_SomeParam;
+
+    IF (CheckExists &gt; 0) THEN
+        SELECT id INTO SomeId FROM lookup_table WHERE someField = in_SomeParam;
+    ELSE
+        INSERT INTO lookup_table (someField ) VALUES(in_SomeParam);
+        SELECT SomeId = LAST_INSERT_ID();
+    END IF;
+
+    # Do some other stuff here with the id you just received and other data
+END;
+</code></pre>
+<p>I'm sure I will find some more differences in things I am used to doing with stored procedures using T-SQL, and when I do I'll post them here.</p>                    </section>
+                    <hr/>
+                    <footer>
+                                            </footer>
+                </article>
+                <nav class="nav">
+    <ul>
+        <li><a class="link-button" rel="prev" href="/2010/05/25/new-design-for-mio-ausable-schools/">← New Design for Mio Ausable Schools</a></li>        <li><a class="link-button" rel="prev" href="/2010/05/02/minecraft-fun-and-editing/">Minecraft fun and editing →</a></li>    </ul>
+</nav>            </section>
+            <section class="secondary">
+                <aside class="aside-list">
+            <h3>Find Me</h3>
+            <ol>
+                <li><a href="https://twitter.com/loktar00">@loktar00</a></li><li><a href="https://codepen.io/loktar00">Codepen</a></li><li><a href="https://github.com/loktar00">Github</a></li><li><a href="https://stackoverflow.com/users/322395/loktar">Stackoverflow</a></li><li><a href="https://www.dwitter.net/u/loktar">Dwitter</a></li>
+            </ol>
+        </aside><aside class="aside-list">
+            <h3>Projects</h3>
+            <ol>
+                <li><a href="https://github.com/loktar00/react-lazy-load">react-lazy-load</a></li><li><a href="https://catbrownrealtor.com/">Cat Brown Realtor</a></li><li><a href="https://github.com/loktar00/jest">Jest Game Framework</a></li><li><a href="https://codegolf.stackexchange.com/questions/30322/make-it-look-like-im-working/30335#30335">gui hacker</a></li><li><a href="https://github.com/loktar00/JQuery-Snowfall">jQuery Snowfall</a></li><li><a href="http://www.retroships.com/">RetroShips</a></li><li><a href="https://zombiegames.net/">Zombiegames.net</a></li>
+            </ol>
+        </aside>            </section>
+        </main>
+        <footer class="footer">
+    © 2023, Built by <a href="https://github.com/loktar00">Loktar</a>
+</footer>    </div>
+  </body>
