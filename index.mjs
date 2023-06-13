@@ -58,7 +58,13 @@ markdownFiles.forEach(file => {
     let textToConvert = text.replace(pattern, '').trim();
 
     // Path to save the article
-    const savePath = filePath.replace(`${sourcePath}\\${sharedPath}\\`, '');
+    // Path to save the assets
+    let savePath = file.replace(`${sourcePath}/${sharedPath}/`, '');
+
+    // We're in windows.
+    if (file.includes(`${sourcePath}\\${sharedPath}\\`)) {
+        savePath = file.replace(`${sourcePath}\\${sharedPath}\\`, '');
+    }
 
     // Update all image paths to be absolute paths
     const imagePattern = /images\/(.*)\.(.*)/g;
