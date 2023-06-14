@@ -69,7 +69,7 @@ a {
 
 p {
     font-size: 1.15rem;
-    line-height: 1.8rem;
+    line-height: 2rem;
     color: var(--text-color);
 }
 
@@ -98,7 +98,7 @@ canvas {
     padding: 20px 0;
 }
 
-h1, h2, h3 {
+h1, h2 {
     font-weight: 400;
     margin: 0;
 }
@@ -130,6 +130,10 @@ h3 {
 
 h3 a {
     color: var(--text-color);
+}
+
+.header__headings h2 {
+    font-size: clamp(0.4rem, 4vw, 2rem);
 }
 
 .primary h2 {
@@ -193,6 +197,10 @@ small {
     transition: all 0.2s ease-in-out;
 }
 
+.blog-post {
+    background-color: var(--container-background-highlight-color);
+}
+
 @media (max-width: 1000px) {
     .aside-list {
         display: none;
@@ -200,6 +208,10 @@ small {
 
     .primary {
         margin: 0;
+    }
+
+    .layout {
+        padding: 0 2%;
     }
 }
 
