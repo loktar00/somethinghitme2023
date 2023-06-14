@@ -8,19 +8,17 @@ There's a really interesting [competition the creator of jsbin is running](http:
 
 ## Wavey gif
 
-![](images/S1TWW4v.gif)
+![](images/waves.gifv)
 
 [Wavey gif Demo](http://jsbin.com/otusog/2/)
 
 ## Crazy Crosshatch Switching gif
 
-![](images/rTtr4fE.gif)
-
 [Crazy Crosshatch Switching Demo](http://jsbin.com/akorem/5/)
 
 ## P-Wave/Compression Wave
 
-![](images/uiaAeb7.gif)
+![](images/NEOCVPW.gif)
 
 [P-Wave/Compression Wave Demo](http://jsbin.com/ojiwex/2/)
 
