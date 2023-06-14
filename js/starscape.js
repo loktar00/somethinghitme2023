@@ -211,14 +211,14 @@ entities.push(new ShootingStar());
 entities.push(new Terrain({
     mHeight : (height/2)-120, 
     darkFillStyle: "#191D4C", 
-    lightFillStyle : "#a7d0c9"
+    lightFillStyle : "#74cac0"
 }));
 
 entities.push(new Terrain({
     displacement : 120, 
     scrollDelay : 50,  
     darkFillStyle: "rgb(17,20,40)",
-    lightFillStyle : "#6bb9ab",
+    lightFillStyle : "#5ab0a6",
     mHeight : (height/2)-60
 }));
 
@@ -226,7 +226,7 @@ entities.push(new Terrain({
     displacement : 100, 
     scrollDelay : 20, 
     darkFillStyle: "rgb(10,10,5)",
-    lightFillStyle : ['#8bd4c7', '#ffffff'],
+    lightFillStyle : ['#489e94', '#ffffff'],
     mHeight : height/2
 }));
 
@@ -241,12 +241,11 @@ function animate() {
     } else {
         // Gradient for the sky
         const gradient = bgCtx.createLinearGradient(0, 0, 0, height);
-        gradient.addColorStop(0, '#86d6f7');
+        gradient.addColorStop(0, '#71ccf5');
         gradient.addColorStop(0.5, "#edf8fa");
 
         bgCtx.fillStyle = gradient;
         bgCtx.fillRect(0, 0, width, height);
-        bgCtx.fillStyle = '#ffffff';
         bgCtx.strokeStyle = '#ffffff';
     }
 
