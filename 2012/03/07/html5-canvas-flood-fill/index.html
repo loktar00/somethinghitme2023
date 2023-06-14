@@ -52,16 +52,39 @@
                     <section>
                         <p>Messing around in JS today (surprising eh?) making an HTML5 vs of rampart-ish. The more I do the less it becomes like rampart. Today I decied to tackle the flood fill portion which is a major part of the gameplay.</p>
 <p>Here is the workhorse function</p>
-<p>[sourcecode language="js"] function floodFill(mapData, x, y, oldVal, newVal){ var mapWidth = mapData.length, mapHeight = mapData[0].length;</p>
-<p>if(oldVal == null){ oldVal=mapData[x][y]; }</p>
-<p>if(mapData[x][y] !== oldVal){ return true; }</p>
-<p>mapData[x][y] = newVal;</p>
-<p>if (x &gt; 0){ floodFill(mapData, x-1, y, oldVal, newVal); }</p>
-<p>if(y &gt; 0){ floodFill(mapData, x, y-1, oldVal, newVal); }</p>
-<p>if(x &lt; mapWidth-1){ floodFill(mapData, x+1, y, oldVal, newVal); }</p>
-<p>if(y &lt; mapHeight-1){ floodFill(mapData, x, y+1, oldVal, newVal); } } [/sourcecode]</p>
+<pre><code class="javascript language-javascript">function floodFill(mapData, x, y, oldVal, newVal){ 
+    var mapWidth = mapData.length, mapHeight = mapData[0].length;
+
+    if (oldVal == null){ 
+        oldVal=mapData[x][y]; 
+    }
+
+    if (mapData[x][y] !== oldVal){ 
+        return true; 
+    }
+
+    mapData[x][y] = newVal;
+
+    if (x &gt; 0){ 
+        floodFill(mapData, x-1, y, oldVal, newVal); 
+    }
+
+    if (y &gt; 0){ 
+        floodFill(mapData, x, y-1, oldVal, newVal); 
+    }
+
+    if (x &lt; mapWidth-1){ 
+        floodFill(mapData, x+1, y, oldVal, newVal); 
+    }
+
+    if (y &lt; mapHeight-1){ 
+        floodFill(mapData, x, y+1, oldVal, newVal); 
+    } 
+} 
+</code></pre>
 <p>Which is called by doing this</p>
-<p>[sourcecode language="js"] floodFill(map, 3,3,null,2); [/sourcecode]</p>
+<pre><code class="javascript language-javascript">    floodFill(map, 3,3,null,2);
+</code></pre>
 <p>map refers to a 2 dimensional array which contains the data, in my case, 0 or 1. The second 2 parameters are the x and y of where to start on the map, null is the initial value to start with, and 2 is the change value parameter, which tells the function to change any tile with the value 0, to 2.</p>
 <p>The function is pretty straightforward it recursively checks each points north/south/east/west neighbor until it encounters a neighbors whos value is not 0. <a href="http://jsfiddle.net/loktar/ZLw9m/">Try the code for yourself</a>. I have portions commented out that generate a larger random map to fill for testing purposes. Anything beyond 256x256 has issues within chrome due to stack size restrictions.</p>
 <p>Below is the result of the function.</p>

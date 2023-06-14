@@ -56,23 +56,23 @@
 <p>So how exactly is this effect achieved?</p>
 <p><a href="http://cdpn.io/zEhDB">Full page result on codepen</a></p>
 <p>The following function is what's used to generate the planets.</p>
-<pre><code class="javascript language-javascript">    function drawPlanet(rad, xc, yc, color) {
-        color = color || { r: 0, g: 100, b: 160 };
-        ctx.fillStyle = "#000"; ctx.beginPath();
-        ctx.arc(xc, yc, rad, 0, Math.PI \* 2); c
-        tx.fill();
-        ctx.closePath();
+<pre><code class="javascript language-javascript">function drawPlanet(rad, xc, yc, color) {
+    color = color || { r: 0, g: 100, b: 160 };
+    ctx.fillStyle = "#000"; ctx.beginPath();
+    ctx.arc(xc, yc, rad, 0, Math.PI \* 2); c
+    tx.fill();
+    ctx.closePath();
 
-        ctx.fillStyle = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
+    ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
 
-        var x1 = parseInt(Math.sqrt(rad * rad - y * y));
-        for (var x = -x1; x &lt; x1; x++) {
-            var n = parseInt(Math.random() * x1) / 1.5;
-            if (n &gt; x1 + x) {
-                ctx.fillRect(x + xc, y + yc, 1, 1);
-            }
+    var x1 = parseInt(Math.sqrt(rad * rad - y * y));
+    for (var x = -x1; x &lt; x1; x++) {
+        var n = parseInt(Math.random() * x1) / 1.5;
+        if (n &gt; x1 + x) {
+            ctx.fillRect(x + xc, y + yc, 1, 1);
         }
     }
+}
 </code></pre>
 <p>The function drawPlanet takes four parameters. Radius, center x, center y, and the color of the planet. First a solid black arc is created so we can get a proper layering effect, otherwise dots would bleed through and the planets would blend together.</p>
 <p>The loop from -rad to rad is where everything takes place. Each iteration as we go down the circle we find out how long the row is from the center x and y position to the edge of the circle. Thanks to <a href="https://twitter.com/yutt">@yutt</a> for pointing me in the right direction.</p>

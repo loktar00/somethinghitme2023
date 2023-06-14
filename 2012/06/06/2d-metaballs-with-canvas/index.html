@@ -55,11 +55,11 @@
 <p>The basic concept is to use a radial gradient, and set an alpha threshold that will be filtered. For example any pixel with an alpha lower than 150 will be set to an alpha of 0. This gives the metaball effect because when the gradients overlap, the areas that are normally hidden now have their alpha values added which brings them above the threshold.</p>
 <p><strong>One way to achieve this using canvas and javascript</strong></p>
 <p>So basically what I do is create a bunch of points, and set their velocities, positions and sizes.</p>
-<p>[gist id=2885768]</p>
+<script src="http://gist.github.com/2885768.js"></script>
 <p>Next I draw each of these onto a temp canvas</p>
-<p>[gist id=2885774]</p>
+<script src="http://gist.github.com/2885774.js"></script>
 <p>Then finally I read the pixel data, filter the alpha based on a threshold I set, and put the filtered data back onto the main canvas to be displayed.</p>
-<p>[gist id=2885780]</p>
+<script src="http://gist.github.com/2885780.js"></script>
 <p><a href="http://somethinghitme.com/projects/metaballs/">Check out the demo with added features</a> or the <a href="http://jsfiddle.net/loktar/TscNZ/">jsfiddle</a> to play around with.</p>                    </section>
                     <hr/>
                     <footer>

@@ -51,9 +51,15 @@
                     </header>
                     <section>
                         <p>A person asked a question in my <a href="http://www.somethinghitme.com/2010/04/12/javascript-sorting-by-date-time/">post about sorting dates in Javascript</a>, basically on how to return a measurement of time between dates, such as days, hours, minutes, seconds. I haven't really ever had to do something like this so I figured I would see if it was as easy as I assumed it would be in JS. This is what I came up with.</p>
-<p>[sourcecode language="js"] var dob = new Date("9/28/1982"), today = new Date("9/21/2010");</p>
-<p>// Days between dates alert((today-dob)/86400000);</p>
-<p>// Years between dates alert(((today-dob)/86400000)/365); [/sourcecode]</p>
+<pre><code class="javascript language-javascript">var dob = new Date("9/28/1982"), 
+    today = new Date("9/21/2010");
+
+// Days between dates 
+alert((today-dob)/86400000);
+
+// Years between dates 
+alert(((today-dob)/86400000)/365);
+</code></pre>
 <p>Returns pretty accurate results, Im not accounting for leap years so it thinks I'm already 28 even though I still have a few days to go.</p>                    </section>
                     <hr/>
                     <footer>

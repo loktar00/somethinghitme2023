@@ -55,11 +55,29 @@
 <p>Added a few new things, you can now make flakes rounded (Thanks Luke), and give them shadows (for lighter colored pages) - thanks for the idea Yutt. Also I fixed some bugs that cause horizontal bar flickering (I hope).</p>
 <p><a href="http://www.somethinghitme.com/wp-content/uploads/2010/12/snowfall.jquery.zip">Download Jquery Snowfall 1.4</a></p>
 <p><strong>Invoking the snow</strong></p>
-<p>[sourcecode language="js"] $(document).snowfall(); $('#elementid').snowfall({flakeCount : 100, maxSpeed : 10}); $('.class').snowfall({flakeCount : 100, maxSpeed : 10}); [/sourcecode]</p>
+<pre><code class="javascript language-javascript">$(document).snowfall(); 
+$('#elementid').snowfall({flakeCount : 100, maxSpeed : 10}); 
+$('.class').snowfall({flakeCount : 100, maxSpeed : 10}); 
+</code></pre>
 <p><strong>Snowfall Methods</strong></p>
-<p>[sourcecode language="js"] // stopping the snow $(document).snowfall('clear'); $('#elementid').snowfall('clear'); $('.class').snowfall('clear'); [/sourcecode]</p>
+<pre><code class="javascript language-javascript">// stopping the snow 
+$(document).snowfall('clear'); 
+$('#elementid').snowfall('clear'); 
+$('.class').snowfall('clear');
+</code></pre>
 <p><strong>Options currently supported with default values</strong></p>
-<p>[sourcecode language="js"] options = { flakeCount : 35, // number flakeColor : '#ffffff', // string flakeIndex: 999999, // number minSize : 1, // number maxSize : 3, // number minSpeed : 2, // number maxSpeed : 3, // number round : false, // bool shadow : false // bool }; [/sourcecode]</p>                    </section>
+<pre><code class="javascript language-javascript">options = { 
+    flakeCount : 35, // number 
+    flakeColor : '#ffffff', // string 
+    flakeIndex: 999999, // number 
+    minSize : 1, // number 
+    maxSize : 3, // number 
+    minSpeed : 2, // number 
+    maxSpeed : 3, // number 
+    round : false, // bool 
+    shadow : false // bool 
+    };
+</code></pre>                    </section>
                     <hr/>
                     <footer>
                                             </footer>
