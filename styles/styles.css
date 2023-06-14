@@ -104,7 +104,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size: clamp(2rem, 8vw, 6.5rem);
     text-shadow:
        5px 5px 0 #000,
      -2px -2px 0 #000,
@@ -254,6 +254,7 @@ small {
 }
 
 .nav ul{
+    font-size: 1.2rem;
     display: flex;
     padding: 0;
     list-style: none;
