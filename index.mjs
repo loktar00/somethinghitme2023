@@ -121,17 +121,19 @@ assetFiles.forEach(file => {
     fs.cpSync(file, path.join(publicPath, savePath));
 });
 
-// Copy over the CSS 
-copyFiles(`./${sourcePath}/styles`, path.join(publicPath, 'styles'));
+// Copy over all of our directories we need directly with files included
+// TODO add these to a config file or something
+const copyDirectories = [
+    'styles',
+    'js',
+    'assets',
+    'projects',
+    'CNAME'
+];
 
-// Copy over any static JS we have
-copyFiles(`./${sourcePath}/js`, path.join(publicPath, 'js'));
-
-// Copy over any assets we have
-copyFiles(`./${sourcePath}/assets`, path.join(publicPath, 'assets'));
-
-// Copy over any projects we have
-copyFiles(`./${sourcePath}/projects`, path.join(publicPath, 'projects'));
+copyDirectories.forEach(dir => {
+    copyFiles(`./${sourcePath}/${dir}`, path.join(publicPath, dir));
+});
 
 // Prepare the site data
 // Merge the data files and article data into a single json file to use with ejs

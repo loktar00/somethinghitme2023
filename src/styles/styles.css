@@ -7,7 +7,7 @@
         --container-background-color: rgb(240 240 240/0.8);
         --container-background-highlight-color: rgb(240 240 240);
         
-        --highlight-color-1: #ff9e05;
+        --highlight-color-1: #ff0060;
         --highlight-color-2: #0592ff;
         --highlight-color-3: #03dac5;
     }
@@ -49,7 +49,7 @@
     --container-background-color: rgb(240 240 240/0.8);
     --container-background-highlight-color: rgb(240 240 240);
     
-    --highlight-color-1: #ff9e05;
+    --highlight-color-1: #ff0060;
     --highlight-color-2: #0592ff;
     --highlight-color-3: #03dac5;
 }
@@ -89,7 +89,9 @@ canvas {
 
 .header__toggle {
     display: flex;
-    align-items: center;
+    padding: 10px;
+    width: 30%;
+    justify-content: flex-end;
 }
 
 .footer {
@@ -154,9 +156,12 @@ h3 a {
 
 .primary,
 .header__headings {
+    margin-right: 2rem;
+}
+
+.header__headings {
     flex-basis: 70%;
     max-width: 70%;
-    margin-right: 4rem;
 }
 
 .secondary {
@@ -177,6 +182,7 @@ small {
 }
 
 .article,
+.aside-list,
 .blog-post {
     margin: 4rem 0;
     padding: 10px 16px 16px;
@@ -186,8 +192,20 @@ small {
     transition: all 0.2s ease-in-out;
 }
 
-.blog-post {
-    border: 0;
+@media (max-width: 1000px) {
+    .aside-list {
+        display: none;
+    }
+
+    .primary {
+        margin: 0;
+    }
+}
+
+.blog-post,
+.aside-list {
+    border-top: 5px solid var(--highlight-color-1);
+    border-left: 0;
     margin: 0;
 }
 
