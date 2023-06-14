@@ -8,25 +8,44 @@ Messing around in JS today (surprising eh?) making an HTML5 vs of rampart-ish. T
 
 Here is the workhorse function
 
-\[sourcecode language="js"\] function floodFill(mapData, x, y, oldVal, newVal){ var mapWidth = mapData.length, mapHeight = mapData\[0\].length;
+```javascript
 
-if(oldVal == null){ oldVal=mapData\[x\]\[y\]; }
+function floodFill(mapData, x, y, oldVal, newVal){ 
+    var mapWidth = mapData.length, mapHeight = mapData[0].length;
 
-if(mapData\[x\]\[y\] !== oldVal){ return true; }
+    if (oldVal == null){ 
+        oldVal=mapData[x][y]; 
+    }
 
-mapData\[x\]\[y\] = newVal;
+    if (mapData[x][y] !== oldVal){ 
+        return true; 
+    }
 
-if (x > 0){ floodFill(mapData, x-1, y, oldVal, newVal); }
+    mapData[x][y] = newVal;
 
-if(y > 0){ floodFill(mapData, x, y-1, oldVal, newVal); }
+    if (x > 0){ 
+        floodFill(mapData, x-1, y, oldVal, newVal); 
+    }
 
-if(x < mapWidth-1){ floodFill(mapData, x+1, y, oldVal, newVal); }
+    if (y > 0){ 
+        floodFill(mapData, x, y-1, oldVal, newVal); 
+    }
 
-if(y < mapHeight-1){ floodFill(mapData, x, y+1, oldVal, newVal); } } \[/sourcecode\]
+    if (x < mapWidth-1){ 
+        floodFill(mapData, x+1, y, oldVal, newVal); 
+    }
+
+    if (y < mapHeight-1){ 
+        floodFill(mapData, x, y+1, oldVal, newVal); 
+    } 
+} 
+```
 
 Which is called by doing this
 
-\[sourcecode language="js"\] floodFill(map, 3,3,null,2); \[/sourcecode\]
+```javascript
+    floodFill(map, 3,3,null,2);
+```
 
 map refers to a 2 dimensional array which contains the data, in my case, 0 or 1. The second 2 parameters are the x and y of where to start on the map, null is the initial value to start with, and 2 is the change value parameter, which tells the function to change any tile with the value 0, to 2.
 

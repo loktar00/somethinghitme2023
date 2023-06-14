@@ -53,7 +53,9 @@ JavaScript will only naturally deep copy 1 level deep, and only the primitive ty
 
 ```javascript
 let a = [1, 2, 3, 4];
-const b = [...a]; // a.map(el => el), a.forEach(el => b.push(el));
+
+// a.map(el => el), a.forEach(el => b.push(el));
+const b = [...a]; 
 
 a[0] = 'first index in the array!';
 
@@ -77,7 +79,8 @@ const b = [...a]; // a.map(el => el);
 
 a[0].a = 'first index in the array!';
 
-console.log(b) // [{"a":"first index in the array!"}, {"b":2}, {"c":3}]
+// [{"a":"first index in the array!"}, {"b":2}, {"c":3}]
+console.log(b) 
 ```
 
 This means once our data structure introduces any nesting (arrays, objects or functions) we're back to a shallow copy of the data.
@@ -90,7 +93,8 @@ const b = [...a];
 
 a[0][0] = 'first index in the array!';
 
-console.log(JSON.stringify(b)) // [["first index in the array!", 2, 3], 2, 3]
+// [["first index in the array!", 2, 3], 2, 3]
+console.log(JSON.stringify(b)) 
 ```
 
 ### How can we fix this?
@@ -149,7 +153,8 @@ map.set('a', 1);
 let date = new Date();
 
 let a = [0, 1, {c: map}, date];
-const b = JSON.parse(JSON.stringify(a)); // [0, 1, {c:{}}, '2022-04-07T22:15:09.947Z']
+// [0, 1, {c:{}}, '2022-04-07T22:15:09.947Z']
+const b = JSON.parse(JSON.stringify(a)); 
 ```
 
 Notice how our Map is now just an empty object, in addition since the data is "stringified" and parsed we get the actual value for Date rather than access to the date object itself. This also of course applies to Set, and regex values as well.
@@ -181,13 +186,18 @@ a[1] = 2;
 // [0, 1, {c:{}}, '2022-04-07T22:15:09.947Z']
 console.log(b);
 
-// [0, 1, {{c: Map(1)}, Thu Apr 07 2022 18:15:17 GMT-0400 (Eastern Daylight Time)]
+// [0, 1, 
+//  {{c: Map(1)}, 
+//  Thu Apr 07 2022 18:15:17 GMT-0400 (Eastern Daylight Time)
+// ]
+
 console.log(c);
 
 c[3].getDate() + 5 // Current date + 5 returns the result
 
 // Can't do this since it's just a string.
-b[3].getDate() + 5 // Uncaught TypeError: b[3].getDate is not a function
+// Uncaught TypeError: b[3].getDate is not a function
+b[3].getDate() + 5 
 ```
 
 ### Caveats of structuredClone
@@ -197,7 +207,8 @@ Functions error
 
 ```javascript
 let a = [0, 1, {c: () => true} ];
-// Uncaught DOMException: Failed to execute 'structuredClone' on 'Window'
+// Uncaught DOMException: 
+// Failed to execute 'structuredClone' on 'Window'
 const c = structuredClone(a);
 ```
 

@@ -17,23 +17,23 @@ So how exactly is this effect achieved?
 The following function is what's used to generate the planets.
 
 ```javascript
-    function drawPlanet(rad, xc, yc, color) {
-        color = color || { r: 0, g: 100, b: 160 };
-        ctx.fillStyle = "#000"; ctx.beginPath();
-        ctx.arc(xc, yc, rad, 0, Math.PI \* 2); c
-        tx.fill();
-        ctx.closePath();
+function drawPlanet(rad, xc, yc, color) {
+    color = color || { r: 0, g: 100, b: 160 };
+    ctx.fillStyle = "#000"; ctx.beginPath();
+    ctx.arc(xc, yc, rad, 0, Math.PI \* 2); c
+    tx.fill();
+    ctx.closePath();
 
-        ctx.fillStyle = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
+    ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;
 
-        var x1 = parseInt(Math.sqrt(rad * rad - y * y));
-        for (var x = -x1; x < x1; x++) {
-            var n = parseInt(Math.random() * x1) / 1.5;
-            if (n > x1 + x) {
-                ctx.fillRect(x + xc, y + yc, 1, 1);
-            }
+    var x1 = parseInt(Math.sqrt(rad * rad - y * y));
+    for (var x = -x1; x < x1; x++) {
+        var n = parseInt(Math.random() * x1) / 1.5;
+        if (n > x1 + x) {
+            ctx.fillRect(x + xc, y + yc, 1, 1);
         }
     }
+}
 ```
 
 The function drawPlanet takes four parameters. Radius, center x, center y, and the color of the planet. First a solid black arc is created so we can get a proper layering effect, otherwise dots would bleed through and the planets would blend together.

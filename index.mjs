@@ -77,6 +77,12 @@ markdownFiles.forEach(file => {
         });
     }
 
+    // Embed gists.
+    const gistPattern = /\\\[gist id=(?<id>[\d]*)\\\]/g;
+    for (const match of textToConvert.matchAll(gistPattern)) {
+        textToConvert = textToConvert.replace(match[0], `<script src="http://gist.github.com/${match.groups.id}.js"></script>`);
+    }
+    
     // Convert the markdown to html
     const html = converter.makeHtml(textToConvert);
     articleData.push({...{path: savePath}, ...pageData, ...{html}});

@@ -14,12 +14,33 @@ Added a few new things, you can now make flakes rounded (Thanks Luke), and give 
 
 **Invoking the snow**
 
-\[sourcecode language="js"\] $(document).snowfall(); $('#elementid').snowfall({flakeCount : 100, maxSpeed : 10}); $('.class').snowfall({flakeCount : 100, maxSpeed : 10}); \[/sourcecode\]
+```javascript
+$(document).snowfall(); 
+$('#elementid').snowfall({flakeCount : 100, maxSpeed : 10}); 
+$('.class').snowfall({flakeCount : 100, maxSpeed : 10}); 
+```
 
 **Snowfall Methods**
 
-\[sourcecode language="js"\] // stopping the snow $(document).snowfall('clear'); $('#elementid').snowfall('clear'); $('.class').snowfall('clear'); \[/sourcecode\]
+```javascript
+// stopping the snow 
+$(document).snowfall('clear'); 
+$('#elementid').snowfall('clear'); 
+$('.class').snowfall('clear');
+```
 
 **Options currently supported with default values**
 
-\[sourcecode language="js"\] options = { flakeCount : 35, // number flakeColor : '#ffffff', // string flakeIndex: 999999, // number minSize : 1, // number maxSize : 3, // number minSpeed : 2, // number maxSpeed : 3, // number round : false, // bool shadow : false // bool }; \[/sourcecode\]
+```javascript
+options = { 
+    flakeCount : 35, // number 
+    flakeColor : '#ffffff', // string 
+    flakeIndex: 999999, // number 
+    minSize : 1, // number 
+    maxSize : 3, // number 
+    minSpeed : 2, // number 
+    maxSpeed : 3, // number 
+    round : false, // bool 
+    shadow : false // bool 
+    };
+```

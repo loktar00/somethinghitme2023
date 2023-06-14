@@ -52,8 +52,10 @@ The following JavaScript function is what I used to create the above examples.
 
 ```javascript
 /*
-  width and height are the overall width and height we have to work with, displace is
-  the maximum deviation value. This stops the terrain from going out of bounds if we choose
+  width and height are the overall 
+  width and height we have to work with, displace is
+  the maximum deviation value. 
+  This stops the terrain from going out of bounds if we choose
 */
 
 function terrain(width, height, displace, roughness){
@@ -72,7 +74,7 @@ function terrain(width, height, displace, roughness){
         // Iterate through each segment calculating the center point
         for(var j = (power/i)/2; j < power; j+= power/i){
             points[j] = ((points[j - (power / i) / 2] + points[j + (power / i) / 2]) / 2);
-            points[j] += (Math.random()*displace*2) - displace
+            points[j] += (Math.random() * displace*2) - displace
         }
         // reduce our random range
         displace *= roughness;

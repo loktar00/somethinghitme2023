@@ -4,8 +4,13 @@ date: "2011-04-24"
 teaser: "Check out my journey of creating an entry for the JS1k competition. Follow the development process from initial ideas of rainbow roads and 3D tombstones to a final submission combining terrain and wave generation. Explore the compact JavaScript code and see the resulting graphical creation in action."
 ---
 
-Below is what I ended up settling on for an entry for the JS1k. My ideas ranged for a rainbow road (similar to the Mario Kart level), to a 3d tombstone that said dysentary, a terrain generator, then a wave generator. I ended up just combining the last two ideas and came up with below.
+Below is what I ended up settling on for an entry for the JS1k. 
 
-https://www.somethinghitme.com/uploads/2011/04/tersub.js
+My ideas ranged for a rainbow road (similar to the Mario Kart level), to a 3d tombstone that said dysentary, a terrain generator, then a wave generator. 
+
+I ended up just combining the last two ideas and came up with below.
+
+<canvas id="terCanvas"></canvas>
+<script src="/2011/04/24/my-entry-for-js1k-3/js/tersub.js"></script>
 
 Theres really no terrain generation, its just the y value set to a random height. I just didn't have the room in 1k to fit it in unfortunately.

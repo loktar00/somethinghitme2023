@@ -17,3 +17,6 @@ Some things I learned from the contest,
 I think the next thing I will do is make a bigger/better/cooler version.
 
 Now just imagine if I had 640k to work with!
+
+<canvas id="c" width="256" height="512"></canvas>
+<script type="text/javascript" src="/2010/09/08/new-js1k-submission-jsgrapple/js/grapple.js"></script>
