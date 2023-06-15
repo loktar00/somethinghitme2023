@@ -53,7 +53,15 @@
                         <h2 id="theproblem">The Problem</h2>
 <p>Recently I found myself in between jobs so I had some time on my hands to work on a few of my projects I've let languish over the past few years. I always find myself coming back to this blog since it's low risk so I consider it a playground for me to test things out.</p>
 <h3 id="abitofhistory20092020">A bit of history 2009 - 2020</h3>
-<p>A quick history on this blog and the interations it's had. Back in 2009 when blogs were all the rage I threw up a wordpress install made a custom theme and operated using that for years on a shared hosting platform. It worked well for the most part but over the years and with wordpress upgrades and plugins it just became more of a pain. At the end of the day all I really needed were some static pages with my thoughts and images.</p>
+<p>A quick history on this blog and the interations it's had. </p>
+<p>Back in 2009 when blogs were all the rage I threw up a wordpress install made a custom theme and operated using that for years on a shared hosting platform. It worked well for the most part but over the years and with wordpress upgrades and plugins it just became more of a pain. At the end of the day all I really needed were some static pages with my thoughts and images.</p>
+<h2 id="somethinghitmeovertheyears2009theveryfirstdesignfortheblog">Somethinghitme over the years - 2009, the very first design for the blog.</h2>
+<p><img src="/2023/recreating-this-blog-with-static-generation/images/initial.png" alt="Initial design" /></p>
+<h2 id="2010shtheveryfirstdesignthisonemightbemyfavorite">2010-sh, the very first design (this one might be my favorite).</h2>
+<p>Just happened to find this on the wayback machine… I am seriously considering going back to this design.</p>
+<p><img src="/2023/recreating-this-blog-with-static-generation/images/2013.png" alt="2010-ish" /></p>
+<h2 id="priortotodaysdesignimadethemsimplerjusttochangethingsup">Prior to todays design, I made them simpler just to change things up.</h2>
+<p><img src="/2023/recreating-this-blog-with-static-generation/images/2020.png" alt="2020" /></p>
 <h3 id="2020">2020</h3>
 <p>Moving on to 2020 I decided to "upgrade" to Gatsby. There was a bit of hype surrounding it, it used React which I consider myself pretty proficient in, and it generated a static site, exactly what I wanted. This also had the side benefit of allowing me to move hosting to github.</p>
 <p>While I found gatsby to be simple for the most part, I just couldn't get over the setup and amount of code needed for something so "simple"… it's something I see everywhere in the development world especially in the front end or Javascript ecosystem. Everything requires a build now.. a build process, multiple dependencies just to get something to show on the page. I went a long with it since the goal was just to convert the site and have some of my older blog posts available. to users.</p>
@@ -67,13 +75,111 @@
 <h3 id="thecode">The code</h3>
 <p>The articles all live under <code>src/blog</code> and are organized by years, and for the older articles the month and day. The script iterates over the directories grabbing each file and parsing the markdown using <a href="https://www.npmjs.com/package/showdown">showdown</a> (so far 1 of the total 2 dependencies for the site/).</p>
 <p>I continued to use a similar format I had when using gatsby. At the top of each markdown file there's a section to hold metadata associated with each artcile. Here's an example for this one.</p>
-<pre><code class="markdown language-markdown">
+<pre><code class="markdown language-markdown">title: "Recreating this blog with static generation"
+date: "2023-06-15"
+teaser: "Updated this blog yet again, however this time used my own solution which generates the entire site from markdown and json data, making it much easier to maintaijn and actually write for."
+tags: "blog, javascript, static generation, programming"
 </code></pre>
 <p>I then parse the markdown when it's being read and extract the information to expose to our templates.</p>
+<pre><code class="javasript language-javasript">    // Grab the information from each file to generate our table of contents and structure
+    const pattern = /---([\s\S]*?)---/g;
+    const matches = text.match(pattern);
+    let pageData = {};
+
+    if (matches) {
+        for (const match of matches) {
+            const contentBetweenDelimiters = match.replace(/---/g, '').trim();
+            contentBetweenDelimiters.split('\n')
+                .forEach(line =&gt; {
+                    const data = line.split(':');
+                    const key = data[0].trim();
+                    const value = data[1].trim().replace(/"/g, '');
+                    pageData[key] = value;
+                });
+        }
+    }
+</code></pre>
 <h4 id="additionalparsing">Additional parsing</h4>
-<p>I do have some <code>gists</code> and lots of code blocks, so I went with a pretty simple approach of parsing out the code blocks and just replacing with prism for syntax highligting. I do the same for the gists as well. I also allow for vanilla markup and scripts so I can just drop in some html if I need to.</p>
+<p>I do have some <code>gists</code> and quite a few code blocks, so I went with a pretty simple approach of parsing out the code blocks, those are just replaced with prism for syntax highligting. </p>
+<p>For gists it's a straight forward approach again, I have considered breaking this out into a sort of "plugin" system to parse out and convert other things, such as prettier images with captions.</p>
+<pre><code class="javascript language-javascript">    // Embed gists.
+    const gistPattern = /\\\[gist id=(?&lt;id&gt;[\d]*)\\\]/g;
+    for (const match of textToConvert.matchAll(gistPattern)) {
+        textToConvert = textToConvert.replace(match[0], `&lt;script src="http://gist.github.com/${match.groups.id}.js"&gt;&lt;/script&gt;`);
+    }
+</code></pre>
+<p>For anything else I allow for vanilla markup and scripts so I can just drop in some html if I need to. Since the sites generated I'm not too worried about security.</p>
 <h4 id="templating">Templating</h4>
-<p>For templating I went with a pretty simple solution, our second dependency is ejs, which I've always been a pretty big fan of. Once the node script finishes running it creates a JSON structure for the entire site which is passed into our ejs templates to create each post, create next and previous (for the articles as of today). It then saves each file to the appropriate directory as a static html file.</p>
+<p>For templating I went with a pretty simple solution, our second dependency is ejs, which I've always been a pretty big fan of. </p>
+<p>Here's a quick example of the index page. I use partials for most things duplicated.</p>
+<pre><code class="javascript language-javascript">&lt;!DOCTYPE html&gt;
+&lt;html lang="en" data-theme="light"&gt;
+    &lt;%- include('/src/templates/partials/head', {title: `${data.main.title} - ${data.main.tagline}`}) -%&gt;
+    &lt;body&gt;
+        &lt;div class="layout"&gt;
+            &lt;%- include('/src/templates/partials/header') -%&gt;
+            &lt;main class="main"&gt;
+                &lt;section class="primary"&gt;
+                    &lt;%- 
+                        data.articles.map(article =&gt; 
+                            `&lt;a href="/${article.path}"&gt;
+                                &lt;article class="article"&gt;
+                                    &lt;h3&gt;${article.title}&lt;/h3&gt;
+                                    &lt;small&gt; 
+                                        ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+                                    &lt;/small&gt;
+                                    &lt;p&gt;
+                                        ${article.teaser}
+                                    &lt;/p&gt;
+                                    &lt;footer class="article__footer"&gt;
+                                        &lt;span class="read-more"&gt;Read Article →&lt;/span&gt;
+                                    &lt;/footer&gt;
+                                &lt;/article&gt;
+                            &lt;/a&gt;`
+                        ).join('') 
+                    -%&gt;
+                &lt;/section&gt;
+                &lt;section class="secondary"&gt;
+                    &lt;%- include('/src/templates/sidebar', {sidebar: data.sidebar}) -%&gt;
+                &lt;/section&gt;
+            &lt;/main&gt;
+            &lt;%- include('/src/templates/partials/footer') -%&gt;
+        &lt;/div&gt;
+        &lt;script src='/js/main.js'&gt;&lt;/script&gt;
+        &lt;script type='module' src='/js/starscape.js'&gt;&lt;/script&gt;
+    &lt;/body&gt;
+</code></pre>
+<h4 id="otherconfigs">Other configs</h4>
+<p>For things like the side bar I follow the approach of creating a few json files to hold the data. </p>
+<p>Here's an example of the sidebar json file.</p>
+<pre><code class="json language-json">{
+    "sidebar": {
+        "sections": [
+            {
+                "title": "Find Me",
+                "links": [
+                    {
+                        "title": "@loktar00",
+                        "url": "https://twitter.com/loktar00"
+                    },
+                    /// Ect.
+                ]
+            },
+            {
+                "title": "Projects",
+                "links": [
+                    {
+                        "title": "react-lazy-load",
+                        "url": "https://github.com/loktar00/react-lazy-load"
+                    },
+                  /// Ect.
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+<p>The node script just combines all the JSON together (to include article data from the markdown files), and creates a structure that's passed to the ejs templates to build the page. </p>
 <h4 id="styling">Styling</h4>
 <p>For styling I'm just using vanilla css, I might change that to SCSS since I'm a huge fan of nesting (I can't wait for the day that's supported natively!).</p>
 <h3 id="hosting">Hosting</h3>
