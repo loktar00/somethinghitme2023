@@ -57,7 +57,6 @@ markdownFiles.forEach(file => {
     // Get rid of the article metadata
     let textToConvert = text.replace(pattern, '').trim();
 
-    // Path to save the article
     // Path to save the assets
     let savePath = filePath.replace(`${sourcePath}/${sharedPath}/`, '');
 
