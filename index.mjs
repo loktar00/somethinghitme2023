@@ -37,7 +37,7 @@ markdownFiles.forEach(file => {
     const text = fs.readFileSync(file, 'utf8');
 
     // Grab the information from each file to generate our table of contents and structure
-    const pattern = /---([\s\S]*?)---/g;
+    const pattern = /---([\s\S]*?)---/;
     const matches = text.match(pattern);
     let pageData = {};
 

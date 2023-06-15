@@ -105,7 +105,7 @@ For templating I went with a pretty simple solution, our second dependency is ej
 
 Here's a quick example of the index page. I use partials for most things duplicated.
 
-```html
+```javascript
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
     <%- include('/src/templates/partials/head', {title: `${data.main.title} - ${data.main.tagline}`}) -%>
