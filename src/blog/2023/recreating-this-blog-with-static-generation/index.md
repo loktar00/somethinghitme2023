@@ -57,7 +57,7 @@ I continued to use a similar format I had when using gatsby. At the top of each 
 ```markdown
 title: "Recreating this blog with static generation"
 date: "2023-06-15"
-teaser: "Updated this blog yet again, however this time used my own solution which generates the entire site from markdown and json data, making it much easier to maintaijn and actually write for."
+teaser: "Something in here"
 tags: "blog, javascript, static generation, programming"
 ```
 
