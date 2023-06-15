@@ -189,6 +189,7 @@ small {
 .article,
 .aside-list,
 .blog-post {
+    max-width: calc(1200px * 0.7);
     margin: 4rem 0;
     padding: 10px 16px 16px;
     background-color: var(--container-background-color);
@@ -199,6 +200,10 @@ small {
 
 .blog-post {
     background-color: var(--container-background-highlight-color);
+}
+
+pre[class*=language-] {
+    overflow: auto;
 }
 
 @media (max-width: 1000px) {
