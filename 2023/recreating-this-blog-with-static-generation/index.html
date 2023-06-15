@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJDK7X0K15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YJDK7X0K15');
+    </script>
+    <meta charSet="utf-8" />
+    <meta name="description" content="Jason Browns Code, demos and ideas."/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="/assets/favicon-32x32.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+    </style>
+    <link rel="manifest" href="/assets/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script src='/js/prism.js'></script>
+    <title>Recreating this blog with static generation - Somethinghitme</title>
+</head>  <body>
+    <div class="layout">
+        <header class="header">
+    <div class="header__headings">
+        <h1><a aria-current="page" href="/">Somethinghitme</a></h1>
+        <h2>My Code, demos and ideas.</h2>
+    </div>
+    <div class="header__toggle">
+        <input type="checkbox" class="toggle">
+    </div>
+</header>        <main class="main">
+            <section class="primary">
+                <article class="blog-post">
+                    <header>
+                        <h3>Recreating this blog with static generation</h3>
+                        <small>
+                            Thursday, Jun 15, 2023                        </small>
+                    </header>
+                    <section>
+                        <h2 id="theproblem">The Problem</h2>
+<p>Recently I found myself in between jobs so I had some time on my hands to work on a few of my projects I've let languish over the past few years. I always find myself coming back to this blog since it's low risk so I consider it a playground for me to test things out.</p>
+<h3 id="abitofhistory20092020">A bit of history 2009 - 2020</h3>
+<p>A quick history on this blog and the interations it's had. Back in 2009 when blogs were all the rage I threw up a wordpress install made a custom theme and operated using that for years on a shared hosting platform. It worked well for the most part but over the years and with wordpress upgrades and plugins it just became more of a pain. At the end of the day all I really needed were some static pages with my thoughts and images.</p>
+<h3 id="2020">2020</h3>
+<p>Moving on to 2020 I decided to "upgrade" to Gatsby. There was a bit of hype surrounding it, it used React which I consider myself pretty proficient in, and it generated a static site, exactly what I wanted. This also had the side benefit of allowing me to move hosting to github.</p>
+<p>While I found gatsby to be simple for the most part, I just couldn't get over the setup and amount of code needed for something so "simple"… it's something I see everywhere in the development world especially in the front end or Javascript ecosystem. Everything requires a build now.. a build process, multiple dependencies just to get something to show on the page. I went a long with it since the goal was just to convert the site and have some of my older blog posts available. to users.</p>
+<p>The issue I had when writing articles most recently is after updating to using Gatsby I found myself spending over an hour or more each time I wanted to add an article since they were so far and few between. I needed to update dependencies to fix issues and of course account for breaking changes. Maybe it's just me, I generally don't run into these issues but Gatsby seemed to always have something going on where the site wouldn't just "build". </p>
+<p>In reality all I wanted to do was sit down write up a markdown file and publish it without thinking about the tech behind the solution.</p>
+<p>The other thing I started to get annoyed with was the complexity of wrapping my head around how Gatsby used graphQL with the actual markdown files. I found some cases where weird things would happen with excerpts, and simple things such as using pagination on the main page just seemed overly complex.</p>
+<h2 id="thesolutionpresent">The Solution - present</h2>
+<p>I've been doing a bit of work in node lately (moreso than usual) so came up with a quick and easy plan to get the blog up and running in a state where I could just sit down and create posts. I decided to create a simple node script to generate the entire site from markdown files and json data. This way I could easily write my articles in markdown and not have to worry about the tech behind the scenes.</p>
+<p>The solution I feel is pretty simple overall, there's definitely a lot of room for improvement but my goal was to not spend more than a day on the overall solution so I could actually get to the important part of the site, the content.</p>
+<p>I decided to host the site publically this time around, all code is located on my githup profile <a href="https://github.com/loktar00/somethinghitme2023">here</a>.</p>
+<h3 id="thecode">The code</h3>
+<p>The articles all live under <code>src/blog</code> and are organized by years, and for the older articles the month and day. The script iterates over the directories grabbing each file and parsing the markdown using <a href="https://www.npmjs.com/package/showdown">showdown</a> (so far 1 of the total 2 dependencies for the site/).</p>
+<p>I continued to use a similar format I had when using gatsby. At the top of each markdown file there's a section to hold metadata associated with each artcile. Here's an example for this one.</p>
+<pre><code class="markdown language-markdown">
+</code></pre>
+<p>I then parse the markdown when it's being read and extract the information to expose to our templates.</p>
+<h4 id="additionalparsing">Additional parsing</h4>
+<p>I do have some <code>gists</code> and lots of code blocks, so I went with a pretty simple approach of parsing out the code blocks and just replacing with prism for syntax highligting. I do the same for the gists as well. I also allow for vanilla markup and scripts so I can just drop in some html if I need to.</p>
+<h4 id="templating">Templating</h4>
+<p>For templating I went with a pretty simple solution, our second dependency is ejs, which I've always been a pretty big fan of. Once the node script finishes running it creates a JSON structure for the entire site which is passed into our ejs templates to create each post, create next and previous (for the articles as of today). It then saves each file to the appropriate directory as a static html file.</p>
+<h4 id="styling">Styling</h4>
+<p>For styling I'm just using vanilla css, I might change that to SCSS since I'm a huge fan of nesting (I can't wait for the day that's supported natively!).</p>
+<h3 id="hosting">Hosting</h3>
+<p>For hosting I'm sticking with github pages. Each commit to the main branch triggers an action which builds everything to github pages so I have a pretty worry free experience.</p>
+<h3 id="improvmements">Improvmements</h3>
+<p>Beyond just making improvements for mobile, I'm not in love with the main page design when it comes to layout, definitely needs more images. I also do want to go back to a pages main page and need to add tags so I can organize articles in the side bar a bit like I used to with wordpress. Might as well add a timeline as well. As of right now I'm overall happy, not bad for a days worth of work.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Will I end up writing more? Who knows, I feel like I only come to this blog when I don't have an existing project and I want to sink time into something that feels relevant. I've told myself I need to start documenting what I do more in the hopes of helping others however in the back of my mind I wonder how relevant any of this will be with tools like chatGPT. Only time will tell.</p>                    </section>
+                    <hr/>
+                    <footer>
+                                            </footer>
+                </article>
+                <nav class="nav">
+    <ul>
+                <li><a class="link-button" rel="prev" href="/2022/demos-and-deviations/">Demos and Deviations Project →</a></li>    </ul>
+</nav>            </section>
+            <section class="secondary">
+                <aside class="aside-list">
+            <h3>Find Me</h3>
+            <ol>
+                <li><a href="https://twitter.com/loktar00">@loktar00</a></li><li><a href="https://codepen.io/loktar00">Codepen</a></li><li><a href="https://github.com/loktar00">Github</a></li><li><a href="https://stackoverflow.com/users/322395/loktar">Stackoverflow</a></li><li><a href="https://www.dwitter.net/u/loktar">Dwitter</a></li>
+            </ol>
+        </aside><aside class="aside-list">
+            <h3>Projects</h3>
+            <ol>
+                <li><a href="https://github.com/loktar00/react-lazy-load">react-lazy-load</a></li><li><a href="https://catbrownrealtor.com/">Cat Brown Realtor</a></li><li><a href="https://github.com/loktar00/jest">Jest Game Framework</a></li><li><a href="https://codegolf.stackexchange.com/questions/30322/make-it-look-like-im-working/30335#30335">gui hacker</a></li><li><a href="https://github.com/loktar00/JQuery-Snowfall">jQuery Snowfall</a></li><li><a href="http://www.retroships.com/">RetroShips</a></li><li><a href="https://zombiegames.net/">Zombiegames.net</a></li>
+            </ol>
+        </aside>            </section>
+        </main>
+        <footer class="footer">
+    © 2023, Built by <a href="https://github.com/loktar00">Loktar</a>
+</footer>    </div>
+    <script src='/js/main.js'></script>
+    <script type='module' src='/js/starscape.js'></script>
+  </body>
