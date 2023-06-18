@@ -4,6 +4,7 @@ import { readdir, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import ejs from 'ejs';
 import showdown from 'showdown';
+import sharp from 'sharp';
 
 // Initialize showdown converter
 const converter = new showdown.Converter();
@@ -72,7 +73,9 @@ markdownFiles.forEach(file => {
     // replace all image paths with absolute paths to the images
     if (imageMatches) {
         imageMatches.forEach(match => {
-            textToConvert = textToConvert.replace(match, `/${convertBackslashes(savePath)}${convertBackslashes(match)}`);
+            // replace file extension jpg, jpeg, and png with webp
+            const newFileName = match.replace(/\.(png|jpg|jpeg)/, '.webp');
+            textToConvert = textToConvert.replace(match, `/${convertBackslashes(savePath)}${convertBackslashes(newFileName)}`);
         });
     }
 
@@ -123,7 +126,14 @@ assetFiles.forEach(file => {
         savePath = file.replace(`${sourcePath}\\${sharedPath}\\`, '');
     }
 
-    fs.cpSync(file, path.join(publicPath, savePath));
+    // convert any image assets to webp
+    // Fix this up to make it run only for newly created images
+    // if (file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.jpeg')) {
+    //     const newFileName = file.replace(/\.(png|jpg|jpeg)$/, '.webp');
+    //     sharp(file).toFile(newFileName, '.webp');
+    // } else {
+        fs.cpSync(file, path.join(publicPath, savePath));
+   //}
 });
 
 // Copy over all of our directories we need directly with files included
