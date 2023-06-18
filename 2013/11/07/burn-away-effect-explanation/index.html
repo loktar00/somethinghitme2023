@@ -54,10 +54,10 @@
 <p>I've seen variations this effect used in different places, one of the more recent examples I can think of is the loading screens from Red Orchestra 2. RO2's effect definitely uses a different method than mine but it gave me an idea to try something similar. I ended up with a similiar effect using pixel manipulation, and a tiny bit of Cellular Automaton.</p>
 <p><a href="http://cdpn.io/kriFg" title="Burn Away Effect on Codepen">This is what I ended up with.</a>&nbsp;(heh yeah I'm a huge Spartacus fan)</p>
 <p><a href="http://codepen.io/loktar00/pen/kriFg">Edit view with code</a></p>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/effect.png"><img src="/2013/11/07/burn-away-effect-explanation/images/effect.png" alt="effect" /></a></p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/effect.png"><img src="/2013/11/07/burn-away-effect-explanation/images/effect.webp" alt="effect" /></a></p>
 <h2 id="howtheeffectworks">How the effect works</h2>
 <p>The explanation of the effect is really simple. I basically thought of each pixel as fuel. &nbsp;So to determine how long each pixel should “burn” we create a 2D array where each element represents a pixels fuel value we do this by assigning a random value.</p>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/1.png"><img src="/2013/11/07/burn-away-effect-explanation/images/1.png" alt="1" /></a></p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/1.png"><img src="/2013/11/07/burn-away-effect-explanation/images/1.webp" alt="1" /></a></p>
 <p>The effect works by decrementing the value of all elements which neighbor an element whose value is 0. So to start the effect we need to set an element's value to 0.</p>
 <p>There is one gotcha to be aware of. If you don’t have someway of flagging elements whose value has been changed in the current cycle you will end up with a burn effect that goes very fast, and also tends to go to the right or left depending on how you loop through the elements. This speed issue is due to the fact that some elements will have more than one neighbor whose value is 0, in that case we still only want to reduce the value once.</p>
 <h2 id="animationoftheeffectinprogress">Animation of the effect in progress</h2>

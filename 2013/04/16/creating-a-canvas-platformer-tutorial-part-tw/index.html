@@ -108,17 +108,17 @@ ctx.fill();
 }
 </code></pre>
 <p>The code is easy to figure out if you stare at it for a bit, but Ill go ahead and give a quick explanation of whats going on. First we need to calculate the current vector from the center of our objects, which is done in the very beginning.</p>
-<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig1.png" alt="" title="fig1" /></p>
+<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig1.webp" alt="" title="fig1" /></p>
 <p>The player and box object at their current positions ready to be checked to see if they are colliding.</p>
 <p>The above image shows the player and one of our boxes. We can tell they aren't currently colliding but lets step through to see how the function figures it out.</p>
-<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig2.png" alt="" title="fig2" /></p>
+<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig2.webp" alt="" title="fig2" /></p>
 <p>Showing the vector calculation and half width, half height calculations.</p>
 <p>Above shows the values we end up with for the vector, half widths, and half heights. The function checks the absolute values of the vector to see if they are less than the half width, and half height. If they are there is a collision. As you see from above our vector needed an x component of 25 or less, along with the y. Since they our values were both 35 (remember we check the absolute value meaning the -35 turns to 35) that means we are too far away and are currently not intersecting.</p>
 <p>Now lets take a look at an example where the player and the box are intersecting.</p>
-<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig3.png" alt="" title="fig3" /></p>
+<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig3.webp" alt="" title="fig3" /></p>
 <p>The player and the box are now intersecting since the vector components are less than the half width and half height.[/caption]</p>
 <p>The above uses the same dimensions for the box and player, all we did was move the player closer to the box. The values for the x and y component of the vector come out to less than 25, meaning a collision has occurred. Now using this information we can actually get which side the collision occurred on. To do this we need to first figure out the offset vector, meaning how far are we into the other object. The below illustration shows how we do that.</p>
-<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig4.png" alt="" title="fig4" /></p>
+<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig4.webp" alt="" title="fig4" /></p>
 <p>Calculating the offset vector after a collision has&nbsp;occurred.</p>
 <p>So now we have the offsets, what do we need to do with them? First we check if the x components offset is greater than the y. If so that would tell us we either collided with the top or bottom of the object, because the assumption is the greater penetration is not actually *in* the object since we would have caught it much sooner. In our case the y offset is much greater meaning we collided with the left or right of the object and since our original vectors X is a positive number, it means it was on the left. If we were on the right side our x value would have came out positive due to the x coordinate of the player being greater than the x coordinate of the box.</p>
 <p>Now we need to move the objects outside of each other, if we don't then they will just go further inside one another. This is very easy since we already have the offsets, and since we determined we collided on the left side, we move our box to the left by 2.</p>

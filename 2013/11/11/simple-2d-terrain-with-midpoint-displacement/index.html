@@ -50,7 +50,7 @@
                             Tuesday, Nov 12, 2013                        </small>
                     </header>
                     <section>
-                        <p><a href="http://codepen.io/loktar00/details/uEJKl"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/ter.png" alt="Codepen terrain" /></a></p>
+                        <p><a href="http://codepen.io/loktar00/details/uEJKl"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/ter.webp" alt="Codepen terrain" /></a></p>
 <p align="center">
 Screenshot from scrolling terrain and shooting stars demo on codepen.io
 </p>
@@ -65,17 +65,17 @@ Screenshot from scrolling terrain and shooting stars demo on codepen.io
     Repeat Until segments are too small to continue.</p>
 <h2 id="amoreindepthexplanation">A More in Depth Explanation</h2>
 <p>First we assign a random value to the outer edges of our terrain. This can be anything from 0-1 or 50-100. The value itself is dependant on the system you want to use for plotting. We then need to get the center point of the segment. Once we have the center we calculate its value by averaging the two points and adding a random value to it.</p>
-<p>&nbsp;<a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/fig1.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/fig1.png" alt="fig1" /></a></p>
+<p>&nbsp;<a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/fig1.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/fig1.webp" alt="fig1" /></a></p>
 <p>So now that we have our 3 starting points we move onto the next step. The next step is exactly the same as above. As you can see we have 2 segments, so we get the center of each segment and add the average of its edges plus a random amount. We then need reduce our random range for the next iteration.</p>
-<p>&nbsp;<a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/fig2.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/fig2.png" alt="fig2" /></a></p>
+<p>&nbsp;<a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/fig2.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/fig2.webp" alt="fig2" /></a></p>
 <p>Now we have four segments so all we need to do is cut each segment in half again, average the center values add our random value and reduce the random range.</p>
-<p>&nbsp;<a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/fig3.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/fig3.png" alt="fig3" /></a></p>
+<p>&nbsp;<a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/fig3.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/fig3.webp" alt="fig3" /></a></p>
 <p>As you can see the more iterations creates more realistic terrain. Lately it seems like none of my articles can be complete without an animated gif, so here is one animating the process.</p>
 <p>&nbsp;<a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/output_WRacb0.gif"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/output_WRacb0.gif" alt="output_WRacb0" /></a></p>
 <h2 id="howmuchdoireducetherandomrange">How much do I reduce the random range?</h2>
 <p>From now on I’ll call this roughness. How much do you need to reduce it by each iteration? Well that all depends on how you want your end result to look. The greater the reduction the less jagged your hill’s will be. So if you want more of a rolling hill appearance you would to reduce the value at least by half every iteration, however if you want more jagged mountains you don’t want to reduce the value very much at all. Below is an example of terrain using two different values for roughness.</p>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/point5.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/point5.png" alt="point5" /></a> Created by using a value of 0.5</p>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/point7.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/point7.png" alt="point7" /></a> Created by using a value of 0.7
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/point5.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/point5.webp" alt="point5" /></a> Created by using a value of 0.5</p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/point7.png"><img src="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/images/point7.webp" alt="point7" /></a> Created by using a value of 0.7
 The following JavaScript function is what I used to create the above examples.</p>
 <pre><code class="javascript language-javascript">/*
   width and height are the overall 

@@ -52,7 +52,7 @@
                     <section>
                         <p>I was checking out some old books the other day and I came across Commodore Step by Step Graphics Vol 3. It had an interesting looking screenshot for a bit of code, which showed shaded spheres entirely made of points. I thought the effect would look cool if multiple ones were layered over each other to look like planets and moons. So I converted the Basic over to JavaScript using the canvas element to replicate the effect.</p>
 <p>This is what is produced with the code.</p>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/08/Planets-with-points-CodePen.png"><img src="/2013/08/16/3d-shading-with-points/images/Planets-with-points-CodePen.png" alt="Planets with points - CodePen" /></a></p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/08/Planets-with-points-CodePen.png"><img src="/2013/08/16/3d-shading-with-points/images/Planets-with-points-CodePen.webp" alt="Planets with points - CodePen" /></a></p>
 <p>So how exactly is this effect achieved?</p>
 <p><a href="http://cdpn.io/zEhDB">Full page result on codepen</a></p>
 <p>The following function is what's used to generate the planets.</p>
@@ -77,7 +77,7 @@
 <p>The function drawPlanet takes four parameters. Radius, center x, center y, and the color of the planet. First a solid black arc is created so we can get a proper layering effect, otherwise dots would bleed through and the planets would blend together.</p>
 <p>The loop from -rad to rad is where everything takes place. Each iteration as we go down the circle we find out how long the row is from the center x and y position to the edge of the circle. Thanks to <a href="https://twitter.com/yutt">@yutt</a> for pointing me in the right direction.</p>
 <p>We have two points to go from, our Radius (center point), and the Y. So using Pythagoras Theorem (a^2 + b^2 = c^2) we have a and c we can figure out b.</p>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/08/radfig1.png"><img src="/2013/08/16/3d-shading-with-points/images/radfig1.png" alt="radfig1" /></a></p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/08/radfig1.png"><img src="/2013/08/16/3d-shading-with-points/images/radfig1.webp" alt="radfig1" /></a></p>
 <p><a href="http://jsfiddle.net/loktar/yJhLu/">Try the fiddle out to see how it works.</a></p>
 <p>We have the point from radius, radius+y to the edge of the circle. Now we are able to iterate from -x to x and get every pixel between the edges of the circle for this row.</p>
 <p>Now that we had the width of the row we’re on and can iterate over each pixel, the next step is to determine what pixels we want to show and what pixels we want hidden. That is done in the following section of the function drawPlanet.</p>
@@ -93,7 +93,7 @@
 </code></pre>
 <p>I use a default of 1.5 what this does is decreases our random number generated even further making it less likely to plot points farther from the edge. And since the value of x1 follows the width of the circle as it goes down we get a cool spherical shading effect.</p>
 <p>Below is an example of the shading you get with difference values for the divisor.</p>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/08/planet-phases.png"><img src="/2013/08/16/3d-shading-with-points/images/planet-phases.png" alt="planet phases" /></a></p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/08/planet-phases.png"><img src="/2013/08/16/3d-shading-with-points/images/planet-phases.webp" alt="planet phases" /></a></p>
 <p>And that's pretty much all there is to it. A pretty simple effect that uses some cool math and a bit of random to pull off.</p>
 <iframe height="300" style="width: 100%;" scrolling="no" title="Planets with points" src="https://codepen.io/loktar00/embed/zEhDB?height=300&theme-id=690&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href='https://codepen.io/loktar00/pen/zEhDB'>Planets with points</a> by Loktar
