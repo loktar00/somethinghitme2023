@@ -54,7 +54,7 @@ markdownFiles.forEach(file => {
                 });
         }
     }
- 
+
     // Get rid of the article metadata
     let textToConvert = text.replace(pattern, '').trim();
 
@@ -84,7 +84,7 @@ markdownFiles.forEach(file => {
     for (const match of textToConvert.matchAll(gistPattern)) {
         textToConvert = textToConvert.replace(match[0], `<script src="http://gist.github.com/${match.groups.id}.js"></script>`);
     }
-    
+
     // Convert the markdown to html
     const html = converter.makeHtml(textToConvert);
     articleData.push({...{path: savePath}, ...pageData, ...{html}});
@@ -107,7 +107,7 @@ await rm(publicPath, { recursive: true, force: true });
 // Recreate the directory.
 if (!fs.existsSync(publicPath)){
     fs.mkdirSync(publicPath);
-} 
+}
 
 const createDirectory = (dirPath) => {
     if (!fs.existsSync(dirPath)){
@@ -167,14 +167,36 @@ siteData = {...siteData, ...{articles: articleData}};
 
 const templatePath = 'templates';
 
-// Render EJS templates
-const indexHtml = ejs.render(fs.readFileSync(`./${sourcePath}/${templatePath}/index.ejs`, 'utf8'), 
-    {data: siteData},
-    {root: process.cwd()}
-);
+// Add these constants at the top of your file
+const ARTICLES_PER_PAGE = 10; // Adjust this number as needed
 
-// Save the main index.html file
-fs.writeFileSync(path.join(publicPath, 'index.html'), indexHtml);
+// Render EJS templates
+const totalPages = Math.ceil(articleData.length / ARTICLES_PER_PAGE);
+
+for (let page = 1; page <= totalPages; page++) {
+    const startIndex = (page - 1) * ARTICLES_PER_PAGE;
+    const endIndex = startIndex + ARTICLES_PER_PAGE;
+    const pageArticles = articleData.slice(startIndex, endIndex);
+
+    const indexHtml = ejs.render(fs.readFileSync(`./${sourcePath}/${templatePath}/index.ejs`, 'utf8'),
+        {
+            data: {
+                ...siteData,
+                articles: pageArticles,
+                currentPage: page,
+                totalPages: totalPages
+            }
+        },
+        {root: process.cwd()}
+    );
+
+    if (page === 1) {
+        fs.writeFileSync(path.join(publicPath, 'index.html'), indexHtml);
+    }
+
+    createDirectory(path.join(publicPath, 'page'));
+    fs.writeFileSync(path.join(publicPath, `page/${page}.html`), indexHtml);
+}
 
 // Iterate over our files convert to html and save them in the appropriate location.
 articleData.forEach((article, idx) => {
@@ -190,5 +212,3 @@ articleData.forEach((article, idx) => {
     // Save the article to the appropriate location
     fs.writeFileSync(path.join(publicPath, `${article.path}/index.html`), articlePost);
 });
-
-
