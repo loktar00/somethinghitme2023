@@ -167,8 +167,7 @@ siteData = {...siteData, ...{articles: articleData}};
 
 const templatePath = 'templates';
 
-// Add these constants at the top of your file
-const ARTICLES_PER_PAGE = 10; // Adjust this number as needed
+const ARTICLES_PER_PAGE = 10;
 
 // Render EJS templates
 const totalPages = Math.ceil(articleData.length / ARTICLES_PER_PAGE);
