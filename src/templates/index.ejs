@@ -6,12 +6,12 @@
             <%- include('/src/templates/partials/header') -%>
             <main class="main">
                 <section class="primary">
-                    <%- 
-                        data.articles.map(article => 
+                    <%-
+                        data.articles.map(article =>
                             `<a href="/${article.path}">
                                 <article class="article">
                                     <h3>${article.title}</h3>
-                                    <small> 
+                                    <small>
                                         ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
                                     </small>
                                     <p>
@@ -22,8 +22,21 @@
                                     </footer>
                                 </article>
                             </a>`
-                        ).join('') 
+                        ).join('')
                     -%>
+
+                    <!-- Pagination -->
+                    <nav class="pagination">
+                        <% if (data.currentPage > 1) { %>
+                            <a href="<%= data.currentPage === 2 ? '/' : `/page/${data.currentPage - 1}.html` %>" class="pagination__prev">← Previous</a>
+                        <% } %>
+
+                        <span class="pagination__current">Page <%= data.currentPage %> of <%= data.totalPages %></span>
+
+                        <% if (data.currentPage < data.totalPages) { %>
+                            <a href="/page/<%= data.currentPage + 1 %>.html" class="pagination__next">Next →</a>
+                        <% } %>
+                    </nav>
                 </section>
                 <section class="secondary">
                     <%- include('/src/templates/sidebar', {sidebar: data.sidebar}) -%>
@@ -32,5 +45,7 @@
             <%- include('/src/templates/partials/footer') -%>
         </div>
         <script src='/js/main.js'></script>
+        <script src='/js/menu.js'></script>
         <script type='module' src='/js/starscape.js'></script>
     </body>
+</html>
