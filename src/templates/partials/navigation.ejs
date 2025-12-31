@@ -1,6 +1,4 @@
-<nav class="nav">
-    <ul>
-        <%- previousArticle.path ? `<li><a class="link-button" rel="prev" href="/${previousArticle.path}">← ${previousArticle.title}</a></li>` : '' -%>
-        <%- nextArticle ? `<li><a class="link-button" rel="prev" href="/${nextArticle.path}">${nextArticle.title} →</a></li>` : '' -%>
-    </ul>
+<nav class="post-footer">
+    <a class="footer-link" rel="prev" href="/">← All Articles</a>
+    <%- nextArticle ? `<a class="footer-link" rel="prev" href="/${nextArticle.path}">${nextArticle.title} →</a>` : '' -%>
 </nav>

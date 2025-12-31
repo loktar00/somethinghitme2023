@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
     <%- include('/src/templates/partials/head', {title: `${data.title} - ${data.main.title}`}) -%>
+    <link href="/styles/articleStyles.css" rel="stylesheet" />
   <body>
     <div class="layout">
         <%- include('/src/templates/partials/header') -%>
-        <main class="main">
-            <section class="primary">
-                <article class="blog-post">
-                    <header>
-                        <h3><%-data.title -%></h3>
-                        <small>
+        <main class="container">
+            <article class="article-content">
+                <header class="article-header">
+                    <div class="article-meta-row">
+                        <time datetime="<%- data.date %>">
                             <%- new Date(data.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"}) -%>
-                        </small>
-                    </header>
-                    <section>
-                        <%- data.html -%>
-                    </section>
-                    <hr/>
-                    <footer>
-                        <%- include('/src/templates/partials/social') -%>
-                    </footer>
-                </article>
-                <%- include('/src/templates/partials/navigation', {previousArticle: data.previousArticle, nextArticle: data.nextArticle}) -%>
-            </section>
-            <section class="secondary">
-                <%- include('/src/templates/sidebar', {sidebar: data.sidebar}) -%>
-            </section>
+                        </time>
+                        <span>&bull;</span>
+                        <span class="article-tag"><%- data.tags || '' %></span>
+                    </div>
+                    <h1 class="article-title"><%-data.title -%></h1>
+                </header>
+                <section>
+                    <%- data.html -%>
+                </section>
+            </article>
+            <hr/>
+            <footer>
+                <%- include('/src/templates/partials/social') -%>
+            </footer>
+            <%- include('/src/templates/partials/navigation', {previousArticle: data.previousArticle, nextArticle: data.nextArticle}) -%>
         </main>
         <%- include('/src/templates/partials/footer') -%>
     </div>
     <script src='/js/main.js'></script>
     <script src='/js/menu.js'></script>
-    <script type='module' src='/js/starscape.js'></script>
   </body>
 </html>

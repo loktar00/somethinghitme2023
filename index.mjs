@@ -101,12 +101,13 @@ articleData.sort((a, b) => {
 // save all files to public
 const publicPath = './public';
 
-// Clean up the public directory
-await rm(publicPath, { recursive: true, force: true });
-
-// Recreate the directory.
-if (!fs.existsSync(publicPath)){
-    fs.mkdirSync(publicPath);
+// In development mode, don't delete the entire directory to avoid conflicts with running server
+if (process.env.NODE_ENV !== 'development') {
+    await rm(publicPath, { recursive: true, force: true });
+    // Recreate the directory.
+    if (!fs.existsSync(publicPath)){
+        fs.mkdirSync(publicPath);
+    }
 }
 
 const createDirectory = (dirPath) => {
