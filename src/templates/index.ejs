@@ -4,48 +4,57 @@
     <body>
         <div class="layout">
             <%- include('/src/templates/partials/header') -%>
-            <main class="main">
-                <section class="primary">
+            <main class="container">
+                <%- include('/src/templates/partials/demo') -%>
+                <section class="intro-section">
+                    <p class="label-small-caps">Working notes and small writeups.</p>
+                    <h1 class="intro-title">Things I'm building and why.</h1>
+                    <p class="intro-p">
+                        Notes from building software, mostly the parts worth remembering by Jason Brown (Loktar).
+                    </p>
+                </section>
+                <section>
+                    <header class="section-header">
+                        <span class="label-small-caps">The Archive</span>
+                    </header>
                     <%-
                         data.articles.map(article =>
                             `<a href="/${article.path}">
-                                <article class="article">
-                                    <h3>${article.title}</h3>
-                                    <small>
-                                        ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+                                        </time>
+                                        <span class="article-tag">${article.tags || ''}</span>
+                                    </div>
+                                    <h2 class="article-title">${article.title}</h2>
+                                    <p class="article-synopsis">
                                         ${article.teaser}
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a>`
                         ).join('')
                     -%>
-
-                    <!-- Pagination -->
-                    <nav class="pagination">
-                        <% if (data.currentPage > 1) { %>
-                            <a href="<%= data.currentPage === 2 ? '/' : `/page/${data.currentPage - 1}.html` %>" class="pagination__prev">← Previous</a>
-                        <% } %>
-
-                        <span class="pagination__current">Page <%= data.currentPage %> of <%= data.totalPages %></span>
-
-                        <% if (data.currentPage < data.totalPages) { %>
-                            <a href="/page/<%= data.currentPage + 1 %>.html" class="pagination__next">Next →</a>
-                        <% } %>
-                    </nav>
                 </section>
-                <section class="secondary">
-                    <%- include('/src/templates/sidebar', {sidebar: data.sidebar}) -%>
-                </section>
+                <!-- Pagination -->
+                <nav class="pagination">
+                    <% if (data.currentPage > 1) { %>
+                        <a href="<%= data.currentPage === 2 ? '/' : `/page/${data.currentPage - 1}.html` %>" class="page-link">Previous</a>
+                    <% } else { %>
+                        <a href="#" class="page-link" disabled style="opacity: 0.5; pointer-events: none;">Previous</a>
+                    <% } %>
+                    <span class="page-current">Page <%= data.currentPage %> of <%= data.totalPages %></span>
+                    <% if (data.currentPage < data.totalPages) { %>
+                        <a href="/page/<%= data.currentPage + 1 %>.html" class="page-link">Next</a>
+                    <% } else { %>
+                        <a href="#" class="page-link" disabled style="opacity: 0.5; pointer-events: none;">Next</a>
+                    <% } %>
+                </nav>
+                <%- include('/src/templates/partials/social', {author: data.author}) -%>
             </main>
             <%- include('/src/templates/partials/footer') -%>
         </div>
         <script src='/js/main.js'></script>
-        <script src='/js/menu.js'></script>
-        <script type='module' src='/js/starscape.js'></script>
+        <script src='/js/demos.js'></script>
     </body>
 </html>
