@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "node index.mjs",
+    "dev": "cross-env NODE_ENV=development nodemon --watch src --ext js,mjs,cjs,json,md,ejs,css,html --exec \"npm run build\"",
+    "serve": "npx http-server public -p 8080 -c-1 --cors",
+    "dev:serve": "echo 'Run these in separate terminals: npm run dev && npm run serve'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,5 +16,11 @@
     "ejs": "^3.1.9",
     "sharp": "^0.32.1",
     "showdown": "^2.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.11",
+    "serve": "^14.2.5"
   }
 }

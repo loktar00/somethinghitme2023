@@ -1,7 +1,11 @@
 {
     "author": {
         "name": "Jason Brown",
-        "tagline": "Father, Veteran, lover of everything tech.",
-        "avatar": "images/avatar.jpg"
+        "tagline": "Grandfather, Veteran, lover of everything tech.",
+        "avatar": "images/avatar.jpg",
+        "twitter": "https://twitter.com/loktar00",
+        "github": "https://github.com/loktar00",
+        "stackoverflow": "https://stackoverflow.com/users/322395/loktar",
+        "dwitter": "https://www.dwitter.net/u/loktar"
     }
 }
