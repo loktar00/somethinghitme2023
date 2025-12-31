@@ -13,11 +13,11 @@
     <meta charSet="utf-8" />
     <meta name="description" content="Jason Browns Code, demos and ideas."/>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="icon" href="/assets/favicon-32x32.png">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
-    </style>
     <link rel="manifest" href="/assets/manifest.webmanifest">
     <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
@@ -33,183 +33,211 @@
     <title>Somethinghitme - My Code, demos and ideas.</title>
 </head>    <body>
         <div class="layout">
-            <header class="header">
-    <div class="header__headings">
-        <h1><a aria-current="page" href="/">Somethinghitme</a></h1>
-        <h2>My Code, demos and ideas.</h2>
+            <header class="container">
+    <nav class="site-header">
+        <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
+            </svg>
+        </button>
+        <a href="/" class="logo-text">SomethingHitMe</a>
+    </nav>
+</header>            <main class="container">
+                <section class="demo-showcase" aria-label="Visualization Demo">
+    <canvas id="bgCanvas"></canvas>
+    <canvas id="terCanvas"></canvas>
+    <div class="demo-overlay" onclick="window.location.href='/lab'">
+        <div class="demo-title">The Laboratory</div>
+        <div class="demo-sub">View Experiments & Demos →</div>
     </div>
-    <div class="header__toggle">
-        <input type="checkbox" class="toggle">
-    </div>
-    <button class="hamburger-menu" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-</header>            <main class="main">
-                <section class="primary">
+</section>
+<style>
+    .demo-showcase {
+        position: relative;
+    }
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>                <section class="intro-section">
+                    <p class="label-small-caps">Working notes and small writeups.</p>
+                    <h1 class="intro-title">Things I'm building and why.</h1>
+                    <p class="intro-p">
+                        Notes from building software, mostly the parts worth remembering by Jason Brown (Loktar).
+                    </p>
+                </section>
+                <section>
+                    <header class="section-header">
+                        <span class="label-small-caps">The Archive</span>
+                    </header>
                     <a href="/2012/09/10/super-simple-wave-simulators/">
-                                <article class="article">
-                                    <h3>Super Simple Wave Simulators</h3>
-                                    <small>
-                                        Monday, Sep 10, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Monday, Sep 10, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">Super Simple Wave Simulators</h2>
+                                    <p class="article-synopsis">
                                         Ride the wave of creativity! Immerse yourself in mesmerizing wave simulations. Discover two unique approaches—one using JavaScript and canvas, and another with pure HTML/CSS. Picked and featured on Codepen!
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/06/21/my-sons-new-game/">
-                                <article class="article">
-                                    <h3>My sons first game Dark Slayer</h3>
-                                    <small>
-                                        Friday, Jun 22, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Friday, Jun 22, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">My sons first game Dark Slayer</h2>
+                                    <p class="article-synopsis">
                                         Witness the birth of a young programmer's talent. Join Jacob on his programming journey as he develops his first game, Dark Slayer. Experience the thrill of enemies, player health, and an epic quest. Support the next generation of game developers!
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/06/06/2d-metaballs-with-canvas/">
-                                <article class="article">
-                                    <h3>2d Metaballs with canvas!</h3>
-                                    <small>
-                                        Thursday, Jun 7, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Thursday, Jun 7, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">2d Metaballs with canvas!</h2>
+                                    <p class="article-synopsis">
                                         Enter the captivating world of 2D metaballs. Uncover the secrets behind their mesmerizing fluid-like behavior. Delve into JavaScript and canvas to create stunning metaball effects. Experience the magic of visual artistry!
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/03/29/turning-canvas-games-into-executables/">
-                                <article class="article">
-                                    <h3>Turning canvas games into executables</h3>
-                                    <small>
-                                        Thursday, Mar 29, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Thursday, Mar 29, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">Turning canvas games into executables</h2>
+                                    <p class="article-synopsis">
                                         Take your canvas games to the next level. Discover how to turn your HTML5 creations into self-contained executables. Explore the possibilities of monetization and even screen savers. Unleash your games beyond the browser
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/03/18/jest-another-html-game-framework/">
-                                <article class="article">
-                                    <h3>JEST another HTML5 Game Framework</h3>
-                                    <small>
-                                        Monday, Mar 19, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Monday, Mar 19, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">JEST another HTML5 Game Framework</h2>
+                                    <p class="article-synopsis">
                                         Level up your game development with JEST, a compact and feature-rich HTML5 game framework. Explore its capabilities through demos like the SOPA game and my SHMUP. Start creating your own gaming masterpieces!
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/03/07/html5-canvas-flood-fill/">
-                                <article class="article">
-                                    <h3>HTML5 Canvas Flood Fill</h3>
-                                    <small>
-                                        Wednesday, Mar 7, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Wednesday, Mar 7, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">HTML5 Canvas Flood Fill</h2>
+                                    <p class="article-synopsis">
                                         Discover the power of flood filling in HTML5 Canvas with a step-by-step guide. Learn how to implement a workhorse function that recursively checks neighboring points to fill areas with a new value. Try the code yourself and explore the possibilities of this essential gameplay mechanic.
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/02/23/html5-canvas-particle-engine/">
-                                <article class="article">
-                                    <h3>HTML5 Canvas Particle engine</h3>
-                                    <small>
-                                        Friday, Feb 24, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Friday, Feb 24, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">HTML5 Canvas Particle engine</h2>
+                                    <p class="article-synopsis">
                                         Take a closer look at a basic particle engine built using HTML5 Canvas. Explore the integration with a custom game framework and its potential for creating stunning visual effects. Get a glimpse of the upcoming editor and see how you can easily incorporate this particle engine into your own projects.
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/02/13/procedural-canvas-shmup-now-has-a-boss-and-sounds/">
-                                <article class="article">
-                                    <h3>Procedural Canvas Shmup now has a boss and sounds!</h3>
-                                    <small>
-                                        Tuesday, Feb 14, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Tuesday, Feb 14, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">Procedural Canvas Shmup now has a boss and sounds!</h2>
+                                    <p class="article-synopsis">
                                         Experience the impact of music and sounds in game development as my shmup project progresses. Witness the addition of a boss character and learn about upcoming features like player ship upgrades and a consistent enemy design. Follow the development journey and explore the possibilities of this exciting shoot 'em up game.
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/02/07/glow-roids/">
-                                <article class="article">
-                                    <h3>Glow Roids</h3>
-                                    <small>
-                                        Tuesday, Feb 7, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Tuesday, Feb 7, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">Glow Roids</h2>
+                                    <p class="article-synopsis">
                                         Revisit a classic game project, Glow Roids, created with C# and OpenGL. Take a trip down memory lane as you explore the challenges of early game development. Download the game for an immersive experience, although be aware that it may have compatibility issues on different machines.
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
                             </a><a href="/2012/01/25/current-project-canvas-shmup/">
-                                <article class="article">
-                                    <h3>Current Project Canvas Shmup</h3>
-                                    <small>
-                                        Thursday, Jan 26, 2012
-                                    </small>
-                                    <p>
+                                <article class="article-card">
+                                    <div class="article-meta">
+                                        <time class="article-date">
+                                            Thursday, Jan 26, 2012
+                                        </time>
+                                        <span class="article-tag"></span>
+                                    </div>
+                                    <h2 class="article-title">Current Project Canvas Shmup</h2>
+                                    <p class="article-synopsis">
                                         Get a sneak peek at the latest canvas shoot 'em up project. Discover the unique features of this game, including procedural graphics and level generation based on seeds. Explore the potential for creating personalized challenges and enjoy the visually stunning work in progress. Make sure to try it in a modern browser for the best experience.
                                     </p>
-                                    <footer class="article__footer">
-                                        <span class="read-more">Read Article →</span>
-                                    </footer>
                                 </article>
-                            </a>
-                    <!-- Pagination -->
-                    <nav class="pagination">
-                        
-                            <a href="/page/2.html" class="pagination__prev">← Previous</a>
-                        
-
-                        <span class="pagination__current">Page 3 of 8</span>
-
-                        
-                            <a href="/page/4.html" class="pagination__next">Next →</a>
-                        
-                    </nav>
-                </section>
-                <section class="secondary">
-                    <aside class="aside-list">
-            <h3>Find Me</h3>
-            <ol>
-                <li><a href="https://twitter.com/loktar00">@loktar00</a></li><li><a href="https://codepen.io/loktar00">Codepen</a></li><li><a href="https://github.com/loktar00">Github</a></li><li><a href="https://stackoverflow.com/users/322395/loktar">Stackoverflow</a></li><li><a href="https://www.dwitter.net/u/loktar">Dwitter</a></li>
-            </ol>
-        </aside><aside class="aside-list">
-            <h3>Projects</h3>
-            <ol>
-                <li><a href="https://github.com/loktar00/react-lazy-load">react-lazy-load</a></li><li><a href="https://catbrownrealtor.com/">Cat Brown Realtor</a></li><li><a href="https://github.com/loktar00/jest">Jest Game Framework</a></li><li><a href="https://codegolf.stackexchange.com/questions/30322/make-it-look-like-im-working/30335#30335">gui hacker</a></li><li><a href="https://github.com/loktar00/JQuery-Snowfall">jQuery Snowfall</a></li><li><a href="http://www.retroships.com/">RetroShips</a></li><li><a href="https://zombiegames.net/">Zombiegames.net</a></li>
-            </ol>
-        </aside>                </section>
-            </main>
-            <footer class="footer">
-    © 2025, Built by <a href="https://github.com/loktar00">Loktar</a>
+                            </a>                </section>
+                <!-- Pagination -->
+                <nav class="pagination">
+                    
+                        <a href="/page/2.html" class="page-link">Previous</a>
+                    
+                    <span class="page-current">Page 3 of 8</span>
+                    
+                        <a href="/page/4.html" class="page-link">Next</a>
+                    
+                </nav>
+                <!-- Author -->
+<section class="author-section">
+    <img src="assets/avatar.jpg" alt="Jason Brown" class="author-avatar">
+    <div class="author-info">
+        <h3 class="author-name">Jason Brown (Loktar)</h3>
+        <p class="author-bio">
+            Grandfather, Veteran, lover of everything tech.
+        </p>
+        <div class="social-row">
+            <a href="https://github.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12C2,16.42,4.87,20.17,8.84,21.5C9.34,21.58,9.5,21.27,9.5,21C9.5,20.77,9.5,20.14,9.5,19.31C6.73,19.91,6.14,17.97,6.14,17.97C5.68,16.81,5.03,16.5,5.03,16.5C4.12,15.88,5.1,15.9,5.1,15.9C6.1,15.97,6.63,16.93,6.63,16.93C7.5,18.45,8.97,18,9.54,17.76C9.63,17.11,9.89,16.67,10.17,16.42C7.95,16.17,5.62,15.31,5.62,11.5C5.62,10.39,6,9.5,6.65,8.79C6.55,8.54,6.2,7.5,6.75,6.15C6.75,6.15,7.59,5.88,9.5,7.17C10.29,6.95,11.15,6.84,12,6.84C12.85,6.84,13.71,6.95,14.5,7.17C16.41,5.88,17.25,6.15,17.25,6.15C17.8,7.5,17.45,8.54,17.35,8.79C18,9.5,18.38,10.39,18.38,11.5C18.38,15.32,16.04,16.16,13.81,16.41C14.17,16.72,14.5,17.33,14.5,18.26C14.5,19.6,14.5,20.68,14.5,21C14.5,21.27,14.66,21.59,15.17,21.5C19.14,20.16,22,16.42,22,12A10,10,0,0,0,12,2Z"/></svg>
+                GitHub
+            </a>
+            <a href="https://twitter.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10.03 2.38,10.05 2.38,10.08C2.38,12.17 3.86,13.92 5.84,14.32C5.48,14.42 5.09,14.47 4.69,14.47C4.42,14.47 4.15,14.42 3.89,14.38C4.43,16.05 6,17.29 7.89,17.32C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"/></svg>
+                Twitter
+            </a>
+        </div>
+    </div>
+</section>            </main>
+            <footer class="site-footer">
+    © 2025, Built by <a href="https://github.com/loktar00">Jason Brown - Loktar</a>
 </footer>        </div>
         <script src='/js/main.js'></script>
-        <script src='/js/menu.js'></script>
-        <script type='module' src='/js/starscape.js'></script>
+        <script src='/js/demos.js'></script>
     </body>
 </html>
