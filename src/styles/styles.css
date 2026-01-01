@@ -391,6 +391,7 @@ canvas#demo-canvas {
 .social-row {
     display: flex;
     gap: 1.25rem;
+    flex-wrap: wrap;
 }
 
 .social-link {
@@ -405,6 +406,12 @@ canvas#demo-canvas {
 
 .social-link:hover {
     color: var(--accent-color);
+}
+
+.social-link svg.codepen {
+    stroke: var(--text-main);
+    fill: none;
+    stroke-width: 2;
 }
 
 .social-link svg {

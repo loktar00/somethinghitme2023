@@ -1,0 +1,34 @@
+{
+    "projects": [
+        {
+            "title": "react-lazy-load",
+            "url": "https://github.com/loktar00/react-lazy-load",
+            "tags": "React, Lazy Load, Performance"
+        },
+        {
+            "title": "Cat Brown Realtor",
+            "url": "https://catbrownrealtor.com/",
+            "tags": "Webdesign, HTML, CSS, JavaScript"
+        },
+        {
+            "title": "Jest Game Framework",
+            "url": "https://github.com/loktar00/jest",
+            "tags": "Game, JavaScript"
+        },
+        {
+            "title": "gui hacker",
+            "url": "https://codegolf.stackexchange.com/questions/30322/make-it-look-like-im-working/30335#30335",
+            "tags": "Code Golf, JavaScript"
+        },
+        {
+            "title": "jQuery Snowfall",
+            "url": "https://github.com/loktar00/JQuery-Snowfall",
+            "tags": "JavaScript"
+        },
+        {
+            "title": "Zombiegames.net",
+            "url": "https://zombiegames.net/",
+            "tags": "Webdesign, Performance"
+        }
+    ]
+}
