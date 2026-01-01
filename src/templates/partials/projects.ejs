@@ -1,0 +1,17 @@
+<section>
+    <header class="section-header">
+        <span class="label-small-caps">Software & Experiments</span>
+        <span class="section-title">Selected Works</span>
+    </header>
+
+    <div class="projects-grid">
+        <%-
+            data.projects.map(project =>
+                `<div class="project-item">
+                    <a href="${project.url}" class="project-link">${project.title}</a>
+                    <span class="project-meta">${project.tags}</span>
+                </div>`
+            ).join('')
+        -%>
+    </div>
+</section>

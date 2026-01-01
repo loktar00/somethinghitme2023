@@ -15,7 +15,7 @@
                 </section>
                 <section>
                     <header class="section-header">
-                        <span class="label-small-caps">The Archive</span>
+                        <span class="label-small-caps"><a name="archive"></a>The Archive</span>
                     </header>
                     <%-
                         data.articles.map(article =>
@@ -39,17 +39,18 @@
                 <!-- Pagination -->
                 <nav class="pagination">
                     <% if (data.currentPage > 1) { %>
-                        <a href="<%= data.currentPage === 2 ? '/' : `/page/${data.currentPage - 1}.html` %>" class="page-link">Previous</a>
+                        <a href="<%= data.currentPage === 2 ? '/' : `/page/${data.currentPage - 1}.html#archive` %>" class="page-link">Previous</a>
                     <% } else { %>
                         <a href="#" class="page-link" disabled style="opacity: 0.5; pointer-events: none;">Previous</a>
                     <% } %>
                     <span class="page-current">Page <%= data.currentPage %> of <%= data.totalPages %></span>
                     <% if (data.currentPage < data.totalPages) { %>
-                        <a href="/page/<%= data.currentPage + 1 %>.html" class="page-link">Next</a>
+                        <a href="/page/<%= data.currentPage + 1 %>.html#archive" class="page-link">Next</a>
                     <% } else { %>
                         <a href="#" class="page-link" disabled style="opacity: 0.5; pointer-events: none;">Next</a>
                     <% } %>
                 </nav>
+                <%- include('/src/templates/partials/projects', {projects: data.projects}) -%>
                 <%- include('/src/templates/partials/social', {author: data.author}) -%>
             </main>
             <%- include('/src/templates/partials/footer') -%>
