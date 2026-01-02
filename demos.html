@@ -30,11 +30,10 @@
     <link href="/styles/styles.css" rel="stylesheet" />
     <link href="/styles/prism.css" rel="stylesheet" />
     <script src='/js/prism.js'></script>
-    <title>Cellular Texture Generation with JavaScript and Canvas - Somethinghitme</title>
-</head>    <link href="/styles/articleStyles.css" rel="stylesheet" />
-  <body>
-    <div class="layout">
-        <header class="container">
+    <title>Somethinghitme - My Code, demos and ideas.</title>
+</head>    <body>
+        <div class="layout">
+            <header class="container">
     <nav class="site-header">
         <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
             <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -43,24 +42,44 @@
         </button>
         <a href="/" class="logo-text">SomethingHitMe</a>
     </nav>
-</header>        <main class="container">
-            <article class="article-content">
-                <header class="article-header">
-                    <div class="article-meta-row">
-                        <time datetime="2010-07-02">
-                            Friday, Jul 2, 2010                        </time>
-                        <span>&bull;</span>
-                        <span class="article-tag"></span>
-                    </div>
-                    <h1 class="article-title">Cellular Texture Generation with JavaScript and Canvas</h1>
-                </header>
+</header>            <main class="container">
+                <!-- Pagination -->
+                <nav class="pagination">
+                    
+                        <a href="#" class="page-link" disabled style="opacity: 0.5; pointer-events: none;">Previous</a>
+                    
+                    <span class="page-current">Page  of </span>
+                    
+                        <a href="#" class="page-link" disabled style="opacity: 0.5; pointer-events: none;">Next</a>
+                    
+                </nav>
                 <section>
-                    <p>Been messing with canvas again, and put together a little demo that creates procedural cell looking textures, based off of the Worley algorithm. You can&nbsp;achieve&nbsp;some pretty amazing results, also added the option to animate, but since the algorithm has not been optimized yet you have to keep the dimensions and number of points low. Also need to implement tiling. Heres a few examples of what you can produce with some minor changes in distance calculation for points. <a href="http://somethinghitme.com/projects/cell/" title="Worley Texture Generator">You can check out the generator here.</a></p>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2010/07/cellp.png"><img src="/2010/07/01/texture-generation-js-canvas/images/cellp.webp" alt="" title="cellp" /></a><a href="http://www.somethinghitme.com/wp-content/uploads/2010/07/cellg.png"><img src="images/cellg.png" alt="" title="cellg" /></a><a href="http://www.somethinghitme.com/wp-content/uploads/2010/07/cellyell.png"><img src="images/cellyell.png" alt="" title="cellyell" /></a><a href="http://www.somethinghitme.com/wp-content/uploads/2010/07/cell.png"><img src="images/cell.png" alt="" title="Cellular Texture" /></a></p>                </section>
-            </article>
-            <hr/>
-            <footer>
-                <!-- Author -->
+    <header class="section-header">
+        <span class="label-small-caps">Software & Experiments</span>
+        <span class="section-title">Selected Works</span>
+    </header>
+
+    <div class="projects-grid">
+        <div class="project-item">
+                    <a href="https://github.com/loktar00/react-lazy-load" class="project-link">react-lazy-load</a>
+                    <span class="project-meta">React, Lazy Load, Performance</span>
+                </div><div class="project-item">
+                    <a href="https://catbrownrealtor.com/" class="project-link">Cat Brown Realtor</a>
+                    <span class="project-meta">Webdesign, HTML, CSS, JavaScript</span>
+                </div><div class="project-item">
+                    <a href="https://github.com/loktar00/jest" class="project-link">Jest Game Framework</a>
+                    <span class="project-meta">Game, JavaScript</span>
+                </div><div class="project-item">
+                    <a href="https://codegolf.stackexchange.com/questions/30322/make-it-look-like-im-working/30335#30335" class="project-link">gui hacker</a>
+                    <span class="project-meta">Code Golf, JavaScript</span>
+                </div><div class="project-item">
+                    <a href="https://github.com/loktar00/JQuery-Snowfall" class="project-link">jQuery Snowfall</a>
+                    <span class="project-meta">JavaScript</span>
+                </div><div class="project-item">
+                    <a href="https://zombiegames.net/" class="project-link">Zombiegames.net</a>
+                    <span class="project-meta">Webdesign, Performance</span>
+                </div>    </div>
+</section>                <!-- Author -->
 <section class="author-section">
     <img src="/assets/avatar.jpg" alt="Jason Brown" class="author-avatar">
     <div class="author-info">
@@ -91,14 +110,10 @@
             </a>
         </div>
     </div>
-</section>            </footer>
-            <nav class="post-footer">
-    <a class="footer-link" rel="prev" href="/">← All Articles</a>
-    <a class="footer-link" rel="prev" href="/2010/06/24/michiganwakeup-com-site-design/">Michiganwakeup.com Site Design →</a></nav>        </main>
-        <footer class="site-footer">
+</section>            </main>
+            <footer class="site-footer">
     © 2026, Built by <a href="https://github.com/loktar00">Jason Brown - Loktar</a>
-</footer>    </div>
-    <script src='/js/main.js'></script>
-    <script src='/js/menu.js'></script>
-  </body>
+</footer>        </div>
+        <script src='/js/main.js'></script>
+    </body>
 </html>
