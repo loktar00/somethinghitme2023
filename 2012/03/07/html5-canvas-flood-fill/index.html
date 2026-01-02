@@ -57,35 +57,35 @@
                 <section>
                     <p>Messing around in JS today (surprising eh?) making an HTML5 vs of rampart-ish. The more I do the less it becomes like rampart. Today I decied to tackle the flood fill portion which is a major part of the gameplay.</p>
 <p>Here is the workhorse function</p>
-<pre><code class="javascript language-javascript">function floodFill(mapData, x, y, oldVal, newVal){ 
+<pre><code class="javascript language-javascript">function floodFill(mapData, x, y, oldVal, newVal){
     var mapWidth = mapData.length, mapHeight = mapData[0].length;
 
-    if (oldVal == null){ 
-        oldVal=mapData[x][y]; 
+    if (oldVal == null){
+        oldVal=mapData[x][y];
     }
 
-    if (mapData[x][y] !== oldVal){ 
-        return true; 
+    if (mapData[x][y] !== oldVal){
+        return true;
     }
 
     mapData[x][y] = newVal;
 
-    if (x &gt; 0){ 
-        floodFill(mapData, x-1, y, oldVal, newVal); 
+    if (x &gt; 0){
+        floodFill(mapData, x-1, y, oldVal, newVal);
     }
 
-    if (y &gt; 0){ 
-        floodFill(mapData, x, y-1, oldVal, newVal); 
+    if (y &gt; 0){
+        floodFill(mapData, x, y-1, oldVal, newVal);
     }
 
-    if (x &lt; mapWidth-1){ 
-        floodFill(mapData, x+1, y, oldVal, newVal); 
+    if (x &lt; mapWidth-1){
+        floodFill(mapData, x+1, y, oldVal, newVal);
     }
 
-    if (y &lt; mapHeight-1){ 
-        floodFill(mapData, x, y+1, oldVal, newVal); 
-    } 
-} 
+    if (y &lt; mapHeight-1){
+        floodFill(mapData, x, y+1, oldVal, newVal);
+    }
+}
 </code></pre>
 <p>Which is called by doing this</p>
 <pre><code class="javascript language-javascript">    floodFill(map, 3,3,null,2);

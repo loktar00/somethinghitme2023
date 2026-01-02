@@ -58,7 +58,7 @@
                     <h2 id="theproblem">The Problem</h2>
 <p>Recently I found myself in between jobs so I had some time on my hands to work on a few of my projects I've let languish over the past few years. I always find myself coming back to this blog since it's low risk so I consider it a playground for me to test things out.</p>
 <h3 id="abitofhistory20092020">A bit of history 2009 - 2020</h3>
-<p>A quick history on this blog and the interations it's had. </p>
+<p>A quick history on this blog and the interations it's had.</p>
 <p>Back in 2009 when blogs were all the rage I threw up a wordpress install made a custom theme and operated using that for years on a shared hosting platform. It worked well for the most part but over the years and with wordpress upgrades and plugins it just became more of a pain. At the end of the day all I really needed were some static pages with my thoughts and images.</p>
 <h2 id="somethinghitmeovertheyears2009theveryfirstdesignfortheblog">Somethinghitme over the years - 2009, the very first design for the blog.</h2>
 <p><img src="/2023/recreating-this-blog-with-static-generation/images/initial.webp" alt="Initial design" /></p>
@@ -70,7 +70,7 @@
 <h3 id="2020">2020</h3>
 <p>Moving on to 2020 I decided to "upgrade" to Gatsby. There was a bit of hype surrounding it, it used React which I consider myself pretty proficient in, and it generated a static site, exactly what I wanted. This also had the side benefit of allowing me to move hosting to github.</p>
 <p>While I found gatsby to be simple for the most part, I just couldn't get over the setup and amount of code needed for something so "simple"… it's something I see everywhere in the development world especially in the front end or Javascript ecosystem. Everything requires a build now.. a build process, multiple dependencies just to get something to show on the page. I went a long with it since the goal was just to convert the site and have some of my older blog posts available. to users.</p>
-<p>The issue I had when writing articles most recently is after updating to using Gatsby I found myself spending over an hour or more each time I wanted to add an article since they were so far and few between. I needed to update dependencies to fix issues and of course account for breaking changes. Maybe it's just me, I generally don't run into these issues but Gatsby seemed to always have something going on where the site wouldn't just "build". </p>
+<p>The issue I had when writing articles most recently is after updating to using Gatsby I found myself spending over an hour or more each time I wanted to add an article since they were so far and few between. I needed to update dependencies to fix issues and of course account for breaking changes. Maybe it's just me, I generally don't run into these issues but Gatsby seemed to always have something going on where the site wouldn't just "build".</p>
 <p>In reality all I wanted to do was sit down write up a markdown file and publish it without thinking about the tech behind the solution.</p>
 <p>The other thing I started to get annoyed with was the complexity of wrapping my head around how Gatsby used graphQL with the actual markdown files. I found some cases where weird things would happen with excerpts, and simple things such as using pagination on the main page just seemed overly complex.</p>
 <h2 id="thesolutionpresent">The Solution - present</h2>
@@ -105,7 +105,7 @@ tags: "blog, javascript, static generation, programming"
     }
 </code></pre>
 <h4 id="additionalparsing">Additional parsing</h4>
-<p>I do have some <code>gists</code> and quite a few code blocks, so I went with a pretty simple approach of parsing out the code blocks, those are just replaced with prism for syntax highligting. </p>
+<p>I do have some <code>gists</code> and quite a few code blocks, so I went with a pretty simple approach of parsing out the code blocks, those are just replaced with prism for syntax highligting.</p>
 <p>For gists it's a straight forward approach again, I have considered breaking this out into a sort of "plugin" system to parse out and convert other things, such as prettier images with captions.</p>
 <pre><code class="javascript language-javascript">    // Embed gists.
     const gistPattern = /\\\[gist id=(?&lt;id&gt;[\d]*)\\\]/g;
@@ -115,7 +115,7 @@ tags: "blog, javascript, static generation, programming"
 </code></pre>
 <p>For anything else I allow for vanilla markup and scripts so I can just drop in some html if I need to. Since the sites generated I'm not too worried about security.</p>
 <h4 id="templating">Templating</h4>
-<p>For templating I went with a pretty simple solution, our second dependency is ejs, which I've always been a pretty big fan of. </p>
+<p>For templating I went with a pretty simple solution, our second dependency is ejs, which I've always been a pretty big fan of.</p>
 <p>Here's a quick example of the index page. I use partials for most things duplicated.</p>
 <pre><code class="javascript language-javascript">&lt;!DOCTYPE html&gt;
 &lt;html lang="en" data-theme="light"&gt;
@@ -125,12 +125,12 @@ tags: "blog, javascript, static generation, programming"
             &lt;%- include('/src/templates/partials/header') -%&gt;
             &lt;main class="main"&gt;
                 &lt;section class="primary"&gt;
-                    &lt;%- 
-                        data.articles.map(article =&gt; 
+                    &lt;%-
+                        data.articles.map(article =&gt;
                             `&lt;a href="/${article.path}"&gt;
                                 &lt;article class="article"&gt;
                                     &lt;h3&gt;${article.title}&lt;/h3&gt;
-                                    &lt;small&gt; 
+                                    &lt;small&gt;
                                         ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
                                     &lt;/small&gt;
                                     &lt;p&gt;
@@ -141,7 +141,7 @@ tags: "blog, javascript, static generation, programming"
                                     &lt;/footer&gt;
                                 &lt;/article&gt;
                             &lt;/a&gt;`
-                        ).join('') 
+                        ).join('')
                     -%&gt;
                 &lt;/section&gt;
                 &lt;section class="secondary"&gt;
@@ -155,7 +155,7 @@ tags: "blog, javascript, static generation, programming"
     &lt;/body&gt;
 </code></pre>
 <h4 id="otherconfigs">Other configs</h4>
-<p>For things like the side bar I follow the approach of creating a few json files to hold the data. </p>
+<p>For things like the side bar I follow the approach of creating a few json files to hold the data.</p>
 <p>Here's an example of the sidebar json file.</p>
 <pre><code class="json language-json">{
     "sidebar": {
@@ -184,7 +184,7 @@ tags: "blog, javascript, static generation, programming"
     }
 }
 </code></pre>
-<p>The node script just combines all the JSON together (to include article data from the markdown files), and creates a structure that's passed to the ejs templates to build the page. </p>
+<p>The node script just combines all the JSON together (to include article data from the markdown files), and creates a structure that's passed to the ejs templates to build the page.</p>
 <h4 id="styling">Styling</h4>
 <p>For styling I'm just using vanilla css, I might change that to SCSS since I'm a huge fan of nesting (I can't wait for the day that's supported natively!).</p>
 <h3 id="hosting">Hosting</h3>

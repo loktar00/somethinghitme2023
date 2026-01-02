@@ -83,7 +83,7 @@
                                     </div>
                                     <h2 class="article-title">Capturing Work Git History for your github activity graph</h2>
                                     <p class="article-synopsis">
-                                        A quick tip on how to capture work git history for your github activity graph
+                                        If your day job repo is not on GitHub, here is how I export commit dates, bucket them, and replay them so my GitHub activity graph matches the work I actually did.
                                     </p>
                                 </article>
                             </a><a href="/2023/recreating-this-blog-with-static-generation/">
@@ -96,7 +96,7 @@
                                     </div>
                                     <h2 class="article-title">Recreating this blog with static generation</h2>
                                     <p class="article-synopsis">
-                                        Join me on my journey of recreating my blog using a custom static generation solution. Discover the challenges I faced with platforms like WordPress and Gatsby, and my desire for a simpler approach. I explain the code structure, including markdown parsing and metadata extraction, as well as additional parsing for code blocks and gists. Templating with EJS and hosting on GitHub Pages are also covered.
+                                        I got tired of fighting WordPress and Gatsby just to publish a post, so I built a small Node script that turns markdown (front matter included) into a static site using EJS templates, plus a couple helpers for gists and code blocks.
                                     </p>
                                 </article>
                             </a><a href="/2022/demos-and-deviations/">
@@ -109,7 +109,7 @@
                                     </div>
                                     <h2 class="article-title">Demos and Deviations Project</h2>
                                     <p class="article-synopsis">
-                                        Explore a personal archiving project that showcases a collection of small coding projects and demos created over the years. Discover the motivation behind the project, its current state, and the plans for future development. Take a nostalgic journey through my coding evolution.
+                                        I started pulling my scattered demos from places like CodePen and JSFiddle into one repo and gallery. The goal is to keep everything versioned and make it easy to generate previews.
                                     </p>
                                 </article>
                             </a><a href="/2022/deep-copy-in-javascript/">
@@ -122,7 +122,7 @@
                                     </div>
                                     <h2 class="article-title">Deep copying in JavaScript</h2>
                                     <p class="article-synopsis">
-                                        Gain insights into the intricacies of deep copying or cloning in JavaScript. Learn about the differences between copying by value and copying by reference, and discover the limitations of JavaScript's natural deep copying. Explore various methods for achieving deep copying, such as spread operators and JSON.stringify, and delve into the drawbacks of each approach. Finally, uncover a recommended solution for deep copying in JavaScript
+                                        Deep copying in JavaScript is a mess if you do not know the tradeoffs. This post covers shallow vs deep copies, where JSON stringify and spread/Object.assign break down, and when structuredClone is the right tool.
                                     </p>
                                 </article>
                             </a><a href="/2022/float-text-from-cursor/">
@@ -135,7 +135,7 @@
                                     </div>
                                     <h2 class="article-title">Floating text from cursor generative demo</h2>
                                     <p class="article-synopsis">
-                                         Be inspired by a generative demo that combines JavaScript and CSS to create a mesmerizing effect of floating text following the cursor. Discover the origin of the idea and witness how a random paragraph from Nostradamus was transformed into an engaging visual experience.
+                                        A quick JS/CSS experiment where text trails the cursor, inspired by a tweet. I fed it a random Nostradamus paragraph and called it a nice little deviation.
                                     </p>
                                 </article>
                             </a><a href="/2021/simple-one-element-toggle/">
@@ -148,7 +148,7 @@
                                     </div>
                                     <h2 class="article-title">Simple One Element Toggle</h2>
                                     <p class="article-synopsis">
-                                        Dive into a quick toggle implementation using pure CSS and a single HTML element. Witness the magic of CSS as it brings the toggle to life with smooth transitions and dynamic styling. Explore the simplicity and versatility of this toggle design, making it a convenient choice for projects where minimalism and efficiency are paramount.
+                                        A minimal toggle built from a single checkbox input. It is pure CSS using pseudo-elements for the track and thumb, so it drops into a form without extra markup.
                                     </p>
                                 </article>
                             </a><a href="/2014/07/25/extracting-the-subdomain-with-nodejs/">
@@ -161,7 +161,7 @@
                                     </div>
                                     <h2 class="article-title">Extracting the subdomain with node.js</h2>
                                     <p class="article-synopsis">
-                                        Discover a simple method for extracting subdomains using Node.js and Express. Follow a step-by-step guide to handle subdomains in server requests, splitting and formatting them for further use. Witness how this technique can be applied to customize user experiences based on their subdomains and gain a deeper understanding of the code implementation.
+                                        A simple Express pattern for reading the host header, pulling out the subdomain, and normalizing hyphens so you can drive behavior off `whatever.yourdomain.com with` a wildcard DNS entry.
                                     </p>
                                 </article>
                             </a><a href="/2014/03/18/rift-enabled-canvas-demo/">
@@ -174,7 +174,7 @@
                                     </div>
                                     <h2 class="article-title">Rift Enabled Canvas Demo</h2>
                                     <p class="article-synopsis">
-                                        Experience the fusion of the Oculus Rift and CSS shaders in a captivating demo. Explore the process of porting a tunnel demo to be compatible with the Oculus Rift using the Oculus Bridge project. Discover the challenges faced and the workaround used to achieve a Rift-enabled effect in the browser.
+                                        I ported my canvas tunnel demo to the Oculus Rift using oculus-bridge and a CSS shader warp. It renders a canvas per eye and keeps the canvas small enough to work within Chrome's filter limits.
                                     </p>
                                 </article>
                             </a><a href="/2013/11/13/snippets-i-always-forget-movement/">
@@ -187,7 +187,7 @@
                                     </div>
                                     <h2 class="article-title">Game Dev Movement cheatsheet with examples</h2>
                                     <p class="article-synopsis">
-                                        Unlock a treasure trove of helpful code snippets and examples related to movement, angles, and directions in game development. Whether you're looking for collision checks, inertia-based mouse movement, following behavior, or object rotation, this cheatsheet provides practical code solutions. Discover various techniques and gain insights into the world of game development movement.
+                                        This is my movement cheat sheet for 2D games, with runnable examples. It covers distance checks, angle math, pursuit, projecting points (like gun barrels), rotation while moving, and Asteroids-style heading movement with friction.
                                     </p>
                                 </article>
                             </a><a href="/2013/11/11/simple-2d-terrain-with-midpoint-displacement/">
@@ -200,7 +200,7 @@
                                     </div>
                                     <h2 class="article-title">Simple 2d Terrain With Midpoint Displacement</h2>
                                     <p class="article-synopsis">
-                                        Dive into the realm of 2D terrain generation using the Diamond Square algorithm, also known as Midpoint Displacement. Explore the simplicity and versatility of this algorithm in creating realistic 2D terrain with rolling hills or jagged mountains. Learn the step-by-step process of implementing midpoint displacement, reducing the random range for terrain roughness, and achieving visually stunning terrain using JavaScript and the canvas element.
+                                        A practical walkthrough of midpoint displacement (Diamond Square) for 2D canvas terrain. It explains the iterations, how roughness changes the look, and includes a JS implementation with notes on wrapping and scrolling.
                                     </p>
                                 </article>
                             </a>                </section>
