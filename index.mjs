@@ -198,6 +198,13 @@ for (let page = 1; page <= totalPages; page++) {
     fs.writeFileSync(path.join(publicPath, `page/${page}.html`), indexHtml);
 }
 
+// Demos page
+const demosHtml = ejs.render(fs.readFileSync(`./${sourcePath}/${templatePath}/demos.ejs`, 'utf8'),
+    {data: {...siteData}},
+    {root: process.cwd()}
+);
+fs.writeFileSync(path.join(publicPath, 'demos.html'), demosHtml);
+
 // Iterate over our files convert to html and save them in the appropriate location.
 articleData.forEach((article, idx) => {
     createDirectory(path.join(publicPath, article.path));
