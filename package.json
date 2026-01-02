@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node index.mjs",
+    "build": "node -e \"import('./index.mjs').then(({build}) => build())\"",
     "dev": "cross-env NODE_ENV=development nodemon --watch src --ext js,mjs,cjs,json,md,ejs,css,html --exec \"npm run build\"",
     "serve": "npx http-server public -p 8080 -c-1 --cors",
     "dev:serve": "echo 'Run these in separate terminals: npm run dev && npm run serve'",
