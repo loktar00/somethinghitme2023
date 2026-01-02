@@ -1,7 +1,7 @@
 ---
 title: "Game Dev Movement cheatsheet with examples"
 date: "2013-11-13"
-teaser: "Unlock a treasure trove of helpful code snippets and examples related to movement, angles, and directions in game development. Whether you're looking for collision checks, inertia-based mouse movement, following behavior, or object rotation, this cheatsheet provides practical code solutions. Discover various techniques and gain insights into the world of game development movement."
+teaser: "This is my movement cheat sheet for 2D games, with runnable examples. It covers distance checks, angle math, pursuit, projecting points (like gun barrels), rotation while moving, and Asteroids-style heading movement with friction."
 ---
 
 #### aka My Cheat Sheet of Helpful Code

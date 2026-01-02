@@ -2,7 +2,7 @@
 title: "Super Simple Wave Simulators"
 date: "2012-09-10"
 coverImage: "wavefeat.png"
-teaser: "Ride the wave of creativity! Immerse yourself in mesmerizing wave simulations. Discover two unique approaches—one using JavaScript and canvas, and another with pure HTML/CSS. Picked and featured on Codepen!"
+teaser: "Two wave sims I put together after going down a water-effects rabbit hole: one in JavaScript + canvas, and one that does it with just HTML/CSS. Both have embedded demos (and CodePen links) and were picked / featured on codepen."
 ---
 
 So I have been really into wave sims lately. It all started with an excellent tutorial posted [here](http://gamedev.tutsplus.com/tutorials/implementation/make-a-splash-with-2d-water-effects/). I tried my hand at a JS one first using canvas which turned out pretty awesome.

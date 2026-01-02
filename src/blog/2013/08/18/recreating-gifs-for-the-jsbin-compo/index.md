@@ -1,7 +1,7 @@
 ---
 title: "Recreating gifs for the jsBin Compo"
 date: "2013-08-19"
-teaser: "There's a really interesting [competition the creator of jsbin is running](http://remysharp.com/2013/08/14/jsbin-5th-birthday/). The competition involves recreating some pretty amazing gifs (mostly mathmatical based) using Javascript, CSS, and HTML. I couldn't help but try my hand at a few of the gifs. As of this writing I have successfully (mostly anyway) reproduced four of the images."
+teaser: "I recreated a handful of math-y GIFs for the JSBin birthday competition and wrote up the results with demos. This covers a wavy pattern, a crosshatch switch, a P-wave/compression wave, and a "rough seas" variant."
 ---
 
 There's a really interesting [competition the creator of jsbin is running](http://remysharp.com/2013/08/14/jsbin-5th-birthday/). The competition involves recreating some pretty amazing gifs (mostly mathmatical based) using Javascript, CSS, and HTML. I couldn't help but try my hand at a few of the gifs. As of this writing I have successfully (mostly anyway) reproduced four of the images.

@@ -1,7 +1,7 @@
 ---
 title: "Procedural Canvas Shmup now has a boss and sounds!"
 date: "2012-02-14"
-teaser: "Experience the impact of music and sounds in game development as my shmup project progresses. Witness the addition of a boss character and learn about upcoming features like player ship upgrades and a consistent enemy design. Follow the development journey and explore the possibilities of this exciting shoot 'em up game."
+teaser: "A quick progress update on my procedural canvas shmup: adding music and sound made a huge difference, and I finally dropped in a boss. I also list what I wanted next, like player upgrades and more consistent seeded visuals."
 ---
 
 [![](images/shmupboss-250x300.png "shmupboss")](http://www.somethinghitme.com/wp-content/uploads/2012/02/shmupboss.png)

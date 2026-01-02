@@ -1,7 +1,7 @@
 ---
 title: "Recreating this blog with static generation"
 date: "2023-06-15"
-teaser: "Join me on my journey of recreating my blog using a custom static generation solution. Discover the challenges I faced with platforms like WordPress and Gatsby, and my desire for a simpler approach. I explain the code structure, including markdown parsing and metadata extraction, as well as additional parsing for code blocks and gists. Templating with EJS and hosting on GitHub Pages are also covered."
+teaser: "I got tired of fighting WordPress and Gatsby just to publish a post, so I built a small Node script that turns markdown (front matter included) into a static site using EJS templates, plus a couple helpers for gists and code blocks."
 tags: "blog, javascript, static generation, programming"
 ---
 
@@ -11,11 +11,11 @@ Recently I found myself in between jobs so I had some time on my hands to work o
 
 ### A bit of history 2009 - 2020
 
-A quick history on this blog and the interations it's had. 
+A quick history on this blog and the interations it's had.
 
 Back in 2009 when blogs were all the rage I threw up a wordpress install made a custom theme and operated using that for years on a shared hosting platform. It worked well for the most part but over the years and with wordpress upgrades and plugins it just became more of a pain. At the end of the day all I really needed were some static pages with my thoughts and images.
 
-## Somethinghitme over the years - 2009, the very first design for the blog. 
+## Somethinghitme over the years - 2009, the very first design for the blog.
 
 ![Initial design](images/initial.png)
 
@@ -34,7 +34,7 @@ Moving on to 2020 I decided to "upgrade" to Gatsby. There was a bit of hype surr
 
 While I found gatsby to be simple for the most part, I just couldn't get over the setup and amount of code needed for something so "simple"... it's something I see everywhere in the development world especially in the front end or Javascript ecosystem. Everything requires a build now.. a build process, multiple dependencies just to get something to show on the page. I went a long with it since the goal was just to convert the site and have some of my older blog posts available. to users.
 
-The issue I had when writing articles most recently is after updating to using Gatsby I found myself spending over an hour or more each time I wanted to add an article since they were so far and few between. I needed to update dependencies to fix issues and of course account for breaking changes. Maybe it's just me, I generally don't run into these issues but Gatsby seemed to always have something going on where the site wouldn't just "build". 
+The issue I had when writing articles most recently is after updating to using Gatsby I found myself spending over an hour or more each time I wanted to add an article since they were so far and few between. I needed to update dependencies to fix issues and of course account for breaking changes. Maybe it's just me, I generally don't run into these issues but Gatsby seemed to always have something going on where the site wouldn't just "build".
 
 In reality all I wanted to do was sit down write up a markdown file and publish it without thinking about the tech behind the solution.
 
@@ -85,7 +85,7 @@ I then parse the markdown when it's being read and extract the information to ex
 
 #### Additional parsing
 
-I do have some `gists` and quite a few code blocks, so I went with a pretty simple approach of parsing out the code blocks, those are just replaced with prism for syntax highligting. 
+I do have some `gists` and quite a few code blocks, so I went with a pretty simple approach of parsing out the code blocks, those are just replaced with prism for syntax highligting.
 
 For gists it's a straight forward approach again, I have considered breaking this out into a sort of "plugin" system to parse out and convert other things, such as prettier images with captions.
 
@@ -101,7 +101,7 @@ For anything else I allow for vanilla markup and scripts so I can just drop in s
 
 #### Templating
 
-For templating I went with a pretty simple solution, our second dependency is ejs, which I've always been a pretty big fan of. 
+For templating I went with a pretty simple solution, our second dependency is ejs, which I've always been a pretty big fan of.
 
 Here's a quick example of the index page. I use partials for most things duplicated.
 
@@ -114,12 +114,12 @@ Here's a quick example of the index page. I use partials for most things duplica
             <%- include('/src/templates/partials/header') -%>
             <main class="main">
                 <section class="primary">
-                    <%- 
-                        data.articles.map(article => 
+                    <%-
+                        data.articles.map(article =>
                             `<a href="/${article.path}">
                                 <article class="article">
                                     <h3>${article.title}</h3>
-                                    <small> 
+                                    <small>
                                         ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
                                     </small>
                                     <p>
@@ -130,7 +130,7 @@ Here's a quick example of the index page. I use partials for most things duplica
                                     </footer>
                                 </article>
                             </a>`
-                        ).join('') 
+                        ).join('')
                     -%>
                 </section>
                 <section class="secondary">
@@ -146,7 +146,7 @@ Here's a quick example of the index page. I use partials for most things duplica
 
 #### Other configs
 
-For things like the side bar I follow the approach of creating a few json files to hold the data. 
+For things like the side bar I follow the approach of creating a few json files to hold the data.
 
 Here's an example of the sidebar json file.
 
@@ -179,7 +179,7 @@ Here's an example of the sidebar json file.
 }
 ```
 
-The node script just combines all the JSON together (to include article data from the markdown files), and creates a structure that's passed to the ejs templates to build the page. 
+The node script just combines all the JSON together (to include article data from the markdown files), and creates a structure that's passed to the ejs templates to build the page.
 
 #### Styling
 

@@ -1,7 +1,7 @@
 ---
 title: "Simple 2d Terrain With Midpoint Displacement"
 date: "2013-11-12"
-teaser: "Dive into the realm of 2D terrain generation using the Diamond Square algorithm, also known as Midpoint Displacement. Explore the simplicity and versatility of this algorithm in creating realistic 2D terrain with rolling hills or jagged mountains. Learn the step-by-step process of implementing midpoint displacement, reducing the random range for terrain roughness, and achieving visually stunning terrain using JavaScript and the canvas element."
+teaser: "A practical walkthrough of midpoint displacement (Diamond Square) for 2D canvas terrain. It explains the iterations, how roughness changes the look, and includes a JS implementation with notes on wrapping and scrolling."
 ---
 
 [![Codepen terrain](images/ter.png)](http://codepen.io/loktar00/details/uEJKl)
@@ -52,9 +52,9 @@ The following JavaScript function is what I used to create the above examples.
 
 ```javascript
 /*
-  width and height are the overall 
+  width and height are the overall
   width and height we have to work with, displace is
-  the maximum deviation value. 
+  the maximum deviation value.
   This stops the terrain from going out of bounds if we choose
 */
 

@@ -1,7 +1,7 @@
 ---
 title: "jQuery Snowfall 1.5 update now with snow buildup!"
 date: "2011-10-06"
-teaser: "Stay up-to-date with the latest version of the jQuery Snowfall plugin. Experience the added feature of snow buildup, allowing snowflakes to accumulate on specified elements. Learn how to enable this feature and explore other options and methods available. Download the plugin, view it in action, and enhance your website's winter atmosphere."
+teaser: "I updated the Snowfall plugin to add snow buildup, so flakes can collect on top of elements you target with a selector. This post shows the new collection option, standard usage, the clear method, and the full option list."
 ---
 
 **[Check out the new version here, with the ability to add images to snowflakes!](http://www.somethinghitme.com/2012/12/08/snowfall-1-6/)**
@@ -17,8 +17,8 @@ snowfall({collection : 'element'});
 Element can be either a class or id or a list such as
 
 ```javascript
-$(document).snowfall({collection : '.elements'}); 
-$(document).snowfall({collection : '#element'}); 
+$(document).snowfall({collection : '.elements'});
+$(document).snowfall({collection : '#element'});
 ```
 
 Thats pretty much it for new options below is the standard way of using the plugin.
@@ -26,7 +26,7 @@ Thats pretty much it for new options below is the standard way of using the plug
 **Invoking the snow**
 
 ```javascript
-$(document).snowfall(); 
+$(document).snowfall();
 $('#elementid').snowfall({flakeCount : 100, maxSpeed : 10});
 $('.class').snowfall({flakeCount : 100, maxSpeed : 10});
 ```
@@ -34,7 +34,7 @@ $('.class').snowfall({flakeCount : 100, maxSpeed : 10});
 **Snowfall Methods**
 
 ```javascript
-// stopping the snow 
+// stopping the snow
 $(document).snowfall('clear');
 $('#elementid').snowfall('clear');
 $('.class').snowfall('clear');
@@ -43,16 +43,16 @@ $('.class').snowfall('clear');
 **Options currently supported with default values**
 
 ```javascript
-options = { 
-    flakeCount : 35, // number 
-    flakeColor : '#ffffff', // string 
-    flakeIndex: 999999, // number 
-    minSize : 1, // number 
-    maxSize : 3, // number 
-    minSpeed : 2, // number 
-    maxSpeed : 3, // number 
-    round : false, // bool 
-    shadow : false, // bool 
-    collection : 'element' // string 
+options = {
+    flakeCount : 35, // number
+    flakeColor : '#ffffff', // string
+    flakeIndex: 999999, // number
+    minSize : 1, // number
+    maxSize : 3, // number
+    minSpeed : 2, // number
+    maxSpeed : 3, // number
+    round : false, // bool
+    shadow : false, // bool
+    collection : 'element' // string
 };
 ```

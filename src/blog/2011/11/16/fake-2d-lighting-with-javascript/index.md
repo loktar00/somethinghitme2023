@@ -1,7 +1,7 @@
 ---
 title: "Fake 2d Lighting with javascript"
 date: "2011-11-16"
-teaser: "Explore the concept of fake 2D lighting in JavaScript through realtime 2D raycasting. Delve into a code example and experiment with a JavaScript version of the technique. Discover its potential applications in creating vision cones for AI and consider its optimization possibilities."
+teaser: "Messing around with realtime 2D raycasting to fake lighting in canvas. This post links my JS version and a fiddle, plus notes on tracking the closest hit per ray and ideas like using the same approach for an AI vision cone."
 ---
 
 Just started messing with realtime 2d raycasting for lighting today, used a pretty good code example from [facepunch.com/threads/1011659](http://www.facepunch.com/threads/1011659). [Heres my version in JS](http://www.somethinghitme.com/projects/2d%20lighting/fakelight.html), and [a fiddle to play with](http://jsfiddle.net/loktar/VY75L/16/). If you look at the code youll notice I added a portion to keep track of the closest block per ray so you can light up only that block and not the others. However doing this got me to thinking, this method can be used to make a vision cone for AI. Ive seen this raycasting method used before I just never implemented it myself.. besides my \*really\* slow implementation for lighting on my [canvas terrian.](http://www.somethinghitme.com/projects/canvasterrain/)

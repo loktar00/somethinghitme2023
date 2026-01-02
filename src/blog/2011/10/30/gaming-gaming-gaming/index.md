@@ -1,7 +1,7 @@
 ---
 title: "Gaming Gaming Gaming"
 date: "2011-10-30"
-teaser: "Get a glimpse into the gaming habits and collection of a dedicated PC gamer. Dive into a vast collection of PC games, both physical copies and digital downloads, while exploring thoughts on current gaming trends. Discover what games the author is currently playing and their excitement for Halloween-themed events in popular titles."
+teaser: "Random thoughts on my gaming collection"
 ---
 
 So I realized I have never posted anything on here about my gaming habits. Gaming is a huge part of my life its probably a bit higher than programming even. I am VERY partial to PC gaming, consoles are ok.. but I just look at them as underpowered PC's :P. Plus its nice being able to install my copy of Homeworld and play it 13 years later without issue. Anyway I figure I will start to post some of my thoughts on games I am currently playing, and maybe some other tidbits from my collection.

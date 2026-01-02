@@ -1,7 +1,7 @@
 ---
 title: "HTML5 Canvas Flood Fill"
 date: "2012-03-07"
-teaser: "Discover the power of flood filling in HTML5 Canvas with a step-by-step guide. Learn how to implement a workhorse function that recursively checks neighboring points to fill areas with a new value. Try the code yourself and explore the possibilities of this essential gameplay mechanic."
+teaser: "I implemented a recursive flood fill for a Rampart-ish canvas prototype and broke down how it works. Includes the core function, how I call it on a 2D array, and a JSFiddle to try it (plus a quick note on stack limits for large maps)."
 ---
 
 Messing around in JS today (surprising eh?) making an HTML5 vs of rampart-ish. The more I do the less it becomes like rampart. Today I decied to tackle the flood fill portion which is a major part of the gameplay.
@@ -10,35 +10,35 @@ Here is the workhorse function
 
 ```javascript
 
-function floodFill(mapData, x, y, oldVal, newVal){ 
+function floodFill(mapData, x, y, oldVal, newVal){
     var mapWidth = mapData.length, mapHeight = mapData[0].length;
 
-    if (oldVal == null){ 
-        oldVal=mapData[x][y]; 
+    if (oldVal == null){
+        oldVal=mapData[x][y];
     }
 
-    if (mapData[x][y] !== oldVal){ 
-        return true; 
+    if (mapData[x][y] !== oldVal){
+        return true;
     }
 
     mapData[x][y] = newVal;
 
-    if (x > 0){ 
-        floodFill(mapData, x-1, y, oldVal, newVal); 
+    if (x > 0){
+        floodFill(mapData, x-1, y, oldVal, newVal);
     }
 
-    if (y > 0){ 
-        floodFill(mapData, x, y-1, oldVal, newVal); 
+    if (y > 0){
+        floodFill(mapData, x, y-1, oldVal, newVal);
     }
 
-    if (x < mapWidth-1){ 
-        floodFill(mapData, x+1, y, oldVal, newVal); 
+    if (x < mapWidth-1){
+        floodFill(mapData, x+1, y, oldVal, newVal);
     }
 
-    if (y < mapHeight-1){ 
-        floodFill(mapData, x, y+1, oldVal, newVal); 
-    } 
-} 
+    if (y < mapHeight-1){
+        floodFill(mapData, x, y+1, oldVal, newVal);
+    }
+}
 ```
 
 Which is called by doing this

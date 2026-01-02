@@ -1,7 +1,7 @@
 ---
 title: "Demos and Deviations Project"
 date: "2022-08-22"
-teaser: "Explore a personal archiving project that showcases a collection of small coding projects and demos created over the years. Discover the motivation behind the project, its current state, and the plans for future development. Take a nostalgic journey through my coding evolution."
+teaser: "I started pulling my scattered demos from places like CodePen and JSFiddle into one repo and gallery. The goal is to keep everything versioned and make it easy to generate previews."
 ---
 
 I've been on a weird archiving kick lately, most recently downloading *all* of my gog installers for example and storing them locally and on a backup drive. This need or want for archiving spread to my demo's and bits of code I've wrote over the years. I realized a lot of the small projects I found pretty neat were on jsfiddle, codepen, jsbin or dwitter. I decided to copy all of them and put them into a single [project here](https://loktar00.github.io/demos-and-deviations/), [source code here](https://github.com/loktar00/demos-and-deviations).

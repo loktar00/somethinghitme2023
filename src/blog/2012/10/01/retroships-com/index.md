@@ -2,7 +2,7 @@
 title: "Retroships.com"
 date: "2012-10-01"
 coverImage: "retrofeat1.png"
-teaser:  "Embark on a nostalgic journey to retro gaming with Retroships.com. Dive into the world of 2D ship generation using Node.js and Nodejitsu.com. Unleash your creativity and explore the possibilities of procedural graphic generation."
+teaser:  "A weekend project where I generate 2D retro ships with node-canvas and serve them from Nodejitsu. I also cover a few ideas I wanted next, like seeds, ship styles, and a simple generate URL."
 ---
 
 [![retroship](images/retroship.png)](http://www.somethinghitme.com/wp-content/uploads/2012/10/retroship.png)

@@ -1,7 +1,7 @@
 ---
 title: "Creating a canvas platformer tutorial part two"
 date: "2013-04-17"
-teaser: "Learn how to add objects for collision detection and create boundaries in your canvas platformer game. Watch as your player interacts with the environment and avoids falling off the screen. Get ready to take your game to the next level!"
+teaser: "Part two of my canvas platformer series. I add world geometry, detect and resolve collisions by direction, and introduce grounded and jumping state so movement feels right."
 ---
 
 Wow, so its been a while since I've posted anything. I've been kind of busy, and was forcing myself not to post anything unless it was going to be part two of the tutorial. With that said lets begin! For all the code and fully working demo scroll to the bottom.
@@ -13,9 +13,9 @@ Lets add an array called boxes to hold the objects well be doing collision check
 ```javascript
 var boxes = []
 
-// dimensions 
-boxes.push({ x: 0, y: 0, width: 10, height: height }); 
-boxes.push({ x: 0, y: height - 2, width: width, height: 50 }); 
+// dimensions
+boxes.push({ x: 0, y: 0, width: 10, height: height });
+boxes.push({ x: 0, y: height - 2, width: width, height: 50 });
 boxes.push({ x: width - 10, y: 0, width: 50, height: height });
 
 ```
@@ -28,11 +28,11 @@ Lets got ahead and add some logic to draw the boxes so you can see them. Add the
 ```javascript
 ctx.fillStyle = "black"; ctx.beginPath();
 
-for (var i = 0; i < boxes.length; i++) { 
-    ctx.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height); 
+for (var i = 0; i < boxes.length; i++) {
+    ctx.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
 }
 
-ctx.fill(); 
+ctx.fill();
 ```
 
 You should now see some thick black boxes on the left, right, and bottom of your canvas. Now lets actually make the player collide against them!
@@ -40,39 +40,39 @@ You should now see some thick black boxes on the left, right, and bottom of your
 So Im going to give a pretty brief primer of the collision method we are using. We are going to be checking two objects against each other, the player, and a box. We will do this by checking if they intersect. If they intersect then they must be colliding. Since we are working on a platformer we need one more piece of information, from which direction is the player colliding? Go ahead and add the below function, it does just that!
 
 ```javascript
-function colCheck(shapeA, shapeB) { 
-    // get the vectors to check against 
-    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)), 
-        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)), 
-        // add the half widths and half heights of the objects 
-        hWidths = (shapeA.width / 2) + (shapeB.width / 2), 
-        hHeights = (shapeA.height / 2) + (shapeB.height / 2), 
+function colCheck(shapeA, shapeB) {
+    // get the vectors to check against
+    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
+        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
+        // add the half widths and half heights of the objects
+        hWidths = (shapeA.width / 2) + (shapeB.width / 2),
+        hHeights = (shapeA.height / 2) + (shapeB.height / 2),
         colDir = null;
 
-    // if the x and y vector are less than the half width or half height, 
-    // they we must be inside the object, causing a collision 
-    if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) { 
-        // figures out on which side we are colliding (top, bottom, left, or right) 
-        var oX = hWidths - Math.abs(vX), oY = hHeights - Math.abs(vY); 
-        if (oX >= oY) { 
-            if (vY > 0) { 
-                colDir = "t"; 
-                shapeA.y += oY; 
-            } else { 
-                colDir = "b"; 
-                shapeA.y -= oY; 
-            } 
-        } else { 
-            if (vX > 0) { 
-                colDir = "l"; 
-                shapeA.x += oX; 
-            } else { 
-                colDir = "r"; 
-                shapeA.x -= oX; 
-            } 
-        } 
-    } 
-    return colDir; 
+    // if the x and y vector are less than the half width or half height,
+    // they we must be inside the object, causing a collision
+    if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) {
+        // figures out on which side we are colliding (top, bottom, left, or right)
+        var oX = hWidths - Math.abs(vX), oY = hHeights - Math.abs(vY);
+        if (oX >= oY) {
+            if (vY > 0) {
+                colDir = "t";
+                shapeA.y += oY;
+            } else {
+                colDir = "b";
+                shapeA.y -= oY;
+            }
+        } else {
+            if (vX > 0) {
+                colDir = "l";
+                shapeA.x += oX;
+            } else {
+                colDir = "r";
+                shapeA.x -= oX;
+            }
+        }
+    }
+    return colDir;
 }
 ```
 
@@ -132,50 +132,50 @@ player = {
 Lets go ahead and add the check to our jumping condition, change your jump key condition to the following.
 
 ```javascript
-    if (keys[38] || keys[32]) { 
-        // up arrow or space 
-        if (!player.jumping && player.grounded) { 
-            player.jumping = true; 
-            player.grounded = false; 
-            // We're not on the ground anymore!! 
-            player.velY = -player.speed * 2; 
-        } 
-    } 
+    if (keys[38] || keys[32]) {
+        // up arrow or space
+        if (!player.jumping && player.grounded) {
+            player.jumping = true;
+            player.grounded = false;
+            // We're not on the ground anymore!!
+            player.velY = -player.speed * 2;
+        }
+    }
 ```
 
 By looking at that you can see we can only jump if we are on the ground and are currently not jumping, and every time we jump set grounded to false. We also need to set grounded to false before we do the collision check every time so our player can fall off ledges, add the following right before the box loop.
 
 ```javascript
-player.grounded = false; 
+player.grounded = false;
 ```
 
 Now lets go ahead and remove the following from your code, since we are going to be using our collision system instead of hard constraints when keeping the player in the canvas.
 
 ```javascript
 
-    if (player.x >= width - player.width) { 
-        player.x = width - player.width; 
-    } else if (player.x <= 0) { 
-        player.x = 0; 
-    } 
-    
-    if (player.y >= height - player.height) { 
-        player.y = height - player.height; 
-        player.jumping = false; 
-    } 
+    if (player.x >= width - player.width) {
+        player.x = width - player.width;
+    } else if (player.x <= 0) {
+        player.x = 0;
+    }
+
+    if (player.y >= height - player.height) {
+        player.y = height - player.height;
+        player.jumping = false;
+    }
 ```
 
 We just removed what told us our player isn't jumping anymore! We need to add some of that logic back in somewhere else! Add the following into your update function inside the box loop where you call the colCheck function.
 
 ```javascript
 
-    if (dir === "l" || dir === "r") { 
-        player.velX = 0; player.jumping = false; 
-    } else if (dir === "b") { 
-        player.grounded = true; 
-        player.jumping = false; 
-    } else if (dir === "t") { 
-        player.velY *= -1; 
+    if (dir === "l" || dir === "r") {
+        player.velX = 0; player.jumping = false;
+    } else if (dir === "b") {
+        player.grounded = true;
+        player.jumping = false;
+    } else if (dir === "t") {
+        player.velY *= -1;
     }
 ```
 
@@ -185,22 +185,22 @@ The last thing you need to do is put the following code right after the box loop
 
 ```javascript
 
-if(player.grounded){ 
-    player.velY = 0; 
+if(player.grounded){
+    player.velY = 0;
 }
 
-player.x += player.velX; 
-player.y += player.velY; 
+player.x += player.velX;
+player.y += player.velY;
 ```
 
 Delete the previous occurrence of player.x += player.velX, and player.y += player.velY. Go ahead and run it! If there are no errors the player should not fall through the world and should be able to run and jump around.. acting just like our previous demo!.. wait, so we did all that work just to make it like the last demo? Of course not, lets add some boxes right under the section where we declared our first set of boxes.
 
 ```javascript
 
-    boxes.push({ x: 120, y: 10, width: 80, height: 80 }); 
-    boxes.push({ x: 170, y: 50, width: 80, height: 80 }); 
-    boxes.push({ x: 220, y: 100, width: 80, height: 80 }); 
-    boxes.push({ x: 270, y: 150, width: 40, height: 40 }); 
+    boxes.push({ x: 120, y: 10, width: 80, height: 80 });
+    boxes.push({ x: 170, y: 50, width: 80, height: 80 });
+    boxes.push({ x: 220, y: 100, width: 80, height: 80 });
+    boxes.push({ x: 270, y: 150, width: 40, height: 40 });
 ```
 
 Now go ahead run around and jump!
@@ -209,19 +209,19 @@ The entire program should look like the following
 
 ```javascript
 
-(function () { 
-    var requestAnimationFrame = window.requestAnimationFrame || 
-    window.mozRequestAnimationFrame || 
-    window.webkitRequestAnimationFrame || 
-    window.msRequestAnimationFrame; 
+(function () {
+    var requestAnimationFrame = window.requestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame;
 
-    window.requestAnimationFrame = requestAnimationFrame; 
+    window.requestAnimationFrame = requestAnimationFrame;
 })();
 
-var canvas = document.getElementById("canvas"), 
-    ctx = canvas.getContext("2d"), 
-    width = 500, 
-    height = 200, 
+var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d"),
+    width = 500,
+    height = 200,
     player = {
         x: width / 2,
         y: height - 15,
@@ -233,131 +233,131 @@ var canvas = document.getElementById("canvas"),
         jumping: false,
         grounded: false
     },
-    keys = [], 
-    friction = 0.8, 
+    keys = [],
+    friction = 0.8,
     gravity = 0.3;
 
 var boxes = [];
 
-// dimensions 
-boxes.push({ x: 0, y: 0, width: 10, height: height }); 
-boxes.push({ x: 0, y: height - 2, width: width, height: 50 }); 
+// dimensions
+boxes.push({ x: 0, y: 0, width: 10, height: height });
+boxes.push({ x: 0, y: height - 2, width: width, height: 50 });
 boxes.push({ x: width - 10, y: 0, width: 50, height: height });
 
-boxes.push({ x: 120, y: 10, width: 80, height: 80 }); 
-boxes.push({ x: 170, y: 50, width: 80, height: 80 }); 
-boxes.push({ x: 220, y: 100, width: 80, height: 80 }); 
+boxes.push({ x: 120, y: 10, width: 80, height: 80 });
+boxes.push({ x: 170, y: 50, width: 80, height: 80 });
+boxes.push({ x: 220, y: 100, width: 80, height: 80 });
 boxes.push({ x: 270, y: 150, width: 40, height: 40 });
 
 canvas.width = width; canvas.height = height;
 
-function update() { 
-    // check keys 
-    if (keys[38] || keys[32]) { 
-        // up arrow or space 
-        if (!player.jumping && player.grounded) { 
-            player.jumping = true; 
+function update() {
+    // check keys
+    if (keys[38] || keys[32]) {
+        // up arrow or space
+        if (!player.jumping && player.grounded) {
+            player.jumping = true;
             player.grounded = false;
-            player.velY = -player.speed * 2; 
-        } 
-    } 
-    
-    if (keys[39]) { 
-        // right arrow 
-        if (player.velX < player.speed) { 
-            player.velX++; 
-        } 
-    } 
-    
-    if (keys[37]) { 
-        // left arrow 
-        if (player.velX > -player.speed) { 
-            player.velX--; 
-        } 
+            player.velY = -player.speed * 2;
+        }
+    }
+
+    if (keys[39]) {
+        // right arrow
+        if (player.velX < player.speed) {
+            player.velX++;
+        }
+    }
+
+    if (keys[37]) {
+        // left arrow
+        if (player.velX > -player.speed) {
+            player.velX--;
+        }
     }
 
     player.velX *= friction; player.velY += gravity;
 
-    ctx.clearRect(0, 0, width, height); 
-    ctx.fillStyle = "black"; 
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = "black";
     ctx.beginPath();
 
-    player.grounded = false; 
-    for (var i = 0; i < boxes.length; i++) { 
+    player.grounded = false;
+    for (var i = 0; i < boxes.length; i++) {
         ctx.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
 
         var dir = colCheck(player, boxes[i]);
 
-        if (dir === "l" || dir === "r") { 
-            player.velX = 0; 
-            player.jumping = false; 
-        } else if (dir === "b") { 
-            player.grounded = true; 
-            player.jumping = false; 
-        } else if (dir === "t") { 
-            player.velY *= -1; 
+        if (dir === "l" || dir === "r") {
+            player.velX = 0;
+            player.jumping = false;
+        } else if (dir === "b") {
+            player.grounded = true;
+            player.jumping = false;
+        } else if (dir === "t") {
+            player.velY *= -1;
         }
     }
 
-    if(player.grounded){ 
-        player.velY = 0; 
+    if(player.grounded){
+        player.velY = 0;
     }
 
-    player.x += player.velX; 
+    player.x += player.velX;
     player.y += player.velY;
 
-    ctx.fill(); 
-    ctx.fillStyle = "red"; 
+    ctx.fill();
+    ctx.fillStyle = "red";
     ctx.fillRect(player.x, player.y, player.width, player.height);
 
-    requestAnimationFrame(update); 
+    requestAnimationFrame(update);
 }
 
-function colCheck(shapeA, shapeB) { 
-    // get the vectors to check against 
-    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)), 
-        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)), 
-        // add the half widths and half heights of the objects 
-        hWidths = (shapeA.width / 2) + (shapeB.width / 2), 
-        hHeights = (shapeA.height / 2) + (shapeB.height / 2), 
+function colCheck(shapeA, shapeB) {
+    // get the vectors to check against
+    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
+        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
+        // add the half widths and half heights of the objects
+        hWidths = (shapeA.width / 2) + (shapeB.width / 2),
+        hHeights = (shapeA.height / 2) + (shapeB.height / 2),
         colDir = null;
 
-    // if the x and y vector are less than the half width or half height, 
-    // they we must be inside the object, causing a collision 
+    // if the x and y vector are less than the half width or half height,
+    // they we must be inside the object, causing a collision
 
-    if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) { 
-        // figures out on which side we are colliding (top, bottom, left, or right) 
-        var oX = hWidths - Math.abs(vX), 
-            oY = hHeights - Math.abs(vY); 
-            
-        if (oX >= oY) { 
-            if (vY > 0) { 
-                colDir = "t"; 
-                shapeA.y += oY; 
-            } else { 
-                colDir = "b"; 
-                shapeA.y -= oY; 
-            } 
-        } else { 
-            if (vX > 0) { 
-                colDir = "l"; 
-                shapeA.x += oX; 
-            } else { 
-                colDir = "r"; 
-                shapeA.x -= oX; 
-            } 
-        } 
-    } 
-    return colDir; 
+    if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) {
+        // figures out on which side we are colliding (top, bottom, left, or right)
+        var oX = hWidths - Math.abs(vX),
+            oY = hHeights - Math.abs(vY);
+
+        if (oX >= oY) {
+            if (vY > 0) {
+                colDir = "t";
+                shapeA.y += oY;
+            } else {
+                colDir = "b";
+                shapeA.y -= oY;
+            }
+        } else {
+            if (vX > 0) {
+                colDir = "l";
+                shapeA.x += oX;
+            } else {
+                colDir = "r";
+                shapeA.x -= oX;
+            }
+        }
+    }
+    return colDir;
 }
 
 document.body.addEventListener("keydown", function (e) { keys[e.keyCode] = true; });
 
 document.body.addEventListener("keyup", function (e) { keys[e.keyCode] = false; });
 
-window.addEventListener("load", function () { 
-    update(); 
-}); 
+window.addEventListener("load", function () {
+    update();
+});
 
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: "Working on a new JS game"
 date: "2013-10-10"
-teaser: "Embark on an exciting journey into game development with me being furloughed from my job dives into creating a full-fledged HTML5/canvas game. Get a sneak peek of the work-in-progress screenshots of "Grapple Hero" and explore the unique gameplay mechanics that revolve around grappling. Play the demo build and witness the thrilling escape from lava. Discover the platforms on which the game will be released and follow its progress on IndieDB."
+teaser: "A progress post on Grapple Hero, an HTML5 canvas game where the only movement is grappling. It includes screenshots, a playable demo build, and what I planned to do next."
 ---
 
 I've been furloughed from my job (government contractor) so I've had a bit of free time on my hands the last 2 weeks. I decided to start and hopefully in a reasonable amount of time finish a full fledged html5/canvas game.

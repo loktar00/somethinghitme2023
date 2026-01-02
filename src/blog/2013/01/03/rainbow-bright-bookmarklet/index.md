@@ -1,7 +1,7 @@
 ---
 title: "Rainbow bright bookmarklet"
 date: "2013-01-03"
-teaser: "Inject a burst of color into your browsing experience with the Rainbow Bright Bookmarklet. Discover how this nifty tool randomly changes the colors of all elements on a webpage. Click to add some vibrancy to your browsing!"
+teaser: "A bookmarklet that cycles colors across every element on the page. Drag it to your bookmarks, click it on any site, and enjoy the chaos..."
 ---
 
 Went a little crazy with a friend of mines bookmarklet he made that would randomly change the colors of all elements on a page.

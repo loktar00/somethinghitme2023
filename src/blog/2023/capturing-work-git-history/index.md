@@ -1,7 +1,7 @@
 ---
-title: "Capturing Work Git History for your github activity graph" 
+title: "Capturing Work Git History for your github activity graph"
 date: "2023-07-24"
-teaser: "A quick tip on how to capture work git history for your github activity graph"
+teaser: "If your day job repo is not on GitHub, here is how I export commit dates, bucket them, and replay them so my GitHub activity graph matches the work I actually did."
 tags: "blog, javascript, git, programming, github"
 ---
 
@@ -138,6 +138,6 @@ All we need to do after the script runs is push the changes to github and we're 
 
 ### Conclusion
 
-You don't have to lose all of your commit history when you leave a job, and you don't have to wonder how your graph might be looking if you had been using github. This is a quick and easy way to capture your work history and add it to your github activity graph that I've been using for years. 
+You don't have to lose all of your commit history when you leave a job, and you don't have to wonder how your graph might be looking if you had been using github. This is a quick and easy way to capture your work history and add it to your github activity graph that I've been using for years.
 
 I hope you find it useful!
