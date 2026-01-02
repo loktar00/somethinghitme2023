@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJDK7X0K15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YJDK7X0K15');
+    </script>
+    <meta charSet="utf-8" />
+    <meta name="description" content="Jason Browns Code, demos and ideas."/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.svg">
+    <link rel="manifest" href="/assets/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script src='/js/prism.js'></script>
+    <title>Creating a canvas platformer tutorial part two - Somethinghitme</title>
+</head>    <link href="/styles/articleStyles.css" rel="stylesheet" />
+  <body>
+    <div class="layout">
+        <header class="container">
+    <nav class="site-header">
+        <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
+            </svg>
+        </button>
+        <a href="/" class="logo-text">SomethingHitMe</a>
+    </nav>
+</header>        <main class="container">
+            <article class="article-content">
+                <header class="article-header">
+                    <div class="article-meta-row">
+                        <time datetime="2013-04-17">
+                            Wednesday, Apr 17, 2013                        </time>
+                        <span>&bull;</span>
+                        <span class="article-tag"></span>
+                    </div>
+                    <h1 class="article-title">Creating a canvas platformer tutorial part two</h1>
+                </header>
+                <section>
+                    <p>Wow, so its been a while since I've posted anything. I've been kind of busy, and was forcing myself not to post anything unless it was going to be part two of the tutorial. With that said lets begin! For all the code and fully working demo scroll to the bottom.</p>
+<p>Last we left off we had a pretty complete demo where we could run and jump around the screen. Now we are going to add some objects that the player can actually collide into!</p>
+<p>Lets add an array called boxes to hold the objects well be doing collision checks against, and lets block the player from falling out of the screen by using our objects.</p>
+<pre><code class="javascript language-javascript">var boxes = []
+
+// dimensions
+boxes.push({ x: 0, y: 0, width: 10, height: height });
+boxes.push({ x: 0, y: height - 2, width: width, height: 50 });
+boxes.push({ x: width - 10, y: 0, width: 50, height: height });
+</code></pre>
+<p>The above code sets up three boxes to enclose our game world. If you remember from the last tutorial we are checking coordinates directly to keep the player within the bounds, however since we are adding collisions we can just let our collision function handle that for us.</p>
+<p>Lets got ahead and add some logic to draw the boxes so you can see them. Add the following code to your update function between clearRect and ctx.fillStyle = "red".</p>
+<pre><code class="javascript language-javascript">ctx.fillStyle = "black"; ctx.beginPath();
+
+for (var i = 0; i &lt; boxes.length; i++) {
+    ctx.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
+}
+
+ctx.fill();
+</code></pre>
+<p>You should now see some thick black boxes on the left, right, and bottom of your canvas. Now lets actually make the player collide against them!</p>
+<p>So Im going to give a pretty brief primer of the collision method we are using. We are going to be checking two objects against each other, the player, and a box. We will do this by checking if they intersect. If they intersect then they must be colliding. Since we are working on a platformer we need one more piece of information, from which direction is the player colliding? Go ahead and add the below function, it does just that!</p>
+<pre><code class="javascript language-javascript">function colCheck(shapeA, shapeB) {
+    // get the vectors to check against
+    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
+        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
+        // add the half widths and half heights of the objects
+        hWidths = (shapeA.width / 2) + (shapeB.width / 2),
+        hHeights = (shapeA.height / 2) + (shapeB.height / 2),
+        colDir = null;
+
+    // if the x and y vector are less than the half width or half height,
+    // they we must be inside the object, causing a collision
+    if (Math.abs(vX) &lt; hWidths &amp;&amp; Math.abs(vY) &lt; hHeights) {
+        // figures out on which side we are colliding (top, bottom, left, or right)
+        var oX = hWidths - Math.abs(vX), oY = hHeights - Math.abs(vY);
+        if (oX &gt;= oY) {
+            if (vY &gt; 0) {
+                colDir = "t";
+                shapeA.y += oY;
+            } else {
+                colDir = "b";
+                shapeA.y -= oY;
+            }
+        } else {
+            if (vX &gt; 0) {
+                colDir = "l";
+                shapeA.x += oX;
+            } else {
+                colDir = "r";
+                shapeA.x -= oX;
+            }
+        }
+    }
+    return colDir;
+}
+</code></pre>
+<p>The code is easy to figure out if you stare at it for a bit, but Ill go ahead and give a quick explanation of whats going on. First we need to calculate the current vector from the center of our objects, which is done in the very beginning.</p>
+<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig1.webp" alt="" title="fig1" /></p>
+<p>The player and box object at their current positions ready to be checked to see if they are colliding.</p>
+<p>The above image shows the player and one of our boxes. We can tell they aren't currently colliding but lets step through to see how the function figures it out.</p>
+<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig2.webp" alt="" title="fig2" /></p>
+<p>Showing the vector calculation and half width, half height calculations.</p>
+<p>Above shows the values we end up with for the vector, half widths, and half heights. The function checks the absolute values of the vector to see if they are less than the half width, and half height. If they are there is a collision. As you see from above our vector needed an x component of 25 or less, along with the y. Since they our values were both 35 (remember we check the absolute value meaning the -35 turns to 35) that means we are too far away and are currently not intersecting.</p>
+<p>Now lets take a look at an example where the player and the box are intersecting.</p>
+<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig3.webp" alt="" title="fig3" /></p>
+<p>The player and the box are now intersecting since the vector components are less than the half width and half height.[/caption]</p>
+<p>The above uses the same dimensions for the box and player, all we did was move the player closer to the box. The values for the x and y component of the vector come out to less than 25, meaning a collision has occurred. Now using this information we can actually get which side the collision occurred on. To do this we need to first figure out the offset vector, meaning how far are we into the other object. The below illustration shows how we do that.</p>
+<p><img src="/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/images/fig4.webp" alt="" title="fig4" /></p>
+<p>Calculating the offset vector after a collision has&nbsp;occurred.</p>
+<p>So now we have the offsets, what do we need to do with them? First we check if the x components offset is greater than the y. If so that would tell us we either collided with the top or bottom of the object, because the assumption is the greater penetration is not actually *in* the object since we would have caught it much sooner. In our case the y offset is much greater meaning we collided with the left or right of the object and since our original vectors X is a positive number, it means it was on the left. If we were on the right side our x value would have came out positive due to the x coordinate of the player being greater than the x coordinate of the box.</p>
+<p>Now we need to move the objects outside of each other, if we don't then they will just go further inside one another. This is very easy since we already have the offsets, and since we determined we collided on the left side, we move our box to the left by 2.</p>
+<p>Alright so you have this collision function.. what the heck do you do with it? All you need to do is add the following inside the drawing loop for your boxes.</p>
+<pre><code class="javascript language-javascript"> var dir = colCheck(player, boxes[i]);
+</code></pre>
+<p>Now we need to add a couple more things before we can actually do anything with the collisions. Add the property grounded, and sliding to your player object and set it false initially. Since we are going to have different things to jump off of we need to know if we are on solid ground or not, or if we should keep falling raising. Your player object should now look like this.</p>
+<pre><code class="javascript language-javascript">player = {
+   x: width / 2,
+   y: height - 5,
+   width: 5,
+   height: 5,
+   speed: 3,
+   velX: 0,
+   velY: 0,
+   jumping: false,
+   grounded: false
+},
+</code></pre>
+<p>Lets go ahead and add the check to our jumping condition, change your jump key condition to the following.</p>
+<pre><code class="javascript language-javascript">    if (keys[38] || keys[32]) {
+        // up arrow or space
+        if (!player.jumping &amp;&amp; player.grounded) {
+            player.jumping = true;
+            player.grounded = false;
+            // We're not on the ground anymore!!
+            player.velY = -player.speed * 2;
+        }
+    }
+</code></pre>
+<p>By looking at that you can see we can only jump if we are on the ground and are currently not jumping, and every time we jump set grounded to false. We also need to set grounded to false before we do the collision check every time so our player can fall off ledges, add the following right before the box loop.</p>
+<pre><code class="javascript language-javascript">player.grounded = false;
+</code></pre>
+<p>Now lets go ahead and remove the following from your code, since we are going to be using our collision system instead of hard constraints when keeping the player in the canvas.</p>
+<pre><code class="javascript language-javascript">    if (player.x &gt;= width - player.width) {
+        player.x = width - player.width;
+    } else if (player.x &lt;= 0) {
+        player.x = 0;
+    }
+
+    if (player.y &gt;= height - player.height) {
+        player.y = height - player.height;
+        player.jumping = false;
+    }
+</code></pre>
+<p>We just removed what told us our player isn't jumping anymore! We need to add some of that logic back in somewhere else! Add the following into your update function inside the box loop where you call the colCheck function.</p>
+<pre><code class="javascript language-javascript">    if (dir === "l" || dir === "r") {
+        player.velX = 0; player.jumping = false;
+    } else if (dir === "b") {
+        player.grounded = true;
+        player.jumping = false;
+    } else if (dir === "t") {
+        player.velY *= -1;
+    }
+</code></pre>
+<p>As you can see from that, if the collision direction is on the left or right we stop the player from moving left or right, if its on the bottom we set grounded to true since our feet have touched some sort of ground, and if its top, we just reverse the current force of our jump since we hit our head on the ceiling. You could just as easily make velY 0 but it feels a bit floaty to me.</p>
+<p>The last thing you need to do is put the following code right after the box loop.</p>
+<pre><code class="javascript language-javascript">if(player.grounded){
+    player.velY = 0;
+}
+
+player.x += player.velX;
+player.y += player.velY;
+</code></pre>
+<p>Delete the previous occurrence of player.x += player.velX, and player.y += player.velY. Go ahead and run it! If there are no errors the player should not fall through the world and should be able to run and jump around.. acting just like our previous demo!.. wait, so we did all that work just to make it like the last demo? Of course not, lets add some boxes right under the section where we declared our first set of boxes.</p>
+<pre><code class="javascript language-javascript">    boxes.push({ x: 120, y: 10, width: 80, height: 80 });
+    boxes.push({ x: 170, y: 50, width: 80, height: 80 });
+    boxes.push({ x: 220, y: 100, width: 80, height: 80 });
+    boxes.push({ x: 270, y: 150, width: 40, height: 40 });
+</code></pre>
+<p>Now go ahead run around and jump!</p>
+<p>The entire program should look like the following</p>
+<pre><code class="javascript language-javascript">(function () {
+    var requestAnimationFrame = window.requestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame;
+
+    window.requestAnimationFrame = requestAnimationFrame;
+})();
+
+var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d"),
+    width = 500,
+    height = 200,
+    player = {
+        x: width / 2,
+        y: height - 15,
+        width: 5,
+        height: 5,
+        speed: 3,
+        velX: 0,
+        velY: 0,
+        jumping: false,
+        grounded: false
+    },
+    keys = [],
+    friction = 0.8,
+    gravity = 0.3;
+
+var boxes = [];
+
+// dimensions
+boxes.push({ x: 0, y: 0, width: 10, height: height });
+boxes.push({ x: 0, y: height - 2, width: width, height: 50 });
+boxes.push({ x: width - 10, y: 0, width: 50, height: height });
+
+boxes.push({ x: 120, y: 10, width: 80, height: 80 });
+boxes.push({ x: 170, y: 50, width: 80, height: 80 });
+boxes.push({ x: 220, y: 100, width: 80, height: 80 });
+boxes.push({ x: 270, y: 150, width: 40, height: 40 });
+
+canvas.width = width; canvas.height = height;
+
+function update() {
+    // check keys
+    if (keys[38] || keys[32]) {
+        // up arrow or space
+        if (!player.jumping &amp;&amp; player.grounded) {
+            player.jumping = true;
+            player.grounded = false;
+            player.velY = -player.speed * 2;
+        }
+    }
+
+    if (keys[39]) {
+        // right arrow
+        if (player.velX &lt; player.speed) {
+            player.velX++;
+        }
+    }
+
+    if (keys[37]) {
+        // left arrow
+        if (player.velX &gt; -player.speed) {
+            player.velX--;
+        }
+    }
+
+    player.velX *= friction; player.velY += gravity;
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+
+    player.grounded = false;
+    for (var i = 0; i &lt; boxes.length; i++) {
+        ctx.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
+
+        var dir = colCheck(player, boxes[i]);
+
+        if (dir === "l" || dir === "r") {
+            player.velX = 0;
+            player.jumping = false;
+        } else if (dir === "b") {
+            player.grounded = true;
+            player.jumping = false;
+        } else if (dir === "t") {
+            player.velY *= -1;
+        }
+    }
+
+    if(player.grounded){
+        player.velY = 0;
+    }
+
+    player.x += player.velX;
+    player.y += player.velY;
+
+    ctx.fill();
+    ctx.fillStyle = "red";
+    ctx.fillRect(player.x, player.y, player.width, player.height);
+
+    requestAnimationFrame(update);
+}
+
+function colCheck(shapeA, shapeB) {
+    // get the vectors to check against
+    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
+        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
+        // add the half widths and half heights of the objects
+        hWidths = (shapeA.width / 2) + (shapeB.width / 2),
+        hHeights = (shapeA.height / 2) + (shapeB.height / 2),
+        colDir = null;
+
+    // if the x and y vector are less than the half width or half height,
+    // they we must be inside the object, causing a collision
+
+    if (Math.abs(vX) &lt; hWidths &amp;&amp; Math.abs(vY) &lt; hHeights) {
+        // figures out on which side we are colliding (top, bottom, left, or right)
+        var oX = hWidths - Math.abs(vX),
+            oY = hHeights - Math.abs(vY);
+
+        if (oX &gt;= oY) {
+            if (vY &gt; 0) {
+                colDir = "t";
+                shapeA.y += oY;
+            } else {
+                colDir = "b";
+                shapeA.y -= oY;
+            }
+        } else {
+            if (vX &gt; 0) {
+                colDir = "l";
+                shapeA.x += oX;
+            } else {
+                colDir = "r";
+                shapeA.x -= oX;
+            }
+        }
+    }
+    return colDir;
+}
+
+document.body.addEventListener("keydown", function (e) { keys[e.keyCode] = true; });
+
+document.body.addEventListener("keyup", function (e) { keys[e.keyCode] = false; });
+
+window.addEventListener("load", function () {
+    update();
+});
+</code></pre>
+<p><a href="http://jsfiddle.net/loktar/da9cP/">Link to the code on jsfiddle</a></p>                </section>
+            </article>
+            <hr/>
+            <footer>
+                <!-- Author -->
+<section class="author-section">
+    <img src="/assets/avatar.jpg" alt="Jason Brown" class="author-avatar">
+    <div class="author-info">
+        <h3 class="author-name">Jason Brown (Loktar)</h3>
+        <p class="author-bio">
+            Christian, Grandfather, Veteran, lover of everything tech.
+        </p>
+        <div class="social-row">
+            <a href="https://github.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12C2,16.42,4.87,20.17,8.84,21.5C9.34,21.58,9.5,21.27,9.5,21C9.5,20.77,9.5,20.14,9.5,19.31C6.73,19.91,6.14,17.97,6.14,17.97C5.68,16.81,5.03,16.5,5.03,16.5C4.12,15.88,5.1,15.9,5.1,15.9C6.1,15.97,6.63,16.93,6.63,16.93C7.5,18.45,8.97,18,9.54,17.76C9.63,17.11,9.89,16.67,10.17,16.42C7.95,16.17,5.62,15.31,5.62,11.5C5.62,10.39,6,9.5,6.65,8.79C6.55,8.54,6.2,7.5,6.75,6.15C6.75,6.15,7.59,5.88,9.5,7.17C10.29,6.95,11.15,6.84,12,6.84C12.85,6.84,13.71,6.95,14.5,7.17C16.41,5.88,17.25,6.15,17.25,6.15C17.8,7.5,17.45,8.54,17.35,8.79C18,9.5,18.38,10.39,18.38,11.5C18.38,15.32,16.04,16.16,13.81,16.41C14.17,16.72,14.5,17.33,14.5,18.26C14.5,19.6,14.5,20.68,14.5,21C14.5,21.27,14.66,21.59,15.17,21.5C19.14,20.16,22,16.42,22,12A10,10,0,0,0,12,2Z"/></svg>
+                GitHub
+            </a>
+            <a href="https://twitter.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                @loktar00
+            </a>
+            <a href="https://codepen.io/loktar00" class="social-link">
+                <svg class='codepen' viewBox="0 1 22 24" fill="none" stroke-width="2"><path transform="translate(-22 0)" d="M22 9.3L33 2l11 7.3v7.4L33 24l-11-7.3z m0 0 11 7.4 11-7.4 m0 7.4L33 9.3l-11 7.4 M33 2v7.3 m0 7.4V24" /></svg>
+                CodePen
+            </a>
+            <a href="https://stackoverflow.com/users/322395/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852l10.48 2.189.451-2.07-10.48-2.189-.451 2.07zm1.359-5.056l9.705 4.53.903-1.95-9.705-4.53-.903 1.95zm2.715-4.785l8.217 6.855 1.359-1.62-8.217-6.855-1.359 1.62zM15.841 0l-1.791.973 6.503 5.977 1.791-.973L15.841 0z"/></svg>
+                Stack Overflow
+            </a>
+            <a href="https://www.dwitter.net/u/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M6 4v16h2V4H6zm5 0v16h2V4h-2zm5 0v16h2V4h-2z"/></svg>
+                Dwitter
+            </a>
+        </div>
+    </div>
+</section>            </footer>
+            <nav class="post-footer">
+    <a class="footer-link" rel="prev" href="/">← All Articles</a>
+    <a class="footer-link" rel="prev" href="/2013/01/09/creating-a-canvas-platformer-tutorial-part-one/">Creating a canvas platformer tutorial part one →</a></nav>        </main>
+        <footer class="site-footer">
+    © 2026, Built by <a href="https://github.com/loktar00">Jason Brown - Loktar</a>
+</footer>    </div>
+    <script src='/js/main.js'></script>
+  </body>
+</html>

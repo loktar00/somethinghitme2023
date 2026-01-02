@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJDK7X0K15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YJDK7X0K15');
+    </script>
+    <meta charSet="utf-8" />
+    <meta name="description" content="Jason Browns Code, demos and ideas."/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.svg">
+    <link rel="manifest" href="/assets/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script src='/js/prism.js'></script>
+    <title>JavaScript Canvas Lightning Effect - Somethinghitme</title>
+</head>    <link href="/styles/articleStyles.css" rel="stylesheet" />
+  <body>
+    <div class="layout">
+        <header class="container">
+    <nav class="site-header">
+        <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
+            </svg>
+        </button>
+        <a href="/" class="logo-text">SomethingHitMe</a>
+    </nav>
+</header>        <main class="container">
+            <article class="article-content">
+                <header class="article-header">
+                    <div class="article-meta-row">
+                        <time datetime="2010-05-25">
+                            Tuesday, May 25, 2010                        </time>
+                        <span>&bull;</span>
+                        <span class="article-tag"></span>
+                    </div>
+                    <h1 class="article-title">JavaScript Canvas Lightning Effect</h1>
+                </header>
+                <section>
+                    <p>Like always still messing around creating random things using JavaScript and the Canvas element. My most recent side project was implementing some Action Script lightning code posted by Rybar over on the Flixel forums. Here is what I came up with <a href="http://www.somethinghitme.com/projects/canvaslightning/">http://www.somethinghitme.com/projects/canvaslightning/</a>. Theres&nbsp;definitely&nbsp;a lot to be desired. Was trying to think of some cool things to do with it. It's a work in progress until a good idea comes to me.</p>                </section>
+            </article>
+            <hr/>
+            <footer>
+                <!-- Author -->
+<section class="author-section">
+    <img src="/assets/avatar.jpg" alt="Jason Brown" class="author-avatar">
+    <div class="author-info">
+        <h3 class="author-name">Jason Brown (Loktar)</h3>
+        <p class="author-bio">
+            Christian, Grandfather, Veteran, lover of everything tech.
+        </p>
+        <div class="social-row">
+            <a href="https://github.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12C2,16.42,4.87,20.17,8.84,21.5C9.34,21.58,9.5,21.27,9.5,21C9.5,20.77,9.5,20.14,9.5,19.31C6.73,19.91,6.14,17.97,6.14,17.97C5.68,16.81,5.03,16.5,5.03,16.5C4.12,15.88,5.1,15.9,5.1,15.9C6.1,15.97,6.63,16.93,6.63,16.93C7.5,18.45,8.97,18,9.54,17.76C9.63,17.11,9.89,16.67,10.17,16.42C7.95,16.17,5.62,15.31,5.62,11.5C5.62,10.39,6,9.5,6.65,8.79C6.55,8.54,6.2,7.5,6.75,6.15C6.75,6.15,7.59,5.88,9.5,7.17C10.29,6.95,11.15,6.84,12,6.84C12.85,6.84,13.71,6.95,14.5,7.17C16.41,5.88,17.25,6.15,17.25,6.15C17.8,7.5,17.45,8.54,17.35,8.79C18,9.5,18.38,10.39,18.38,11.5C18.38,15.32,16.04,16.16,13.81,16.41C14.17,16.72,14.5,17.33,14.5,18.26C14.5,19.6,14.5,20.68,14.5,21C14.5,21.27,14.66,21.59,15.17,21.5C19.14,20.16,22,16.42,22,12A10,10,0,0,0,12,2Z"/></svg>
+                GitHub
+            </a>
+            <a href="https://twitter.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                @loktar00
+            </a>
+            <a href="https://codepen.io/loktar00" class="social-link">
+                <svg class='codepen' viewBox="0 1 22 24" fill="none" stroke-width="2"><path transform="translate(-22 0)" d="M22 9.3L33 2l11 7.3v7.4L33 24l-11-7.3z m0 0 11 7.4 11-7.4 m0 7.4L33 9.3l-11 7.4 M33 2v7.3 m0 7.4V24" /></svg>
+                CodePen
+            </a>
+            <a href="https://stackoverflow.com/users/322395/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852l10.48 2.189.451-2.07-10.48-2.189-.451 2.07zm1.359-5.056l9.705 4.53.903-1.95-9.705-4.53-.903 1.95zm2.715-4.785l8.217 6.855 1.359-1.62-8.217-6.855-1.359 1.62zM15.841 0l-1.791.973 6.503 5.977 1.791-.973L15.841 0z"/></svg>
+                Stack Overflow
+            </a>
+            <a href="https://www.dwitter.net/u/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M6 4v16h2V4H6zm5 0v16h2V4h-2zm5 0v16h2V4h-2z"/></svg>
+                Dwitter
+            </a>
+        </div>
+    </div>
+</section>            </footer>
+            <nav class="post-footer">
+    <a class="footer-link" rel="prev" href="/">← All Articles</a>
+    <a class="footer-link" rel="prev" href="/2010/05/25/new-design-for-mio-ausable-schools/">New Design for Mio Ausable Schools →</a></nav>        </main>
+        <footer class="site-footer">
+    © 2026, Built by <a href="https://github.com/loktar00">Jason Brown - Loktar</a>
+</footer>    </div>
+    <script src='/js/main.js'></script>
+  </body>
+</html>

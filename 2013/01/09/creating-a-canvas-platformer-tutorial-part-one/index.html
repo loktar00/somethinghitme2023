@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJDK7X0K15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YJDK7X0K15');
+    </script>
+    <meta charSet="utf-8" />
+    <meta name="description" content="Jason Browns Code, demos and ideas."/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.svg">
+    <link rel="manifest" href="/assets/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script src='/js/prism.js'></script>
+    <title>Creating a canvas platformer tutorial part one - Somethinghitme</title>
+</head>    <link href="/styles/articleStyles.css" rel="stylesheet" />
+  <body>
+    <div class="layout">
+        <header class="container">
+    <nav class="site-header">
+        <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
+            </svg>
+        </button>
+        <a href="/" class="logo-text">SomethingHitMe</a>
+    </nav>
+</header>        <main class="container">
+            <article class="article-content">
+                <header class="article-header">
+                    <div class="article-meta-row">
+                        <time datetime="2013-01-09">
+                            Wednesday, Jan 9, 2013                        </time>
+                        <span>&bull;</span>
+                        <span class="article-tag"></span>
+                    </div>
+                    <h1 class="article-title">Creating a canvas platformer tutorial part one</h1>
+                </header>
+                <section>
+                    <p>I've seen a few questions on <a href="https://stackoverflow.com" title="stackoverflow">Stackoverflow</a> lately dealing with how to smoothly move an object around on the canvas. This will be the first part, of my first ever attempted tutorial series. So please bear with me as I can sometimes be very confusing (to myself included) when trying to convey any topics dealing with development.</p>
+<h2 id="whatwewillbemaking">What we will be making</h2>
+<iframe height="386" style="width: 100%;" scrolling="no" title="Part 1 platformer tutorial" src="https://codepen.io/loktar00/embed/jHwBL?height=386&theme-id=690&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/loktar00/pen/jHwBL'>Part 1 platformer tutorial</a> by Loktar
+  (<a href='https://codepen.io/loktar00'>@loktar00</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+<h2 id="whatdoineedtoknow">What do I need to know?</h2>
+<p>What do you need to know before reviewing this tutorial? Not much really, a pretty basic understanding of&nbsp;JavaScript&nbsp;is required, and know what the <a href="https://developer.mozilla.org/en-US/docs/HTML/Canvas/Tutorial?redirectlocale=en-US&redirectslug=Canvas_tutorial">canvas</a> element is would be helpful.</p>
+<h2 id="letsgetsetup">Lets get setup</h2>
+<p>First lets start out by opening your favorite text editing program. My preferred tool is Sublime Text, but you can use anything, even notepad (although not recommended). Lets go ahead and create a file called game.html and setup the appropriate sections.</p>
+<p>In your game.html put the following in.</p>
+<pre><code class="html language-html">    &lt;!doctype html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;My fancy game&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;script&gt;
+                // All of our JavaScript will go here.
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+<h2 id="letsdrawsomething">Lets draw something!</h2>
+<p>We are going to need a few things to start out with. We need a way to track the player object, we need a game loop to update logic and draw onto the screen, and we need to handle user input. So lets get started!</p>
+<p>The first thing well do is create the canvas element we're going to use and get something drawn on it.</p>
+<p>Use following markup to create the canvas element. Make sure to place it before the script tag in the html file we created.</p>
+<pre><code class="html language-html">&lt;canvas id="canvas" style="border:1px solid #000"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+    // All of our JavaScript will go here.
+&lt;/script&gt;
+</code></pre>
+<p>I was also very bad and added an inline style to our canvas element. It allows us to see where its actually at on the page. As a caveat however this is a tutorial on creating a game with JavaScript and canvas, not a web standards tutorial.</p>
+<p>Now add some JavaScript to get the player onto the screen. This will go between the script tags, right in the area that says</p>
+<p><strong>//All of our JavaScript will go here</strong>.</p>
+<pre><code class="js language-js">    var canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d"),
+        width = 500,
+        height = 200,
+        player = { x : width / 2, y : height - 5, width : 5, height : 5 };
+
+    canvas.width = width; canvas.height = height;
+
+    // draw a small red box, which will eventually become our player.
+    ctx.fillStyle = "red";
+    ctx.fillRect(player.x, player.y, player.width, player.height);
+</code></pre>
+<p>You can now test your file. To do that double click your html file, it should open up in your web browser by default. From now on everytime you want to test a change you can just refresh your page.</p>
+<p>If you run what you have you should have something that looks like the following.</p>
+<p><a href="https://www.somethinghitme.com/2013/01/09/creating-a-canvas-platformer-tutorial-part-one/tut1-1/"><img src="/2013/01/09/creating-a-canvas-platformer-tutorial-part-one/images/tut1-1.webp" alt="What you should have after the following code." /></a></p>
+<p>AWW YEAH GOT SOMETHING ON SCREEN!</p>
+<p>Ok maybe I'm too excited about that I don't know, regardless your dude is on the screen and I can tell he wants to get moving.</p>
+<h2 id="thegameloopandrequestanimationframe">The game loop and requestAnimationFrame</h2>
+<p>Now we need to add the game loop! If you're pretty new to canvas and making things move with canvas in particular you may of seen examples using setTimeout, or setInterval. DON'T USE THESE! They were great when&nbsp;that's&nbsp;all we had but for anything that requires constant rendering you want to use <a href="https://developer.mozilla.org/en-US/docs/DOM/window.requestAnimationFrame">requestAnimationFrame</a>. requestAnimationFrame is much better in a few ways, I wont go into all of them <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">but here is a good place to start reading why you should use it.</a> We will add a shim that was popularized by Paul Irish, which will use requestAnimationFrame on all browsers that support it, and fall back to good ol setTimeout on browsers that do not support it.</p>
+<p>Add the following to the top of your js.</p>
+<pre><code class="js language-js">    (function() {
+        var requestAnimationFrame = window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.msRequestAnimationFrame;
+        window.requestAnimationFrame = requestAnimationFrame;
+    })();
+</code></pre>
+<p>How are you supposed to use it? Its actually quite easy. Lets throw our rendering code into a function, well call it update since we will also place our update logic here as well. Note, this isn't a best practice but we are just doing it for the tutorials sake. Generally your rendering portion, and code that controls entities updating would be seperate so you could add things such as delta timing to control the rendering. However lets keep it simple!</p>
+<p>Change the portion in your js that draws your player to the following.</p>
+<pre><code class="js language-js">    function update(){
+        // runs the loop each time
+        requestAnimationFrame(update);
+        // draw our player
+        ctx.fillStyle = "red";
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+    }
+</code></pre>
+<p>We also need a way to get our game loop kick started, so add a load event listener for the window to the end of your js file.</p>
+<pre><code class="js language-js">    window.addEventListener("load", function(){ update(); });
+</code></pre>
+<p>Now run the code!!!! It still looks the same doesn't it? Alright lets add something to make it a bit more appealing.</p>
+<h2 id="handlingnbspkeyboardinputfromtheuser">Handling&nbsp;keyboard input from the user</h2>
+<p>So now we have our game loop, and our player object, all we need now is a way to get the player moving! We will do this by tracking key presses by the user, and moving our player accordingly.</p>
+<p>First we need to add a few more properties to our player object, update your player object to the following.</p>
+<pre><code class="js language-js">    player = { x : width/2, y : height - 5, width : 5, height : 5, speed: 3, velX: 0, velY: 0 }
+</code></pre>
+<p>As you can see we have added velocity variables for horizontal and vertical movement, and a speed variable. The velocities will be added to our current position, and the speed will control how fast we are able to go.</p>
+<p>Next lets add an array named keys right after the player object.</p>
+<pre><code class="js language-js">    keys = [];
+</code></pre>
+<p>So your variable declarations should now look like this.</p>
+<pre><code class="js language-js">    var canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d"),
+        width = 500,
+        height = 200,
+        player = {
+            x : width / 2,
+            y : height - 5,
+            width : 5,
+            height : 5,
+            speed: 3,
+            velX: 0,
+            velY: 0
+        },
+        keys = [];
+</code></pre>
+<p>Its time to add the keyboard events. If you have never dealt with the canvas element before, and keyboard events, you'll be disappointed to learn you can not tie keyboard events directly to the canvas element. So for the sake of this tutorial we will just bind them to the body.</p>
+<p>Add the following.</p>
+<pre><code class="js language-js">    document.body.addEventListener("keydown", function(e) {
+        keys[e.keyCode] = true;
+    });
+
+    document.body.addEventListener("keyup", function(e) {
+        keys[e.keyCode] = false;
+    });
+</code></pre>
+<p>This is where the keys variable comes into play. Basically what this does is every time you touch, or hold a key down the element in the array at the same position as the keycode will be set to either true or false. Using this method it allows us to track multiple keys at one time rather than trying to handle key presses individually.</p>
+<p>Alright onto adding the actual interaction! Add the following code to the top of the update function.</p>
+<pre><code class="js language-js">    // check keys
+    if (keys[38]) {
+        // up arrow
+    }
+
+    if (keys[39]) {
+        // right arrow
+        if (player.velX &lt; player.speed) {
+            player.velX++;
+        }
+    }
+
+    if (keys[37]) {
+        // left arrow
+        if (player.velX &gt; -player.speed) {
+            player.velX--;
+        }
+    }
+</code></pre>
+<p>The above code checks which keys are set to true, and if they are increases or decreases the players velocity. There's also a check that limits the speed of the player to the speed variable to make sure the player doesn't go too fast.</p>
+<p>Its time to actually move the player, add the following code after the code you just added.</p>
+<pre><code class="js language-js">    player.x += player.velX; player.y += player.velY;
+</code></pre>
+<p>Now if you go ahead and run your code, the player will actually move! But wait!! Don't run it yet, we need one more check in place. The next bit of code takes care of that, add it right after the player movement.</p>
+<pre><code class="js language-js">    if (player.x &gt;= width-player.width) {
+        player.x = width-player.width;
+    } else if (player.x &lt;= 0) {
+        player.x = 0;
+    }
+</code></pre>
+<p>The above code will make your player stop and not go outside of the canvas. Now go ahead and run your code, your player should now run back and forth. Pretty badass amiright?! Ok maybe not that awesome. You probably are noticing the player keeps moving when you let up on the arrow key, whats up with that?</p>
+<p>Instead of making the player just stop immediately, lets add some friction to our players movement. Go ahead and add a friction variable under the keys var, set it to 0.8, you can play with this to create more or less friction, a lower number makes you slide less, a higher number makes you slide more.</p>
+<pre><code class="js language-js">    friction = 0.8;
+</code></pre>
+<p>Now add the following code in your game loop right after you check the keys.</p>
+<pre><code class="js language-js">    player.velX *= friction;
+</code></pre>
+<p>Go ahead and run your code, your player should now stop when you let go, with a bit of a skid. Play with the value to increase or decrease how much your player slides around.</p>
+<h2 id="timetogetjumping">Time to get jumping!</h2>
+<p>What good is a platformer without jumping? Well.. I'm sure you could come up with some interesting games not using the jumping mechanic.. but that's besides the point!</p>
+<p>You probably already know what we need to do to get our player to jump, we need to modify the players velocity on the y axis, every time we hit the desired key. &nbsp;Jumping can be tricky, there are a few gotchas when dealing with it.</p>
+<p>First we need to add something to the player object to let us know if we are currently jumping or not.</p>
+<pre><code class="js language-js">    player{
+        // all the other properties previously entered...
+        jumping : false
+    }
+</code></pre>
+<p>Next we need to make the player jump when a key is pressed. This is pretty simple, we just add another check where we check for left and right arrow keys. We also need to set the players velocity to a negative value to make them into the air, and set the jumping property to true.</p>
+<pre><code class="js language-js">    if (keys[38] || keys[32]) {
+        // up arrow or space
+        if (!player.jumping){
+            player.jumping = true;
+            player.velY = -player.speed * 2;
+        }
+    }
+</code></pre>
+<p>If you run the code now your player should jump, and fly away! So lets reign him in a little. We need to add gravity into the mix, or simulate it anyway. Lets add a gravity variable to our variable declarations at the top of the code. You can play with this value to make your player jump on the moon if you want! The lower the number the higher or "floatier" the jump.</p>
+<pre><code class="js language-js">    gravity = 0.3;
+</code></pre>
+<p>Now to use gravity we need to add the following line within the update loop. Add it right after the line that applies friction to the horizontal movement we did earlier.</p>
+<pre><code class="js language-js">    player.velY += gravity;
+</code></pre>
+<p>One more thing until we are "done", we need to make sure the player doesn't fall through the screen, and we need to reset the jump property when the player hits the ground. So lets add a boundary check right after we check the horizontal location of the player inside of the update function.</p>
+<pre><code class="js language-js">    if (player.y &gt;= height-player.height) {
+        player.y = height - player.height;
+        player.jumping = false;
+    }
+</code></pre>
+<p>Go ahead and run it! You should have a little dot that runs back and forth and jumps like a bauce!! Check out the full source below.</p>
+<p><a href="https://codepen.io/loktar00/pen/jHwBL">Pen to mess around with</a></p>
+<iframe height="386" style="width: 100%;" scrolling="no" title="Part 1 platformer tutorial" src="https://codepen.io/loktar00/embed/jHwBL?height=386&theme-id=690&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/loktar00/pen/jHwBL'>Part 1 platformer tutorial</a> by Loktar
+  (<a href='https://codepen.io/loktar00'>@loktar00</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+<h2 id="fullsource">Full source</h2>
+<pre><code class="js language-js">    (function() {
+        var requestAnimationFrame = window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.msRequestAnimationFrame;
+
+      window.requestAnimationFrame = requestAnimationFrame;
+    })();
+
+    var canvas = document.getElementById("canvas"),
+      ctx = canvas.getContext("2d"),
+      width = 500,
+      height = 200,
+      player = {
+        x: width / 2,
+        y: height - 5,
+        width: 5,
+        height: 5,
+        speed: 3,
+        velX: 0,
+        velY: 0,
+        jumping: false
+      },
+      keys = [],
+      friction = 0.8,
+      gravity = 0.2;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    function update() {
+      // check keys
+      if (keys[38] || keys[32]) {
+        // up arrow or space
+        if (!player.jumping) {
+          player.jumping = true;
+          player.velY = -player.speed * 2;
+        }
+      }
+
+      if (keys[39]) { // right arrow
+        if (player.velX &lt; player.speed) {
+          player.velX++;
+        }
+      }
+      if (keys[37]) {
+        // left arrow
+        if (player.velX &gt; -player.speed) {
+          player.velX--;
+        }
+      }
+
+      player.velX *= friction;
+
+      player.velY += gravity;
+
+      player.x += player.velX;
+      player.y += player.velY;
+
+      if (player.x &gt;= width - player.width) {
+        player.x = width - player.width;
+      } else if (player.x &lt;= 0) {
+        player.x = 0;
+      }
+      if (player.y &gt;= height - player.height) {
+        player.y = height - player.height;
+        player.jumping = false;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "red";
+      ctx.fillRect(player.x, player.y, player.width, player.height);
+
+      requestAnimationFrame(update);
+    }
+
+    document.body.addEventListener("keydown", function(e) {
+      keys[e.keyCode] = true;
+    });
+
+    document.body.addEventListener("keyup", function(e) {
+      keys[e.keyCode] = false;
+    });
+
+    window.addEventListener("load", function() {
+      update();
+    });
+</code></pre>
+<p>Part two will focuses on colliding with objects, and actually building a little world for our player to interact with.</p>
+<p><a href="https://somethinghitme.com/2013/04/16/creating-a-canvas-platformer-tutorial-part-tw/">Check out Part 2 for collisions!</a></p>                </section>
+            </article>
+            <hr/>
+            <footer>
+                <!-- Author -->
+<section class="author-section">
+    <img src="/assets/avatar.jpg" alt="Jason Brown" class="author-avatar">
+    <div class="author-info">
+        <h3 class="author-name">Jason Brown (Loktar)</h3>
+        <p class="author-bio">
+            Christian, Grandfather, Veteran, lover of everything tech.
+        </p>
+        <div class="social-row">
+            <a href="https://github.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12C2,16.42,4.87,20.17,8.84,21.5C9.34,21.58,9.5,21.27,9.5,21C9.5,20.77,9.5,20.14,9.5,19.31C6.73,19.91,6.14,17.97,6.14,17.97C5.68,16.81,5.03,16.5,5.03,16.5C4.12,15.88,5.1,15.9,5.1,15.9C6.1,15.97,6.63,16.93,6.63,16.93C7.5,18.45,8.97,18,9.54,17.76C9.63,17.11,9.89,16.67,10.17,16.42C7.95,16.17,5.62,15.31,5.62,11.5C5.62,10.39,6,9.5,6.65,8.79C6.55,8.54,6.2,7.5,6.75,6.15C6.75,6.15,7.59,5.88,9.5,7.17C10.29,6.95,11.15,6.84,12,6.84C12.85,6.84,13.71,6.95,14.5,7.17C16.41,5.88,17.25,6.15,17.25,6.15C17.8,7.5,17.45,8.54,17.35,8.79C18,9.5,18.38,10.39,18.38,11.5C18.38,15.32,16.04,16.16,13.81,16.41C14.17,16.72,14.5,17.33,14.5,18.26C14.5,19.6,14.5,20.68,14.5,21C14.5,21.27,14.66,21.59,15.17,21.5C19.14,20.16,22,16.42,22,12A10,10,0,0,0,12,2Z"/></svg>
+                GitHub
+            </a>
+            <a href="https://twitter.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                @loktar00
+            </a>
+            <a href="https://codepen.io/loktar00" class="social-link">
+                <svg class='codepen' viewBox="0 1 22 24" fill="none" stroke-width="2"><path transform="translate(-22 0)" d="M22 9.3L33 2l11 7.3v7.4L33 24l-11-7.3z m0 0 11 7.4 11-7.4 m0 7.4L33 9.3l-11 7.4 M33 2v7.3 m0 7.4V24" /></svg>
+                CodePen
+            </a>
+            <a href="https://stackoverflow.com/users/322395/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852l10.48 2.189.451-2.07-10.48-2.189-.451 2.07zm1.359-5.056l9.705 4.53.903-1.95-9.705-4.53-.903 1.95zm2.715-4.785l8.217 6.855 1.359-1.62-8.217-6.855-1.359 1.62zM15.841 0l-1.791.973 6.503 5.977 1.791-.973L15.841 0z"/></svg>
+                Stack Overflow
+            </a>
+            <a href="https://www.dwitter.net/u/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M6 4v16h2V4H6zm5 0v16h2V4h-2zm5 0v16h2V4h-2z"/></svg>
+                Dwitter
+            </a>
+        </div>
+    </div>
+</section>            </footer>
+            <nav class="post-footer">
+    <a class="footer-link" rel="prev" href="/">← All Articles</a>
+    <a class="footer-link" rel="prev" href="/2013/01/03/rainbow-bright-bookmarklet/">Rainbow bright bookmarklet →</a></nav>        </main>
+        <footer class="site-footer">
+    © 2026, Built by <a href="https://github.com/loktar00">Jason Brown - Loktar</a>
+</footer>    </div>
+    <script src='/js/main.js'></script>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJDK7X0K15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YJDK7X0K15');
+    </script>
+    <meta charSet="utf-8" />
+    <meta name="description" content="Jason Browns Code, demos and ideas."/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.svg">
+    <link rel="manifest" href="/assets/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script src='/js/prism.js'></script>
+    <title>Recreating this blog with static generation - Somethinghitme</title>
+</head>    <link href="/styles/articleStyles.css" rel="stylesheet" />
+  <body>
+    <div class="layout">
+        <header class="container">
+    <nav class="site-header">
+        <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
+            </svg>
+        </button>
+        <a href="/" class="logo-text">SomethingHitMe</a>
+    </nav>
+</header>        <main class="container">
+            <article class="article-content">
+                <header class="article-header">
+                    <div class="article-meta-row">
+                        <time datetime="2023-06-15">
+                            Thursday, Jun 15, 2023                        </time>
+                        <span>&bull;</span>
+                        <span class="article-tag">blog, javascript, static generation, programming</span>
+                    </div>
+                    <h1 class="article-title">Recreating this blog with static generation</h1>
+                </header>
+                <section>
+                    <h2 id="theproblem">The Problem</h2>
+<p>Recently I found myself in between jobs so I had some time on my hands to work on a few of my projects I've let languish over the past few years. I always find myself coming back to this blog since it's low risk so I consider it a playground for me to test things out.</p>
+<h3 id="abitofhistory20092020">A bit of history 2009 - 2020</h3>
+<p>A quick history on this blog and the interations it's had.</p>
+<p>Back in 2009 when blogs were all the rage I threw up a wordpress install made a custom theme and operated using that for years on a shared hosting platform. It worked well for the most part but over the years and with wordpress upgrades and plugins it just became more of a pain. At the end of the day all I really needed were some static pages with my thoughts and images.</p>
+<h2 id="somethinghitmeovertheyears2009theveryfirstdesignfortheblog">Somethinghitme over the years - 2009, the very first design for the blog.</h2>
+<p><img src="/2023/recreating-this-blog-with-static-generation/images/initial.webp" alt="Initial design" /></p>
+<h2 id="2010shtheveryfirstdesignthisonemightbemyfavorite">2010-sh, the very first design (this one might be my favorite).</h2>
+<p>Just happened to find this on the wayback machine… I am seriously considering going back to this design.</p>
+<p><img src="/2023/recreating-this-blog-with-static-generation/images/2013.webp" alt="2010-ish" /></p>
+<h2 id="priortotodaysdesignimadethemsimplerjusttochangethingsup">Prior to todays design, I made them simpler just to change things up.</h2>
+<p><img src="/2023/recreating-this-blog-with-static-generation/images/2020.webp" alt="2020" /></p>
+<h3 id="2020">2020</h3>
+<p>Moving on to 2020 I decided to "upgrade" to Gatsby. There was a bit of hype surrounding it, it used React which I consider myself pretty proficient in, and it generated a static site, exactly what I wanted. This also had the side benefit of allowing me to move hosting to github.</p>
+<p>While I found gatsby to be simple for the most part, I just couldn't get over the setup and amount of code needed for something so "simple"… it's something I see everywhere in the development world especially in the front end or Javascript ecosystem. Everything requires a build now.. a build process, multiple dependencies just to get something to show on the page. I went a long with it since the goal was just to convert the site and have some of my older blog posts available. to users.</p>
+<p>The issue I had when writing articles most recently is after updating to using Gatsby I found myself spending over an hour or more each time I wanted to add an article since they were so far and few between. I needed to update dependencies to fix issues and of course account for breaking changes. Maybe it's just me, I generally don't run into these issues but Gatsby seemed to always have something going on where the site wouldn't just "build".</p>
+<p>In reality all I wanted to do was sit down write up a markdown file and publish it without thinking about the tech behind the solution.</p>
+<p>The other thing I started to get annoyed with was the complexity of wrapping my head around how Gatsby used graphQL with the actual markdown files. I found some cases where weird things would happen with excerpts, and simple things such as using pagination on the main page just seemed overly complex.</p>
+<h2 id="thesolutionpresent">The Solution - present</h2>
+<p>I've been doing a bit of work in node lately (moreso than usual) so came up with a quick and easy plan to get the blog up and running in a state where I could just sit down and create posts. I decided to create a simple node script to generate the entire site from markdown files and json data. This way I could easily write my articles in markdown and not have to worry about the tech behind the scenes.</p>
+<p>The solution I feel is pretty simple overall, there's definitely a lot of room for improvement but my goal was to not spend more than a day on the overall solution so I could actually get to the important part of the site, the content.</p>
+<p>I decided to host the site publically this time around, all code is located on my githup profile <a href="https://github.com/loktar00/somethinghitme2023">here</a>.</p>
+<h3 id="thecode">The code</h3>
+<p>The articles all live under <code>src/blog</code> and are organized by years, and for the older articles the month and day. The script iterates over the directories grabbing each file and parsing the markdown using <a href="https://www.npmjs.com/package/showdown">showdown</a> (so far 1 of the total 2 dependencies for the site/).</p>
+<p>I continued to use a similar format I had when using gatsby. At the top of each markdown file there's a section to hold metadata associated with each artcile. Here's an example for this one.</p>
+<pre><code class="markdown language-markdown">title: "Recreating this blog with static generation"
+date: "2023-06-15"
+teaser: "Something in here"
+tags: "blog, javascript, static generation, programming"
+</code></pre>
+<p>I then parse the markdown when it's being read and extract the information to expose to our templates.</p>
+<pre><code class="javasript language-javasript">    // Grab the information from each file to generate our table of contents and structure
+    const pattern = /---([\s\S]*?)---/g;
+    const matches = text.match(pattern);
+    let pageData = {};
+
+    if (matches) {
+        for (const match of matches) {
+            const contentBetweenDelimiters = match.replace(/---/g, '').trim();
+            contentBetweenDelimiters.split('\n')
+                .forEach(line =&gt; {
+                    const data = line.split(':');
+                    const key = data[0].trim();
+                    const value = data[1].trim().replace(/"/g, '');
+                    pageData[key] = value;
+                });
+        }
+    }
+</code></pre>
+<h4 id="additionalparsing">Additional parsing</h4>
+<p>I do have some <code>gists</code> and quite a few code blocks, so I went with a pretty simple approach of parsing out the code blocks, those are just replaced with prism for syntax highligting.</p>
+<p>For gists it's a straight forward approach again, I have considered breaking this out into a sort of "plugin" system to parse out and convert other things, such as prettier images with captions.</p>
+<pre><code class="javascript language-javascript">    // Embed gists.
+    const gistPattern = /\\\[gist id=(?&lt;id&gt;[\d]*)\\\]/g;
+    for (const match of textToConvert.matchAll(gistPattern)) {
+        textToConvert = textToConvert.replace(match[0], `&lt;script src="http://gist.github.com/${match.groups.id}.js"&gt;&lt;/script&gt;`);
+    }
+</code></pre>
+<p>For anything else I allow for vanilla markup and scripts so I can just drop in some html if I need to. Since the sites generated I'm not too worried about security.</p>
+<h4 id="templating">Templating</h4>
+<p>For templating I went with a pretty simple solution, our second dependency is ejs, which I've always been a pretty big fan of.</p>
+<p>Here's a quick example of the index page. I use partials for most things duplicated.</p>
+<pre><code class="javascript language-javascript">&lt;!DOCTYPE html&gt;
+&lt;html lang="en" data-theme="light"&gt;
+    &lt;%- include('/src/templates/partials/head', {title: `${data.main.title} - ${data.main.tagline}`}) -%&gt;
+    &lt;body&gt;
+        &lt;div class="layout"&gt;
+            &lt;%- include('/src/templates/partials/header') -%&gt;
+            &lt;main class="main"&gt;
+                &lt;section class="primary"&gt;
+                    &lt;%-
+                        data.articles.map(article =&gt;
+                            `&lt;a href="/${article.path}"&gt;
+                                &lt;article class="article"&gt;
+                                    &lt;h3&gt;${article.title}&lt;/h3&gt;
+                                    &lt;small&gt;
+                                        ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+                                    &lt;/small&gt;
+                                    &lt;p&gt;
+                                        ${article.teaser}
+                                    &lt;/p&gt;
+                                    &lt;footer class="article__footer"&gt;
+                                        &lt;span class="read-more"&gt;Read Article →&lt;/span&gt;
+                                    &lt;/footer&gt;
+                                &lt;/article&gt;
+                            &lt;/a&gt;`
+                        ).join('')
+                    -%&gt;
+                &lt;/section&gt;
+                &lt;section class="secondary"&gt;
+                    &lt;%- include('/src/templates/sidebar', {sidebar: data.sidebar}) -%&gt;
+                &lt;/section&gt;
+            &lt;/main&gt;
+            &lt;%- include('/src/templates/partials/footer') -%&gt;
+        &lt;/div&gt;
+        &lt;script src='/js/main.js'&gt;&lt;/script&gt;
+        &lt;script type='module' src='/js/starscape.js'&gt;&lt;/script&gt;
+    &lt;/body&gt;
+</code></pre>
+<h4 id="otherconfigs">Other configs</h4>
+<p>For things like the side bar I follow the approach of creating a few json files to hold the data.</p>
+<p>Here's an example of the sidebar json file.</p>
+<pre><code class="json language-json">{
+    "sidebar": {
+        "sections": [
+            {
+                "title": "Find Me",
+                "links": [
+                    {
+                        "title": "@loktar00",
+                        "url": "https://twitter.com/loktar00"
+                    },
+                    /// Ect.
+                ]
+            },
+            {
+                "title": "Projects",
+                "links": [
+                    {
+                        "title": "react-lazy-load",
+                        "url": "https://github.com/loktar00/react-lazy-load"
+                    },
+                  /// Ect.
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+<p>The node script just combines all the JSON together (to include article data from the markdown files), and creates a structure that's passed to the ejs templates to build the page.</p>
+<h4 id="styling">Styling</h4>
+<p>For styling I'm just using vanilla css, I might change that to SCSS since I'm a huge fan of nesting (I can't wait for the day that's supported natively!).</p>
+<h3 id="hosting">Hosting</h3>
+<p>For hosting I'm sticking with github pages. Each commit to the main branch triggers an action which builds everything to github pages so I have a pretty worry free experience.</p>
+<h3 id="improvmements">Improvmements</h3>
+<p>Beyond just making improvements for mobile, I'm not in love with the main page design when it comes to layout, definitely needs more images. I also do want to go back to a pages main page and need to add tags so I can organize articles in the side bar a bit like I used to with wordpress. Might as well add a timeline as well. As of right now I'm overall happy, not bad for a days worth of work.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Will I end up writing more? Who knows, I feel like I only come to this blog when I don't have an existing project and I want to sink time into something that feels relevant. I've told myself I need to start documenting what I do more in the hopes of helping others however in the back of my mind I wonder how relevant any of this will be with tools like chatGPT. Only time will tell.</p>                </section>
+            </article>
+            <hr/>
+            <footer>
+                <!-- Author -->
+<section class="author-section">
+    <img src="/assets/avatar.jpg" alt="Jason Brown" class="author-avatar">
+    <div class="author-info">
+        <h3 class="author-name">Jason Brown (Loktar)</h3>
+        <p class="author-bio">
+            Christian, Grandfather, Veteran, lover of everything tech.
+        </p>
+        <div class="social-row">
+            <a href="https://github.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12C2,16.42,4.87,20.17,8.84,21.5C9.34,21.58,9.5,21.27,9.5,21C9.5,20.77,9.5,20.14,9.5,19.31C6.73,19.91,6.14,17.97,6.14,17.97C5.68,16.81,5.03,16.5,5.03,16.5C4.12,15.88,5.1,15.9,5.1,15.9C6.1,15.97,6.63,16.93,6.63,16.93C7.5,18.45,8.97,18,9.54,17.76C9.63,17.11,9.89,16.67,10.17,16.42C7.95,16.17,5.62,15.31,5.62,11.5C5.62,10.39,6,9.5,6.65,8.79C6.55,8.54,6.2,7.5,6.75,6.15C6.75,6.15,7.59,5.88,9.5,7.17C10.29,6.95,11.15,6.84,12,6.84C12.85,6.84,13.71,6.95,14.5,7.17C16.41,5.88,17.25,6.15,17.25,6.15C17.8,7.5,17.45,8.54,17.35,8.79C18,9.5,18.38,10.39,18.38,11.5C18.38,15.32,16.04,16.16,13.81,16.41C14.17,16.72,14.5,17.33,14.5,18.26C14.5,19.6,14.5,20.68,14.5,21C14.5,21.27,14.66,21.59,15.17,21.5C19.14,20.16,22,16.42,22,12A10,10,0,0,0,12,2Z"/></svg>
+                GitHub
+            </a>
+            <a href="https://twitter.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                @loktar00
+            </a>
+            <a href="https://codepen.io/loktar00" class="social-link">
+                <svg class='codepen' viewBox="0 1 22 24" fill="none" stroke-width="2"><path transform="translate(-22 0)" d="M22 9.3L33 2l11 7.3v7.4L33 24l-11-7.3z m0 0 11 7.4 11-7.4 m0 7.4L33 9.3l-11 7.4 M33 2v7.3 m0 7.4V24" /></svg>
+                CodePen
+            </a>
+            <a href="https://stackoverflow.com/users/322395/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852l10.48 2.189.451-2.07-10.48-2.189-.451 2.07zm1.359-5.056l9.705 4.53.903-1.95-9.705-4.53-.903 1.95zm2.715-4.785l8.217 6.855 1.359-1.62-8.217-6.855-1.359 1.62zM15.841 0l-1.791.973 6.503 5.977 1.791-.973L15.841 0z"/></svg>
+                Stack Overflow
+            </a>
+            <a href="https://www.dwitter.net/u/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M6 4v16h2V4H6zm5 0v16h2V4h-2zm5 0v16h2V4h-2z"/></svg>
+                Dwitter
+            </a>
+        </div>
+    </div>
+</section>            </footer>
+            <nav class="post-footer">
+    <a class="footer-link" rel="prev" href="/">← All Articles</a>
+    <a class="footer-link" rel="prev" href="/2022/demos-and-deviations/">Demos and Deviations Project →</a></nav>        </main>
+        <footer class="site-footer">
+    © 2026, Built by <a href="https://github.com/loktar00">Jason Brown - Loktar</a>
+</footer>    </div>
+    <script src='/js/main.js'></script>
+  </body>
+</html>
