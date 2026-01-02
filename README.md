@@ -8,6 +8,19 @@ Personal blog updated to use markdown, and node
 npm install
 ```
 
+### Testing
+Run the test suite to verify functionality:
+```bash
+npm test
+```
+
+Tests include:
+- **Frontmatter parsing** - Validates markdown frontmatter processing with error handling
+- **Pagination logic** - Tests article pagination with edge cases
+- **Template rendering** - Integration tests for EJS templates with partials
+
+Tests run automatically in CI/CD pipeline on every push.
+
 ### Development
 For development with automatic rebuilding when files change:
 ```bash
