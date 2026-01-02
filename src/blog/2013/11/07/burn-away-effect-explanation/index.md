@@ -1,7 +1,7 @@
 ---
 title: "Burn Away Effect Explanation"
 date: "2013-11-07"
-teaser: " Uncover the secrets behind a captivating burn away effect commonly used in loading screens and visual effects. Dive into the concept of representing pixels as fuel and learn how to create a 2D array to determine the "burn" duration of each pixel. Explore the decrementing process of pixel values and the importance of flagging elements to ensure a controlled and visually appealing burn effect. Witness the mesmerizing animation of the burn away effect and discover how to add additional visual effects for an enhanced experience."
+teaser: "A simple burn-away effect using pixel "fuel". I build a 2D grid of burn values, decrement neighbors as pixels burn out, and use step-based flags to keep the spread controlled, with an optional flame coloring pass.."
 ---
 
 This explanation doesn't show any code more of just an overview of how to achieve a simple but cool looking effect.

@@ -1,7 +1,7 @@
 ---
 title: "Current Project Canvas Shmup"
 date: "2012-01-26"
-teaser: "Get a sneak peek at the latest canvas shoot 'em up project. Discover the unique features of this game, including procedural graphics and level generation based on seeds. Explore the potential for creating personalized challenges and enjoy the visually stunning work in progress. Make sure to try it in a modern browser for the best experience."
+teaser: "I am working on a canvas shoot 'em up where the graphics and the level are generated from a seed. Use the same seed as someone else and you get the same run, with a link to the WIP build."
 ---
 
 Posting my most current project (well my most current that happens to be cool anyway). Its a canvas shootemup, not really sure what Ill settle on for a title, but heres a screeny

@@ -1,7 +1,7 @@
 ---
 title: "Rift Enabled Canvas Demo"
 date: "2014-03-18"
-teaser: "Experience the fusion of the Oculus Rift and CSS shaders in a captivating demo. Explore the process of porting a tunnel demo to be compatible with the Oculus Rift using the Oculus Bridge project. Discover the challenges faced and the workaround used to achieve a Rift-enabled effect in the browser."
+teaser: "I ported my canvas tunnel demo to the Oculus Rift using oculus-bridge and a CSS shader warp. It renders a canvas per eye and keeps the canvas small enough to work within Chrome's filter limits."
 ---
 
 ![](images/nww4NBm.png)

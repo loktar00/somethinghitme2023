@@ -1,7 +1,7 @@
 ---
 title: "HTML5 Canvas Particle engine"
 date: "2012-02-24"
-teaser: "Take a closer look at a basic particle engine built using HTML5 Canvas. Explore the integration with a custom game framework and its potential for creating stunning visual effects. Get a glimpse of the upcoming editor and see how you can easily incorporate this particle engine into your own projects."
+teaser: "Progress on a basic canvas particle engine tied into my game framework. I share a screenshot, a demo link, and my plan to build a small editor so I can tune effects visually."
 ---
 
 In my attempt to make a post weekly figured I would post some progress on my current project, which is a side project for the shmup Im working on.

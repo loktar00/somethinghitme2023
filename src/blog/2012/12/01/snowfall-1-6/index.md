@@ -1,7 +1,7 @@
 ---
 title: "Snowfall 1.6"
 date: "2012-12-08"
-teaser: "Let it snow! Experience the magic of winter with Snowfall 1.6. Learn how to add snowfall effects to your website using jQuery or pure JavaScript. Get ready to create a winter wonderland!"
+teaser: "Snowfall 1.6 adds image-based flakes and a pure JavaScript API alongside the jQuery version. This post shows how to start it, clear it, and the options you can tweak."
 ---
 
 [Repo on Github](https://github.com/loktar00/JQuery-Snowfall) [Download Jquery Snowfall 1.6](https://github.com/loktar00/JQuery-Snowfall/archive/master.zip) [View the plugin in action](http://loktar00.github.com/JQuery-Snowfall/)
@@ -9,25 +9,25 @@ teaser: "Let it snow! Experience the magic of winter with Snowfall 1.6. Learn ho
 You can now use images for snowflakes!
 
 ```javascript
-// jQuery vs 
+// jQuery vs
 $(document).snowfall({image :"image/flake.png", minSize: 10, maxSize:32});
 
-// purejs vs 
+// purejs vs
 snowFall.snow(document.body, {image : "image/flake.png", minSize: 10, maxSize:32});
 ```
 
 **Invoking the snow**
 
 ```javascript
- $(document).snowfall(); 
- $('#elementid').snowfall({flakeCount : 100, maxSpeed : 10}); 
+ $(document).snowfall();
+ $('#elementid').snowfall({flakeCount : 100, maxSpeed : 10});
  $('.class').snowfall({flakeCount : 100, maxSpeed : 10});
  ```
 
 **Snowfall Methods**
 
 ```javascript
- // stopping the snow 
+ // stopping the snow
  $(document).snowfall('clear');
  $('#elementid').snowfall('clear');
  $('.class').snowfall('clear');
@@ -36,17 +36,17 @@ snowFall.snow(document.body, {image : "image/flake.png", minSize: 10, maxSize:32
 **Options currently supported with default values**
 
 ```javascript
- options = { 
-    flakeCount : 35, // number 
-    flakeColor : '#ffffff', // string 
-    flakeIndex: 999999, // number 
-    minSize : 1, // number 
-    maxSize : 3, // number 
-    minSpeed : 2, // number 
-    maxSpeed : 3, // number 
-    round : false, // bool 
-    shadow : false, // bool 
-    collection : 'element' // string 
+ options = {
+    flakeCount : 35, // number
+    flakeColor : '#ffffff', // string
+    flakeIndex: 999999, // number
+    minSize : 1, // number
+    maxSize : 3, // number
+    minSpeed : 2, // number
+    maxSpeed : 3, // number
+    round : false, // bool
+    shadow : false, // bool
+    collection : 'element' // string
 };
  ```
 

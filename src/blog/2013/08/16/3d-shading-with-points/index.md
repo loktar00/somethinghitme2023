@@ -1,7 +1,7 @@
 ---
 title: "3d Shading with Points"
 date: "2013-08-17"
-teaser: "Unearth the secrets of creating mesmerizing 3D shading effects using points in JavaScript and the canvas element. Inspired by an old book, I showcase the reproduction of shaded spheres made entirely of points. Delve into the code and discover how each pixel is meticulously calculated to achieve a spherical shading effect. Witness the beauty of planets and moons crafted with this unique approach and explore the potential for your own creative endeavors."
+teaser: "Recreating a shaded-sphere effect using nothing but points on canvas. I break down the math (row width via Pythagoras), how the random threshold creates shading, and how a single divisor changes the look."
 ---
 
 I was checking out some old books the other day and I came across Commodore Step by Step Graphics Vol 3. It had an interesting looking screenshot for a bit of code, which showed shaded spheres entirely made of points. I thought the effect would look cool if multiple ones were layered over each other to look like planets and moons. So I converted the Basic over to JavaScript using the canvas element to replicate the effect.
