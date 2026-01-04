@@ -133,15 +133,29 @@ const processMarkdownContent = (file, content) => {
 
     // Process images
     // Update all image paths to be absolute paths
-    const imagePattern = /images\/(.*)\.(.*)/g;
+    const imagePattern = /images\/([^)]+?\.(png|jpg|jpeg|webp))/gi;
     const imageMatches = textToConvert.match(imagePattern);
 
     // replace all image paths with absolute paths to the images
     if (imageMatches) {
         imageMatches.forEach(match => {
-            // replace file extension jpg, jpeg, and png with webp
-            const newFileName = match.replace(/\.(png|jpg|jpeg)/, '.webp');
-            textToConvert = textToConvert.replace(match, `/${convertBackslashes(savePath)}${convertBackslashes(newFileName)}`);
+            // Check if the referenced image file exists
+            const sourceImagePath = path.join(filePath, match);
+            const sourceImageWebpPath = sourceImagePath.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+
+            // Check if either the original or webp version exists
+            const originalExists = fs.existsSync(sourceImagePath);
+            const webpExists = fs.existsSync(sourceImageWebpPath);
+
+            if (!originalExists && !webpExists) {
+                console.warn(`⚠️  Image file not found: ${match} (referenced in ${file})`);
+            }
+
+            // replace file extension jpg, jpeg, and png with webp (case-insensitive)
+            const newFileName = match.replace(/\.(png|jpg|jpeg)/i, '.webp');
+            // URL encode the path to handle spaces and special characters
+            const encodedPath = `/${convertBackslashes(savePath)}${convertBackslashes(newFileName)}`.replace(/ /g, '%20');
+            textToConvert = textToConvert.replace(match, encodedPath);
         });
     }
 
@@ -172,12 +186,12 @@ const saveAsset = async (file) => {
     }
 
     // Smart WebP conversion - only convert if WebP doesn't exist or source is newer
-    if (file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.jpeg')) {
-        const webpPath = path.join(CONFIG.publicPath, savePath.replace(/\.(png|jpg|jpeg)$/, '.webp'));
+    if (file.match(/\.(png|jpg|jpeg)$/i)) {
+        const webpPath = path.join(CONFIG.publicPath, savePath.replace(/\.(png|jpg|jpeg)$/i, '.webp'));
         const sourceStats = fs.statSync(file);
 
         // Check if WebP already exists in source directory
-        const sourceWebpPath = file.replace(/\.(png|jpg|jpeg)$/, '.webp');
+        const sourceWebpPath = file.replace(/\.(png|jpg|jpeg)$/i, '.webp');
         let needsConversion = true;
 
         try {
@@ -217,8 +231,8 @@ const saveAsset = async (file) => {
             fs.cpSync(sourceWebpPath, webpPath);
         }
 
-        // Always copy the original image file too (for browsers that don't support WebP)
-        fs.cpSync(file, path.join(CONFIG.publicPath, savePath));
+        // Note: We no longer copy the original PNG/JPG files to save space
+        // Only the WebP versions are copied to the public directory
     } else {
         // Copy non-image assets as before
         fs.cpSync(file, path.join(CONFIG.publicPath, savePath));
