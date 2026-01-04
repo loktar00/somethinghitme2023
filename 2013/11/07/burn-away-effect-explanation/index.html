@@ -66,7 +66,7 @@
 <p>The effect works by decrementing the value of all elements which neighbor an element whose value is 0. So to start the effect we need to set an element's value to 0.</p>
 <p>There is one gotcha to be aware of. If you don’t have someway of flagging elements whose value has been changed in the current cycle you will end up with a burn effect that goes very fast, and also tends to go to the right or left depending on how you loop through the elements. This speed issue is due to the fact that some elements will have more than one neighbor whose value is 0, in that case we still only want to reduce the value once.</p>
 <h2 id="animationoftheeffectinprogress">Animation of the effect in progress</h2>
-<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/output_WPd1vJ.gif"><img src="/2013/11/07/burn-away-effect-explanation/images/output_WPd1vJ.gif" alt="output_WPd1vJ" /></a></p>
+<p><a href="http://www.somethinghitme.com/wp-content/uploads/2013/11/output_WPd1vJ.gif"><img src="images/output_WPd1vJ.gif" alt="output_WPd1vJ" /></a></p>
 <p>If you want to add a cool effect to make it look like a flame or possible something is eating the elements you just need to color the elements that neighbor an element whose value is 0, as seen in my demo with the color option.</p>                </section>
             </article>
             <hr/>

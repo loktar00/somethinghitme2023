@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJDK7X0K15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YJDK7X0K15');
+    </script>
+    <meta charSet="utf-8" />
+    <meta name="description" content="Jason Browns Code, demos and ideas."/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.svg">
+    <link rel="manifest" href="/assets/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script src='/js/prism.js'></script>
+    <title>Cloudflare Tunneling and Access Control for locally hosted services - Somethinghitme</title>
+</head>    <link href="/styles/articleStyles.css" rel="stylesheet" />
+  <body>
+    <div class="layout">
+        <header class="container">
+    <nav class="site-header">
+        <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
+            </svg>
+        </button>
+        <a href="/" class="logo-text">SomethingHitMe</a>
+    </nav>
+</header>        <main class="container">
+            <article class="article-content">
+                <header class="article-header">
+                    <div class="article-meta-row">
+                        <time datetime="2026-01-04">
+                            Sunday, Jan 4, 2026                        </time>
+                        <span>&bull;</span>
+                        <span class="article-tag">security, hosting, cloudflare, local</span>
+                    </div>
+                    <h1 class="article-title">Cloudflare Tunneling and Access Control for locally hosted services</h1>
+                </header>
+                <section>
+                    <h3 id="whatyouneedbeforeyoustart">What you need before you start</h3>
+<ul>
+<li>A Cloudflare account (free)</li>
+<li>A domain you can point to Cloudflare</li>
+<li>A machine/container inside your network to run <code>cloudflared</code></li>
+<li>The local URL of the service you want to expose (like <code>http://localhost:5678</code>)</li>
+</ul>
+<h2 id="thescenario">The Scenario</h2>
+<p>I've been running local LLMs for over a year at this point. It's been great.</p>
+<p>Recently my family asked for access, including a couple who don't live in the house anymore.</p>
+<p>There's a bunch of ways to do this. In the past I've used ngrok, or I just set up a VPN on my home router and gave my kids access. None of them were as straightforward as what I found using Cloudflare.</p>
+<blockquote>
+  <p>Note: I'm keeping this post focused on getting a tunnel working and putting Access in front of it.
+  I'm not covering WAF rules, rate limiting, hardening the service itself, or anything beyond basic access control.</p>
+</blockquote>
+<h3 id="entercloudflare">Enter Cloudflare</h3>
+<p>The short version is: Cloudflare Tunnel gives you the connection, and Cloudflare Access puts a simple login wall (in my case email) in front of it.</p>
+<p>I've been on a recent Cloudflare kick. Granted of course I started RIGHT before their most recent outages, but putting those aside I've been incredibly happy with their services.</p>
+<p>I've used them on my wife's real estate site to block a few regions that have been needlessly beating up the site along with default AI blocking. Additionally, at my day job I directed the engineering team to look into it as a possible solution to some spam we were dealing with. After acknowledging this would be a good fit, we implemented it across all of our publicly hosted applications and not only has it significantly decreased spam (practically to 0), it also cached a few services, increasing speed across the applications significantly, over 50% in some cases.</p>
+<h2 id="localservicesandtunnels">Local Services and Tunnels</h2>
+<p>As I mentioned I run a few local AI instances on Proxmox servers in my home (I'll share specs and setups in a future post), however they're all accessible locally within the network. I really never had a major reason to expose any of them until I recently got n8n up and running, and had family members ask if they could access some of my local services since I have some RAG implementations set up for the Bible and other knowledge sets.</p>
+<p>The rest of this post will go over setting up a Cloudflare tunnel, and putting email access in front of it, along with the why behind it.</p>
+<h3 id="step1cloudflareaccount">Step 1 Cloudflare Account</h3>
+<p>If you don't have a Cloudflare account, set one up (this is all free by the way!).</p>
+<p>I won't go through the setup here. However, what you're going to want to do once set up is look for Cloudflare One / Zero Trust, and get an account set up through that as well. The default free plan is 50 users, and it's free.</p>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/step%201.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/step%201.webp" alt="Step 1 screenshot" /></a></p>
+<h3 id="step2domainname">Step 2 Domain Name</h3>
+<p>Get a domain name and connect it to Cloudflare.</p>
+<p>This part is incredibly simple and one of the strong points of Cloudflare. All settings you currently have will be added and proxied.</p>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/step%202.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/step%202.webp" alt="Step 2 screenshot" /></a></p>
+<p>Be sure to look them over to ensure all settings have been properly picked up. Once you've confirmed everything looks right, you'll see nameservers provided by Cloudflare. If you're hosting your domain via a third party provider you just need to update your nameservers with them and Cloudflare will take over.</p>
+<blockquote>
+  <p>Note: Any hosting endpoints, websites, etc. will continue working just as they were before. This isn't a traditional nameserver swap where you lose everything. Cloudflare now has control but it proxies everything that was existing prior.</p>
+</blockquote>
+<h3 id="step3zerotrustsetup">Step 3 Zero Trust setup</h3>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/step%203.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/step%203.webp" alt="Step 3 screenshot" /></a></p>
+<p>If you set up Cloudflare One / Zero Trust previously to this step you'll see the Zero Trust option. If not, search for Zero Trust and you'll be prompted to set up an account. You have to add a form of payment. However, it is free as long as you stay within the requirements (something we will be doing within this tutorial).</p>
+<p>Once you select Zero Trust, go to Networks and Overview. You'll see Manage Tunnels. This is where you want to go.</p>
+<h3 id="step4settingupthetunnel">Step 4 Setting up the Tunnel</h3>
+<p>For the first screen you'll have two choices. Select Cloudflared.</p>
+<p>You may be asking how this works. If not, feel free to skip the following random story I interject.</p>
+<p>How this all works is similar to other services which offer similar features. You have a service which runs inside of your network letting Cloudflare know who you are and where you're located.</p>
+<p>Funny story, an old friend of mine rolled his own version of this back in the early 2000's. From work he wanted to connect to his IRC server, but like most of us was on a dynamic IP from his ISP that switched more often than he'd like. He had a script which would run and FTP to an external server he owned a txt file with only the IP address of his home network. His IRC script would always hit that txt file in order to get to his home hosted IRC server, and when I say IRC server in reality it was something a few of us did. It was a server running our IRC clients we'd SSH into so all logs and records stayed off of work machines.</p>
+<p>Back to the setup, once you choose Cloudflared you'll have to provide a tunnel name. This can be anything. It's only the label within Cloudflare.</p>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/setup%20tunnel.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/setup%20tunnel.webp" alt="setup tunnel screenshot" /></a></p>
+<p>Choose the environment you're in. In my case it's Debian. You'll get the commands or executable to run based on the platform and architecture chosen. It's incredibly simple. The main thing they call out, and of course is always a good idea, is don't share your token with anyone. In Debian I chose the option to run as a service, since if I boot my container I want it all working by default.</p>
+<h3 id="step5settingupthedomainandpointingtoyourinstance">Step 5 Setting up the Domain and pointing to your instance</h3>
+<p>This is probably the biggest potential "gotcha" with the entire setup. In your subdomain use any valid subdomain and choose the domain you added earlier.</p>
+<p>For service this is the most important. For Type, if you're actually running HTTPS choose HTTPS here. However, if you're running HTTP locally (I am on most of my instances) choose HTTP here. Cloudflare will still use HTTPS so you don't need to worry.</p>
+<p>For URL this is one of the biggest gotchas I've seen when looking at tutorials and setups (comments in videos on Reddit, etc., and really the reason I decided to write this). Use the URL your service is using.</p>
+<h4 id="thegotcha">The gotcha</h4>
+<p>Use the URL your service is actually listening on, not your public IP.</p>
+<ul>
+<li>If your service is <code>http://localhost:8080</code>, put <code>http://localhost:8080</code></li>
+<li>If your service is <code>http://0.0.0.0:1234</code>, put <code>http://0.0.0.0:1234</code></li>
+</ul>
+<p>Do not put your external IP here. Also don't swap in <code>192.168.x.x</code> if the service is bound to <code>0.0.0.0</code>.</p>
+<p>Once you're set, hit save. Test your tunnel. It should work almost immediately.</p>
+<blockquote>
+  <p>It's important to note just because a tunnel is set up doesn't mean you lose your original internal way to access the application or service. If you commonly use an internal static IP address that will continue to work and bypass Cloudflare.</p>
+</blockquote>
+<p>Now you <em>could</em> stop here. However, your service is accessible by anyone and everyone over the internet. Even for instances like OpenwebUI for example which do have internal authentication methods, I really don't feel like having it exposed, and I don't feel like dealing with potential network bottlenecks if I happened to suddenly get hit with tons of requests (although Cloudflare should filter most out).</p>
+<p>So it's a good idea to set up Access control, which Cloudflare One also provides, and it's incredibly easy to set up.</p>
+<h3 id="step6accesscontrol">Step 6 Access Control</h3>
+<p>Navigate to Access Controls and Policies. This is where you can set up reusable policies to apply to any of your Applications.</p>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/addanapplication.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/addanapplication.webp" alt="Add an application screenshot" /></a></p>
+<p>Go to add Policy. Within this screen you will have the option for a whole plethora of authentication methods, to include facial scanning. Personally I just chose Email, which is a whitelist of email addresses you provide. You can also control how often you want the token to expire as well. I left mine set at 24 hours.</p>
+<h3 id="step7setupanapplication">Step 7 Setup an Application</h3>
+<p>Now that you have an access control policy set up, you're going to want to set up an application pointing to your tunnel so you can actually use the access control policy.</p>
+<p>Navigate to Access Controls/Applications and click to Add an application. Since this is for a local service, choose Self-hosted.</p>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/Access%20Conrol%20Applications.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/Access%20Conrol%20Applications.webp" alt="Access control screenshot" /></a></p>
+<p>You'll be presented with the screen below. Give it a name to identify it, choose your session duration and select <code>Add Public Hostname</code></p>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/public%20hostname.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/public%20hostname.webp" alt="Public Hostname screenshot" /></a></p>
+<p>Optional subdomain is the one you used when setting up your tunnel above, and choose the domain which has the subdomain on it.</p>
+<p>Next go down a little to Access Policies, click <code>Select Existing Policies</code> and choose the one you set up earlier.</p>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/Access%20control%20policies.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/Access%20control%20policies.webp" alt="Access control policies" /></a></p>
+<p>Finally test your URL and you should be presented with a screen similar to below. This will depend on the authentication method chosen. In this case it's email.</p>
+<p><a href="/2026/01/04/cloudflare-tunnels-and-access-controls/images/cloduflareaccess.webp"><img src="/2026/01/04/cloudflare-tunnels-and-access-controls/images/cloduflareaccess.webp" alt="Cloudflare Access screenshot" /></a></p>
+<h3 id="conclusion">Conclusion</h3>
+<p>That's it! You should be all set up. Now your local services are exposed but access is controlled through your Cloudflare security policy. Note once a user goes through this they will also need to authenticate with whatever your service has as well. For example, if it's openwebui they'll still need to login to their openwebui account if they weren't already.</p>                </section>
+            </article>
+            <hr/>
+            <footer>
+                <!-- Author -->
+<section class="author-section">
+    <img src="/assets/avatar.jpg" alt="Jason Brown" class="author-avatar">
+    <div class="author-info">
+        <h3 class="author-name">Jason Brown (Loktar)</h3>
+        <p class="author-bio">
+            Christian, Grandfather, Veteran, lover of everything tech.
+        </p>
+        <div class="social-row">
+            <a href="https://github.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12C2,16.42,4.87,20.17,8.84,21.5C9.34,21.58,9.5,21.27,9.5,21C9.5,20.77,9.5,20.14,9.5,19.31C6.73,19.91,6.14,17.97,6.14,17.97C5.68,16.81,5.03,16.5,5.03,16.5C4.12,15.88,5.1,15.9,5.1,15.9C6.1,15.97,6.63,16.93,6.63,16.93C7.5,18.45,8.97,18,9.54,17.76C9.63,17.11,9.89,16.67,10.17,16.42C7.95,16.17,5.62,15.31,5.62,11.5C5.62,10.39,6,9.5,6.65,8.79C6.55,8.54,6.2,7.5,6.75,6.15C6.75,6.15,7.59,5.88,9.5,7.17C10.29,6.95,11.15,6.84,12,6.84C12.85,6.84,13.71,6.95,14.5,7.17C16.41,5.88,17.25,6.15,17.25,6.15C17.8,7.5,17.45,8.54,17.35,8.79C18,9.5,18.38,10.39,18.38,11.5C18.38,15.32,16.04,16.16,13.81,16.41C14.17,16.72,14.5,17.33,14.5,18.26C14.5,19.6,14.5,20.68,14.5,21C14.5,21.27,14.66,21.59,15.17,21.5C19.14,20.16,22,16.42,22,12A10,10,0,0,0,12,2Z"/></svg>
+                GitHub
+            </a>
+            <a href="https://twitter.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                @loktar00
+            </a>
+            <a href="https://codepen.io/loktar00" class="social-link">
+                <svg class='codepen' viewBox="0 1 22 24" fill="none" stroke-width="2"><path transform="translate(-22 0)" d="M22 9.3L33 2l11 7.3v7.4L33 24l-11-7.3z m0 0 11 7.4 11-7.4 m0 7.4L33 9.3l-11 7.4 M33 2v7.3 m0 7.4V24" /></svg>
+                CodePen
+            </a>
+            <a href="https://stackoverflow.com/users/322395/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852l10.48 2.189.451-2.07-10.48-2.189-.451 2.07zm1.359-5.056l9.705 4.53.903-1.95-9.705-4.53-.903 1.95zm2.715-4.785l8.217 6.855 1.359-1.62-8.217-6.855-1.359 1.62zM15.841 0l-1.791.973 6.503 5.977 1.791-.973L15.841 0z"/></svg>
+                Stack Overflow
+            </a>
+            <a href="https://www.dwitter.net/u/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M6 4v16h2V4H6zm5 0v16h2V4h-2zm5 0v16h2V4h-2z"/></svg>
+                Dwitter
+            </a>
+        </div>
+    </div>
+</section>            </footer>
+            <nav class="post-footer">
+    <a class="footer-link" rel="prev" href="/">← All Articles</a>
+    <a class="footer-link" rel="prev" href="/2023/capturing-work-git-history/">Capturing Work Git History for your github activity graph →</a></nav>        </main>
+        <footer class="site-footer">
+    © 2026, Built by <a href="https://github.com/loktar00">Jason Brown - Loktar</a>
+</footer>    </div>
+    <script src='/js/main.js'></script>
+  </body>
+</html>
