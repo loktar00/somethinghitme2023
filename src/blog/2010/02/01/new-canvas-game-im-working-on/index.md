@@ -2,6 +2,7 @@
 title: "New Canvas game im working on"
 date: "2010-02-02"
 teaser: "A while back I posted a link to a Flash game I was working on, it was going to be multiplayer using Nanoba. Unfortunately I gave up on it pretty quickly, I'm not a big fan of Flash and I wanted to learn something totally different, so I decided to try and remake the game using Canvas..."
+tags: "javascript, canvas, game development"
 ---
 
 A while back I posted a link to a Flash game I was working on, it was going to be multiplayer using Nanoba. Unfortunately I gave up on it pretty quickly, I'm not a big fan of Flash and I wanted to learn something totally different, so I decided to try and remake the game using Canvas.

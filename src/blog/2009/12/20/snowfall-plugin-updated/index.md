@@ -2,6 +2,7 @@
 title: "Snowfall Plugin Updated"
 date: "2009-12-21"
 teaser: "Updated the snowfall plugin that was released yesterday with a few more features. The primary new feature allows you to specify which elements you want the snow to appear in. An example of this can be seen below. View a full page demonstration. In addition to snowing within elements there are some more options available, properties available are..."
+tags: "javascript, jquery, plugin"
 ---
 
 Updated the [snowfall plugin](http://www.somethinghitme.com/wp-content/uploads/2009/12/snowfall.jquery.zip) that was released yesterday with a few more features.  The primary new feature allows you to specify which elements you want the snow to appear in. An example of this can be seen below. [View a full page demonstration](http://www.zombietweets.com)

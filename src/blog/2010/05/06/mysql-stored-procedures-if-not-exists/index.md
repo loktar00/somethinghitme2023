@@ -2,6 +2,7 @@
 title: "MySQL Stored Procedures IF NOT EXISTS()"
 date: "2010-05-06"
 teaser: "I have been using MSSQL with ASP.NET a lot lately, and I really wanted to get some of the benefits of stored procedures into a PHP application I'm writing. I've known MySQL has supported them for a while but I guess I was always a bit too lazy..."
+tags: "tutorial"
 ---
 
 I have been using MSSQL with ASP.NET a lot lately, and I really wanted to get some of the benefits of stored procedures into a PHP application I'm writing. I've known MySQL has supported them for a while but I guess I was always a bit too lazy to go through old code and convert it. I used the tool [HeidiSQL](http://www.heidisql.com/) to make the process a bit more painless.

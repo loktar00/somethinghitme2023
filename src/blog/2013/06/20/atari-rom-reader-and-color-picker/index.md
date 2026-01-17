@@ -3,6 +3,7 @@ title: "Atari Rom Reader, and color picker"
 date: "2013-06-20"
 coverImage: "atari_7800_prosystem_by_computergenius-d38gkld.png"
 teaser: "A small tool that reads Atari 7800 ROM data and renders graphics to canvas so I can browse sprites without taking screenshots. It covers 160A mode bit pairs, why the data reads "upside down", and a couple implementation notes."
+tags: "javascript, canvas, tools"
 ---
 
 Wanted to share an interesting yet simple project I created the other day. It simply dumps Atari 7800 roms and displays the data via canvas. I've wanted to create a few 7800 games for a long time, but playing the games and taking screenshots to remove sprites takes forever, so I made a simple application to do it for me (for the most part anyway).

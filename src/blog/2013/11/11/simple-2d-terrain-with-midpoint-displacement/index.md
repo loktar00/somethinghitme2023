@@ -2,6 +2,7 @@
 title: "Simple 2d Terrain With Midpoint Displacement"
 date: "2013-11-12"
 teaser: "A practical walkthrough of midpoint displacement (Diamond Square) for 2D canvas terrain. It explains the iterations, how roughness changes the look, and includes a JS implementation with notes on wrapping and scrolling."
+tags: "javascript, canvas, procedural generation, algorithms, tutorial"
 ---
 
 [![Codepen terrain](images/ter.png)](http://codepen.io/loktar00/details/uEJKl)

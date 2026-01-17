@@ -2,6 +2,7 @@
 title: "Rift Enabled Canvas Demo"
 date: "2014-03-18"
 teaser: "I ported my canvas tunnel demo to the Oculus Rift using oculus-bridge and a CSS shader warp. It renders a canvas per eye and keeps the canvas small enough to work within Chrome's filter limits."
+tags: "javascript, canvas, demo"
 ---
 
 ![](images/nww4NBm.png)

@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-    <%- include('/src/templates/partials/head', {title: `${data.main.title} - ${data.main.tagline}`}) -%>
+    <%- include('/src/templates/partials/head', {
+        title: `Articles tagged "${data.tag.name}" - ${data.main.title}`,
+        description: `Browse ${data.tag.count} articles about ${data.tag.name}`,
+        canonical: `/tags/${data.tag.slug}.html`
+    }) -%>
     <body>
         <div class="layout">
             <%- include('/src/templates/partials/header') -%>
             <main class="container">
-                <%- include('/src/templates/partials/demo') -%>
+                <!-- NO demo showcase section -->
+
+                <!-- Tag intro replaces "Things I'm building" -->
                 <section class="intro-section">
-                    <p class="label-small-caps">Working notes and small writeups.</p>
-                    <h1 class="intro-title">Things I'm building and why.</h1>
+                    <p class="label-small-caps">Tagged Articles</p>
+                    <h1 class="intro-title">
+                        <span class="tag-badge-large"><%= data.tag.name %></span>
+                    </h1>
                     <p class="intro-p">
-                        Notes from building software, mostly the parts worth remembering by Jason Brown (Loktar).
+                        <%= data.tag.count %> <%= data.tag.count === 1 ? 'article' : 'articles' %>
                     </p>
                 </section>
+
+                <!-- Archive section (same markup as index.ejs) -->
                 <section>
                     <header class="section-header">
-                        <span class="label-small-caps"><a name="archive"></a>The Archive</span>
+                        <span class="label-small-caps">Articles</span>
                     </header>
                     <%-
                         data.articles.map(article =>
                             `<article class="article-card">
                                 <div class="article-meta">
                                     <time class="article-date">
-                                        ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+                                        ${new Date(article.date).toLocaleDateString('en-us', {
+                                            timeZone: 'UTC',
+                                            weekday:"long",
+                                            year:"numeric",
+                                            month:"short",
+                                            day:"numeric"
+                                        })}
                                     </time>
                                     ${article.tagList ? article.tagList.map((tag, idx) =>
                                         `<a href="/tags/${article.tagSlugs[idx]}.html" class="article-tag">${tag}</a>`
@@ -30,31 +46,29 @@
                                 </div>
                                 <a href="/${article.path}">
                                     <h2 class="article-title">${article.title}</h2>
-                                    <p class="article-synopsis">
-                                        ${article.teaser}
-                                    </p>
+                                    <p class="article-synopsis">${article.teaser}</p>
                                 </a>
                             </article>`
                         ).join('')
                     -%>
                 </section>
+
                 <!-- Pagination -->
+                <% if (data.totalPages > 1) { %>
                 <nav class="pagination">
                     <% if (data.currentPage > 1) { %>
-                        <a href="<%= data.currentPage === 2 ? '/' : `/page/${data.currentPage - 1}.html#archive` %>" class="page-link">Previous</a>
+                        <a href="<%= data.currentPage === 2 ? `/tags/${data.tag.slug}.html` : `/tags/${data.tag.slug}-page-${data.currentPage - 1}.html` %>" class="page-link">Previous</a>
                     <% } else { %>
-                        <a href="#" class="page-link" disabled style="opacity: 0.5; pointer-events: none;">Previous</a>
+                        <span class="page-link disabled">Previous</span>
                     <% } %>
                     <span class="page-current">Page <%= data.currentPage %> of <%= data.totalPages %></span>
                     <% if (data.currentPage < data.totalPages) { %>
-                        <a href="/page/<%= data.currentPage + 1 %>.html#archive" class="page-link">Next</a>
+                        <a href="/tags/<%= data.tag.slug %>-page-<%= data.currentPage + 1 %>.html" class="page-link">Next</a>
                     <% } else { %>
-                        <a href="#" class="page-link" disabled style="opacity: 0.5; pointer-events: none;">Next</a>
+                        <span class="page-link disabled">Next</span>
                     <% } %>
                 </nav>
-
-                <!-- Tag Cloud -->
-                <%- include('/src/templates/partials/tagcloud') -%>
+                <% } %>
 
                 <%- include('/src/templates/partials/projects', {projects: data.projects}) -%>
                 <%- include('/src/templates/partials/social', {author: data.author}) -%>
@@ -62,6 +76,5 @@
             <%- include('/src/templates/partials/footer') -%>
         </div>
         <script src='/js/main.js'></script>
-        <script src='/js/demos.js'></script>
     </body>
 </html>

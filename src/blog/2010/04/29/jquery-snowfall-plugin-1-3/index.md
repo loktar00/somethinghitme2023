@@ -2,6 +2,7 @@
 title: "Jquery Snowfall Plugin 1.3"
 date: "2010-04-30"
 teaser: "Plugin has been updated to 1.4 please go here for more up to date information. Updated fixed a bug, and added an example file to show how to use the plugin. Added a few new things to the Jquery snowfall plugin, you now have the ability to clear the snow from elements.."
+tags: "javascript, jquery, plugin"
 ---
 
 ## [**Plugin has been updated to 1.4 please go here for more up to date information**](http://www.somethinghitme.com/2010/12/09/jquery-snowfall-plugin-1-4/)

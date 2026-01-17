@@ -3,6 +3,7 @@ title: "Meat Boy Pumpkin!"
 date: "2011-10-31"
 coverImage: "389284_10150368898699442_370952285_n.jpg"
 teaser: "I tried grinding a pumpkin instead of carving and went with a Super Meat Boy face. First attempt, but it was a fun experiment. "
+tags: "personal"
 ---
 
 ![](images/389284_10150368898699442_370952285_n.jpg "pumpkin")

@@ -2,6 +2,7 @@
 title: "Quick Sort algorithm comparison"
 date: "2010-04-21"
 teaser: "I've been trying to do regular programming exercises lately just to stay sharp and recently I decided to take on sorting algorithms. I used my current language of choice (javascript) and set out to implement the quick sort algorithm. Below is the portion of my code that completes this..."
+tags: "javascript, algorithms, tutorial"
 ---
 
 I've been trying to do regular programming exercises lately just to stay sharp and recently I decided to take on sorting algorithms. I used my current language of choice (javascript) and set out to implement the [quick sort algorithm](http://en.wikipedia.org/wiki/Quicksort). Below is the portion of my code that completes this.

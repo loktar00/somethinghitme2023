@@ -2,6 +2,7 @@
 title: "Android Live Wallpaper Guts and Goo"
 date: "2011-10-11"
 teaser: "Explore the creation process of an Android live wallpaper called Guts and Goo. Learn about the technologies used, including libgdx and the libgdx live wallpaper backend. Discover the challenges faced, such as handling Android preferences, and look forward to future updates and the release of a lite version with additional features."
+tags: "android, opengl, graphics"
 ---
 
 Just released [my second live wallpaper, Guts and Goo](https://market.android.com/details?id=com.loktar.particleswirl&feature=search_result)

@@ -2,6 +2,7 @@
 title: "My entry for js1k #3"
 date: "2011-04-24"
 teaser: "I share what I ended up submitting for JS1k #3 and the ideas I tried before landing on it. The final entry is a tiny terrain-ish height line mixed with a wave effect, squeezed into 1k. "
+tags: "javascript, canvas, demo"
 ---
 
 Below is what I ended up settling on for an entry for the JS1k.

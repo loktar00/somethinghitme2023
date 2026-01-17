@@ -25,7 +25,8 @@ const siteData = {
             description: 'Project 1 description',
             url: 'https://project1.com'
         }
-    ]
+    ],
+    tagIndex: {} // Add empty tag index for tagcloud template
 };
 
 

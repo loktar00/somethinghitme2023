@@ -1,0 +1,18 @@
+<aside class="sidebar">
+    <section class="sidebar-section">
+        <h3 class="sidebar-heading">Browse by Topic</h3>
+        <div class="tag-list">
+            <%
+                // Convert tagIndex to sorted array (by count descending)
+                const sortedTags = Object.values(data.tagIndex)
+                    .sort((a, b) => b.count - a.count);
+            %>
+            <% sortedTags.forEach(tag => { %>
+                <a href="/tags/<%= tag.slug %>.html" class="tag-list-item">
+                    <span class="tag-name"><%= tag.name %></span>
+                    <span class="tag-count"><%= tag.count %></span>
+                </a>
+            <% }); %>
+        </div>
+    </section>
+</aside>
