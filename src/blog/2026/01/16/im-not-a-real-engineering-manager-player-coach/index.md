@@ -11,6 +11,8 @@ tags: "leadership, coaching, career"
 
 No one on such a small team can spend 40+ hours a week strategizing and planning. On a team with 5 other developers there just isn't enough management work to fill the time unless you "create" it, and that can lead to meaningless meetings and create friction with the team.
 
+> On a small team, you either ship or you invent work.
+
 Now that's not to say there's not a lot of work to be done, my job has consisted of the following and more:
 
 * Establishing baseline standards and etiquette for PRs, and codebases
@@ -23,7 +25,11 @@ Now that's not to say there's not a lot of work to be done, my job has consisted
 
 If you're in a similar role none of this is new, however as a leader you should allow the team to the freedom to explore and bring the solutions. Your job and experience allow you to see the whole picture and guide and decide based on what you're given.
 
-For a small team in a startup environment strategizing isn't an 8-hour day 5 days a week. Management work often comes in bursts. So what do you do with the leftover? You get in the trenches with the team and you produce. I try to contribute meaningfully every week, without stealing ownership from the team. Unfortunately right now I'm not always succeeding at that, we're thinner than we used to be in some key areas, and the work still has to ship. This isn't an attempt to outshine anyone on the team, it's the complete opposite. It's a way to show I'm here with you. I will push as hard as I can to ensure we all make it across the line together. I don't always meet that goal, some weeks are heavier with strategizing than others, but at the end of the day that's what makes me feel like I've actually "worked" for the day.
+For a small team in a startup environment strategizing isn't an 8-hour day 5 days a week. Management work often comes in bursts.
+
+So what do you do with the leftover? You get in the trenches with the team and you produce. I try to contribute meaningfully every week, without stealing ownership from the team.
+
+Unfortunately right now I'm not always succeeding at that, we're thinner than we used to be in some key areas, and the work still has to ship. This isn't an attempt to outshine anyone on the team, it's the complete opposite. It's a way to show I'm here with you. I will push as hard as I can to ensure we all make it across the line together. I don't always meet that goal, some weeks are heavier with strategizing than others, but at the end of the day that's what makes me feel like I've actually "worked" for the day.
 
 
 ### How did I get here?
@@ -39,8 +45,6 @@ Every time I take training on EM roles, read up on what I should be doing I begi
 
 I realized I'm not failing, and that I'm doing the best I can as an EM.
 
-My role actually looks like the following.
-
 * I unblock hard problems for the team and provide direction
 * I prevent regressions
 * I set standards
@@ -48,10 +52,15 @@ My role actually looks like the following.
 * I translate the chaos into something we can build
 * I try as hard as I can to protect people from thrash.
 
-Coding is not the enemy. It keeps me connected to reality, it keeps my judgment sharp, it gives me credibility, and it lets me remove some of the hardest blockers fast.
+Coding is not the enemy.
+
+> If I’m not close to the code, I'm not close to reality
+
+It keeps me connected to reality, it keeps my judgment sharp, it gives me credibility, and it lets me remove some of the hardest blockers fast.
 
 Much of my leadership style comes from what I learned from the military. The best leaders I remember by name didn't hide behind rank, they worked with us, trained with us, and didn't delegate effort they weren't willing to give themselves. That's always stuck with me.
 
+---
 
 ### The Warning
 
@@ -66,6 +75,8 @@ How can we ensure we don't fail? As a leader you're the one who has to make the 
 If the system isn't stable it will feel like you're failing even when you're doing everything right. No matter what it's impossible to "lead" your way out of things like shifting priorities, and limited staffing redundancy.
 
 What I'd tell anyone in my position is the following.
+
+> Don't apologize for doing the work. Just don’t become the work.
 
 * Do not apologize for being hands-on.
 * Protect a commitment window.
