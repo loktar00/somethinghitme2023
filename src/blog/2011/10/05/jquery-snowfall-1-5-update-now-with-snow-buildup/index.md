@@ -6,7 +6,7 @@ teaser: "I updated the Snowfall plugin to add snow buildup, so flakes can collec
 
 **[Check out the new version here, with the ability to add images to snowflakes!](http://www.somethinghitme.com/2012/12/08/snowfall-1-6/)**
 
-[Repo on Github](https://github.com/loktar00/JQuery-Snowfall) [Download Jquery Snowfall 1.5](https://github.com/loktar00/JQuery-Snowfall/archive/master.zip) [View the plugin in action](http://loktar00.github.com/JQuery-Snowfall/)
+[Repo on Github](https://github.com/loktar00/JQuery-Snowfall) [Download jQuery Snowfall 1.5](https://github.com/loktar00/JQuery-Snowfall/archive/master.zip) [View the plugin in action](http://loktar00.github.com/JQuery-Snowfall/)
 
 Added snow buildup to the plugin, so now you can pass a jquery selector in the collection option and the snow will collect on top of all the elements matched. It uses the canvas tag so the snow wont collect in IE8 or lower. To enable collection you can do the following
 
@@ -21,7 +21,7 @@ $(document).snowfall({collection : '.elements'});
 $(document).snowfall({collection : '#element'});
 ```
 
-Thats pretty much it for new options below is the standard way of using the plugin.
+That's pretty much it for new options below is the standard way of using the plugin.
 
 **Invoking the snow**
 

@@ -132,7 +132,7 @@ Then you just run the script using `node script.js` And it will modify your loca
     execSync(`git add . && git commit --quiet --date "${commit}" -m "Activity Commit ${commit}"`);
 ```
 
-The first modifies a file called `history.txt` and adds a line with the commit so we actually have some changed data. The next line ads the cile, creates a commit with the actual date of the commit.
+The first modifies a file called `history.txt` and adds a line with the commit so we actually have some changed data. The next line adds the file, creates a commit with the actual date of the commit.
 
 All we need to do after the script runs is push the changes to github and we're done!
 

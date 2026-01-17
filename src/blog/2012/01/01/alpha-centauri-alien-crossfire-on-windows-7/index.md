@@ -1,7 +1,7 @@
 ---
 title: "Installing Alpha Centauri Alien Crossfire on Windows 7"
 date: "2012-01-01"
-teaser: "How to install and run Alpha Centauri on Windows 7 from the oriignal CD"
+teaser: "How to install and run Alpha Centauri on Windows 7 from the original CD"
 ---
 
 [![](images/images.jpg "Alpha Centauri Alien Crossfire")](http://www.somethinghitme.com/wp-content/uploads/2012/01/images.jpg)This is kind of a random post, but its something I ran into this week on vacation after getting a copy of Soldout Softwares Alpha Centauri with the Alien Crossfire expansion pack. If you're like me and tried installing the game from the cd, the setup.exe just hangs. But never fear there is a way to get it working!

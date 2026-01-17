@@ -11,7 +11,7 @@ Recently I found myself in between jobs so I had some time on my hands to work o
 
 ### A bit of history 2009 - 2020
 
-A quick history on this blog and the interations it's had.
+A quick history on this blog and the iterations it's had.
 
 Back in 2009 when blogs were all the rage I threw up a wordpress install made a custom theme and operated using that for years on a shared hosting platform. It worked well for the most part but over the years and with wordpress upgrades and plugins it just became more of a pain. At the end of the day all I really needed were some static pages with my thoughts and images.
 
@@ -46,13 +46,13 @@ I've been doing a bit of work in node lately (moreso than usual) so came up with
 
 The solution I feel is pretty simple overall, there's definitely a lot of room for improvement but my goal was to not spend more than a day on the overall solution so I could actually get to the important part of the site, the content.
 
-I decided to host the site publically this time around, all code is located on my githup profile [here](https://github.com/loktar00/somethinghitme2023).
+I decided to host the site publically this time around, all code is located on my github profile [here](https://github.com/loktar00/somethinghitme2023).
 
 ### The code
 
-The articles all live under `src/blog` and are organized by years, and for the older articles the month and day. The script iterates over the directories grabbing each file and parsing the markdown using [showdown](https://www.npmjs.com/package/showdown) (so far 1 of the total 2 dependencies for the site/).
+The articles all live under `src/blog` and are organized by years, and for the older articles the month and day. The script iterates over the directories grabbing each file and parsing the markdown using [showdown](https://www.npmjs.com/package/showdown) (so far 1 of the total 2 dependencies for the site).
 
-I continued to use a similar format I had when using gatsby. At the top of each markdown file there's a section to hold metadata associated with each artcile. Here's an example for this one.
+I continued to use a similar format I had when using gatsby. At the top of each markdown file there's a section to hold metadata associated with each article. Here's an example for this one.
 
 ```markdown
 title: "Recreating this blog with static generation"
@@ -63,7 +63,7 @@ tags: "blog, javascript, static generation, programming"
 
 I then parse the markdown when it's being read and extract the information to expose to our templates.
 
-```javasript
+```javascript
     // Grab the information from each file to generate our table of contents and structure
     const pattern = /---([\s\S]*?)---/g;
     const matches = text.match(pattern);
@@ -189,7 +189,7 @@ For styling I'm just using vanilla css, I might change that to SCSS since I'm a 
 
 For hosting I'm sticking with github pages. Each commit to the main branch triggers an action which builds everything to github pages so I have a pretty worry free experience.
 
-### Improvmements
+### Improvements
 
 Beyond just making improvements for mobile, I'm not in love with the main page design when it comes to layout, definitely needs more images. I also do want to go back to a pages main page and need to add tags so I can organize articles in the side bar a bit like I used to with wordpress. Might as well add a timeline as well. As of right now I'm overall happy, not bad for a days worth of work.
 

@@ -8,8 +8,8 @@ So I realized I have never posted anything on here about my gaming habits. Gamin
 
 **My collection**
 
-Ill have to get some pictures up.. but I love collecting PC games, old and new. Currently my Steam account sits at just under 800 games, and my physical copy count sits at about 600 or so. I have most popular games that were released for the PC and quite a few obscure ones. I wont lie I haven't played them all, last time I calculated I have played about a third of them. Once I get my spreadsheet up to date Ill post it on here.
+I'll have to get some pictures up.. but I love collecting PC games, old and new. Currently my Steam account sits at just under 800 games, and my physical copy count sits at about 600 or so. I have most popular games that were released for the PC and quite a few obscure ones. I wont lie I haven't played them all, last time I calculated I have played about a third of them. Once I get my spreadsheet up to date I'll post it on here.
 
-**Games Im currently playing**
+**Games I'm currently playing**
 
-Right now Im switching between a few games, Dungeon Defenders, Battlefield 3, and Team Fortress 2. The Halloween events in TF2, and Dungeon Defenders are great I love when games include things going on in the real world, such as holidays.
+Right now I'm switching between a few games, Dungeon Defenders, Battlefield 3, and Team Fortress 2. The Halloween events in TF2, and Dungeon Defenders are great I love when games include things going on in the real world, such as holidays.

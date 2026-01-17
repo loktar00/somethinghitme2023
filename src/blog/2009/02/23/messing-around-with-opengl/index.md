@@ -8,6 +8,6 @@ teaser: "Wasn't in the mood this weekend to work on my current flash project, or
 
 Really all I did was end up converting some of the Nehe lesson 19 code, and then making my own sprite class. Soon I'll make an emitter class so I can have a full featured particle system up and running to eventually make some sort of game. Anyway [here is](http://www.loktar.com/files/bigbang.zip "Big Bang") the fruits of my labor a crazy particle effect that makes me think of the big bang.
 
-Ill release the source if anyone really wants it. I warn you its not the prettyist!
+Ill release the source if anyone really wants it. I warn you its not the prettiest!
 
 [Download Zip](http://www.loktar.com/files/bigbang.zip "Big Bang Zip")

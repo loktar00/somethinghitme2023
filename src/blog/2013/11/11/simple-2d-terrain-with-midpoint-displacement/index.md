@@ -11,7 +11,7 @@ Screenshot from scrolling terrain and shooting stars demo on codepen.io
 
 In a few of my demos I've used 2d terrain. I love the effect and its really easy to do especially in 2d. The algorithm I use most is Diamond Square also known as Midpoint Displacement. What's great about the algorithm besides its easy of use is that it can be used for simple 2d terrain as well as with 3d terrain. For now I will just be talking about generating 2d terrain, in a future article I will discuss how to use the same algorithm to make create height maps that can be used in turn to create 3d terrain.
 
-Im going to use JavaScript and the canvas element for my examples but the principles can easily be applied to any language or rendering technology.
+I'm going to use JavaScript and the canvas element for my examples but the principles can easily be applied to any language or rendering technology.
 
 The method I will be describing is midpoint displacement. Its one of the simplest algorithms in my opinion when it comes to making good looking 2d procedural terrain.
 
@@ -84,7 +84,7 @@ function terrain(width, height, displace, roughness){
 
 <iframe style="width: 540px; height: 300px;" src="https://jsfiddle.net/loktar/5Xdzg/embedded/result,js,html,css/" height="240" width="320" frameborder="0"></iframe>
 
-In my code I also use a value called displace. This is just to control the maximum distance a point can go this is so II can keep it inside of the canvas area.
+In my code I also use a value called displace. This is just to control the maximum distance a point can go this is so I can keep it inside of the canvas area.
 
 ## Wrapping Terrain and Scrolling
 
