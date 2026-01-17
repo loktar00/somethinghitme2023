@@ -517,5 +517,5 @@ const build = async () => {
     }
 }
 
-// Export build function for external calling
-export { build };
+// Export build function and tag-related functions for external calling
+export { build, processArticleTags, generateTagSlug, buildTagIndex };
