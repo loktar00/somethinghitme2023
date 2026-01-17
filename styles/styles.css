@@ -491,6 +491,40 @@ canvas#demo-canvas {
     font-size: 0.75rem;
 }
 
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.feed-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.feed-link:hover {
+    color: var(--accent-color);
+}
+
+.feed-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--accent-color);
+}
+
 @media (max-width: 600px) {
     .site-header {
         flex-direction: column;
