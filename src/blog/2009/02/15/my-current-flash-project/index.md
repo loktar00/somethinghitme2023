@@ -2,6 +2,7 @@
 title: "My Current Flash Project"
 date: "2009-02-16"
 teaser: "Nonoba if you haven't heard of this site your missing out. It's a pretty big Flash portal similar to Kongregate, the main difference is they offer a multiplayer API. The API is great, its pretty easy to use, and if you've ever done anything with socket programming and sending messages back and forth you'll find no trouble using it at all."
+tags: "flash, multiplayer, game development"
 ---
 
 [Nonoba](http://www.nonoba.com/) if you haven't heard of this site your missing out. It's a pretty big Flash portal similar to Kongregate, the main difference is they offer a multiplayer API. The API is great, its pretty easy to use, and if you've ever done anything with socket programming and sending messages back and forth you'll find no trouble using it at all.

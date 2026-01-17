@@ -2,6 +2,7 @@
 title: "jQuery Snowfall Plugin 1.4"
 date: "2010-12-09"
 teaser: "Access an updated version of the jQuery Snowfall plugin, offering new features like rounded flakes and shadows. Learn how to invoke the snowfall effect, clear the snow, and customize various options. Download the plugin and enhance your website with a touch of winter magic."
+tags: "javascript, jquery, plugin"
 ---
 
 **[Newer version available](http://www.somethinghitme.com/2011/10/05/jquery-snowfall-1-5-update-now-with-snow-buildup/)**

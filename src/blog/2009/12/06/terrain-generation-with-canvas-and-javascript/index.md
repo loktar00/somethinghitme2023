@@ -2,6 +2,7 @@
 title: "Terrain Generation with Canvas and JavaScript"
 date: "2009-12-07"
 teaser: "The idea of creating height maps with JS and canvas came from an idea I started for a different website I'm developing. This small project has taught me many things (some of the unfortunate things I learned is I still suck at math, and I have many JS skills to brush up on). I just couldn't bring myself to give it up so I also implemented a very slow very light voxel engine..."
+tags: "javascript, canvas, procedural generation, algorithms"
 ---
 
 The idea of creating height maps with JS and canvas came from an  idea I started for a different website I'm developing. This small project has taught me many things (some of the unfortunate things I learned is I still suck at math, and I have many JS skills to brush up on). I just couldn't bring myself to give it up so I also implemented a very slow very light voxel engine.

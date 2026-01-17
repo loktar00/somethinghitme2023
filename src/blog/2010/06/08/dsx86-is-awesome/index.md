@@ -2,6 +2,7 @@
 title: "DSx86 is awesome!"
 date: "2010-06-08"
 teaser: "DSx86 is awesome! I don't know what it is but something about old dos games on handheld systems excites me, I think its because even those old games seem to have more depth and content than many of the current games in the handheld market..."
+tags: "personal"
 ---
 
 I don't know what it is but something about old dos games on handheld systems excites me, I think its because even those old games seem to have more depth and content than many of the current games in the handheld market. Of course there are some awesome handheld games with incredible depth and content like Monster Hunters Freedom, or Advanced wars, but games that awesome are far and few between.  So I was pretty excited when I recently saw [DSx86 a 80286 emulator for the nintendo DS by Patrick Alto.](http://dsx86.patrickaalto.com/)

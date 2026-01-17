@@ -2,6 +2,7 @@
 title: "Creating a canvas platformer tutorial part one"
 date: "2013-01-09"
 teaser: "Part one of my canvas platformer series. I set up a player, build a requestAnimationFrame loop, track keyboard input, add friction and gravity, and implement a basic jump."
+tags: "javascript, canvas, game development, tutorial"
 ---
 
 I've seen a few questions on [Stackoverflow](https://stackoverflow.com "stackoverflow") lately dealing with how to smoothly move an object around on the canvas. This will be the first part, of my first ever attempted tutorial series. So please bear with me as I can sometimes be very confusing (to myself included) when trying to convey any topics dealing with development.

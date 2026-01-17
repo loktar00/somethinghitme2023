@@ -238,11 +238,13 @@ canvas#demo-canvas {
 .article-card {
     display: block;
     margin-bottom: 3rem;
-    text-decoration: none;
-    color: inherit;
 }
 
-.article-card:hover .article-title {
+.article-card a {
+    text-decoration: none;
+}
+
+.article-card a:hover .article-title {
     color: var(--accent-color);
 }
 
@@ -259,12 +261,33 @@ canvas#demo-canvas {
 }
 
 .article-tag {
+    display: flex;
+    align-items: center;
     font-family: var(--font-ui);
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--accent-color);
     font-weight: 600;
+    text-decoration: none;
+}
+
+.article-tag:hover {
+    opacity: 0.7;
+}
+
+/* Large tag badge for tag page headers */
+.tag-badge-large {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: 1.25rem;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    color: var(--accent-color);
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
 }
 
 .article-title {
@@ -305,11 +328,49 @@ canvas#demo-canvas {
     color: var(--text-main);
 }
 
+/* Disabled pagination links */
+.pagination .page-link.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
+
 .page-current {
     font-family: var(--font-code);
     font-size: 0.9rem;
     color: var(--text-main);
     font-weight: 600;
+}
+
+/* TAG CLOUD */
+.tag-cloud-section {
+    margin: 4rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: center;
+    line-height: 2;
+}
+
+.tag-cloud-tag {
+    font-family: var(--font-ui);
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    display: inline-block;
+}
+
+.tag-cloud-tag:hover {
+    opacity: 0.7;
 }
 
 /* PROJECTS (Moved to bottom) */

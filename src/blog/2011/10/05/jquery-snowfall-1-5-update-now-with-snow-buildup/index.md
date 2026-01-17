@@ -2,6 +2,7 @@
 title: "jQuery Snowfall 1.5 update now with snow buildup!"
 date: "2011-10-06"
 teaser: "I updated the Snowfall plugin to add snow buildup, so flakes can collect on top of elements you target with a selector. This post shows the new collection option, standard usage, the clear method, and the full option list."
+tags: "javascript, jquery, plugin"
 ---
 
 **[Check out the new version here, with the ability to add images to snowflakes!](http://www.somethinghitme.com/2012/12/08/snowfall-1-6/)**

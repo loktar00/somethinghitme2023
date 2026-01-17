@@ -65,6 +65,78 @@ const createDirectory = (dirPath) => {
 createDirectory(CONFIG.publicPath);
 
 // =============================================================================
+// TAG PROCESSING FUNCTIONS
+// =============================================================================
+
+/**
+ * Parse comma-separated tags into arrays
+ */
+const processArticleTags = (tagsString) => {
+    if (!tagsString || typeof tagsString !== 'string') {
+        return { tagList: [], tagSlugs: [] };
+    }
+
+    const tagList = tagsString
+        .split(',')
+        .map(tag => tag.trim())
+        .filter(tag => tag.length > 0);
+
+    const tagSlugs = tagList.map(tag => generateTagSlug(tag));
+
+    return { tagList, tagSlugs };
+}
+
+/**
+ * Generate URL-safe slugs from tag names
+ */
+const generateTagSlug = (tagName) => {
+    return tagName
+        .toLowerCase()
+        .trim()
+        .replace(/\./g, '')              // node.js -> nodejs
+        .replace(/[^a-z0-9]+/g, '-')     // spaces to hyphens
+        .replace(/^-+|-+$/g, '')         // trim hyphens
+        .replace(/-+/g, '-');            // collapse multiple hyphens
+}
+
+/**
+ * Build tag index mapping tags to articles
+ */
+const buildTagIndex = (articleData) => {
+    const tagIndex = {};
+
+    articleData.forEach(article => {
+        if (!article.tagList || article.tagList.length === 0) return;
+
+        article.tagList.forEach((tagName, index) => {
+            const slug = article.tagSlugs[index];
+
+            if (!tagIndex[slug]) {
+                tagIndex[slug] = {
+                    name: tagName,
+                    slug: slug,
+                    count: 0,
+                    articles: []
+                };
+            }
+
+            tagIndex[slug].count++;
+            tagIndex[slug].articles.push({
+                title: article.title,
+                date: article.date,
+                path: article.path,
+                teaser: article.teaser,
+                tags: article.tags,
+                tagList: article.tagList,
+                tagSlugs: article.tagSlugs
+            });
+        });
+    });
+
+    return tagIndex;
+}
+
+// =============================================================================
 // PROCESS MARKDOWN FILES
 // =============================================================================
 
@@ -295,6 +367,47 @@ export const pagination = (articleData, articlesPerPage, siteData) => {
 }
 
 // =============================================================================
+// TAG PAGE GENERATION
+// =============================================================================
+const generateTagPages = (tagIndex, siteData) => {
+    Object.values(tagIndex).forEach(tag => {
+        const articlesPerPage = CONFIG.articlesPerPage; // 10
+        const totalPages = Math.ceil(tag.count / articlesPerPage);
+
+        // Generate each page
+        for (let page = 1; page <= totalPages; page++) {
+            const startIndex = (page - 1) * articlesPerPage;
+            const endIndex = startIndex + articlesPerPage;
+            const pageArticles = tag.articles.slice(startIndex, endIndex);
+
+            const markup = ejs.render(
+                fs.readFileSync(`./${CONFIG.sourcePath}/${CONFIG.templatePath}/tag.ejs`, 'utf8'),
+                {
+                    data: {
+                        ...siteData,
+                        tag: tag,
+                        articles: pageArticles,
+                        currentPage: page,
+                        totalPages: totalPages
+                    }
+                },
+                { root: process.cwd() }
+            );
+
+            // Save file: /tags/javascript.html, /tags/javascript-page-2.html, etc.
+            const tagDir = path.join(CONFIG.publicPath, 'tags');
+            createDirectory(tagDir);
+
+            const filename = page === 1
+                ? `${tag.slug}.html`
+                : `${tag.slug}-page-${page}.html`;
+
+            fs.writeFileSync(path.join(tagDir, filename), markup);
+        }
+    });
+}
+
+// =============================================================================
 // ARTICLE PAGE GENERATION
 // =============================================================================
 const processArticles = (articleData, siteData) => {
@@ -337,7 +450,19 @@ const build = async () => {
         const htmlfiles = markdownFiles.map(file => {
             const { pageData, content } = processFrontMatter(fs.readFileSync(file, 'utf8'));
             const { html, savePath } = processMarkdownContent(file, content);
-            return {pageData: {...pageData, ...{path: savePath, ...{html: html}}}};
+
+            // Add tag processing
+            const tagData = processArticleTags(pageData.tags);
+
+            return {
+                pageData: {
+                    ...pageData,
+                    path: savePath,
+                    html: html,
+                    tagList: tagData.tagList,      // ["javascript", "node.js"]
+                    tagSlugs: tagData.tagSlugs     // ["javascript", "nodejs"]
+                }
+            };
         });
 
         // Sort article data in reverse chronological order
@@ -348,6 +473,9 @@ const build = async () => {
             const dateB = new Date(b.date);
             return dateB - dateA;
         });
+
+        // Build tag index
+        const tagIndex = buildTagIndex(articleData);
 
         // Save all of the assets (process sequentially to avoid file conflicts)
         for (const file of assetFiles) {
@@ -364,14 +492,21 @@ const build = async () => {
 
         // Prepare the site data
         let siteData = await prepareSiteData();
-        // Add the article data to the site data
-        siteData = {...siteData, ...{articles: articleData}};
+        // Add the article data and tag index to the site data
+        siteData = {
+            ...siteData,
+            articles: articleData,
+            tagIndex: tagIndex
+        };
 
         // Paginate the articles
         const pageData = pagination(articleData, CONFIG.articlesPerPage, siteData);
         pageData.forEach(page => {
             savePages(page, CONFIG.publicPath);
         });
+
+        // Generate tag pages
+        generateTagPages(tagIndex, siteData);
 
         // Process the articles
         processArticles(articleData, siteData);
@@ -382,5 +517,5 @@ const build = async () => {
     }
 }
 
-// Export build function for external calling
-export { build };
+// Export build function and tag-related functions for external calling
+export { build, processArticleTags, generateTagSlug, buildTagIndex };

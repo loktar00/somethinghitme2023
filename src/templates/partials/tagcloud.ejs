@@ -1,0 +1,44 @@
+<section class="tag-cloud-section">
+    <header class="section-header">
+        <span class="label-small-caps">Browse by Topic</span>
+    </header>
+    <div class="tag-cloud">
+        <%
+            // Convert tagIndex to array and randomize order
+            const tagArray = Object.values(data.tagIndex);
+
+            // Fisher-Yates shuffle to randomize
+            for (let i = tagArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [tagArray[i], tagArray[j]] = [tagArray[j], tagArray[i]];
+            }
+
+            // Find min and max counts for scaling
+            const counts = tagArray.map(t => t.count);
+            const minCount = Math.min(...counts);
+            const maxCount = Math.max(...counts);
+
+            // Scale font sizes between 0.75rem and 1.5rem
+            const minSize = 0.75;
+            const maxSize = 1.5;
+
+            tagArray.forEach(tag => {
+                // Calculate size based on count (logarithmic scale for better distribution)
+                let size;
+                if (maxCount === minCount) {
+                    size = (minSize + maxSize) / 2;
+                } else {
+                    // Logarithmic scale
+                    const logMin = Math.log(minCount);
+                    const logMax = Math.log(maxCount);
+                    const logCount = Math.log(tag.count);
+                    const scale = (logCount - logMin) / (logMax - logMin);
+                    size = minSize + (scale * (maxSize - minSize));
+                }
+        %>
+            <a href="/tags/<%= tag.slug %>.html" class="tag-cloud-tag" style="font-size: <%= size.toFixed(2) %>rem;">
+                <%= tag.name %>
+            </a>
+        <% }); %>
+    </div>
+</section>

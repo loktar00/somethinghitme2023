@@ -2,6 +2,7 @@
 title: "Minecraft fun and editing"
 date: "2010-05-02"
 teaser: " Recently came across this awesome java game Minecraft basically the whole goal of the game (multiplayer that is) is to create and destroy things. At first I was pretty skeptical, the concept is so simple.. until I found myself spending hours recreating Mario..."
+tags: "personal, game development"
 ---
 
 Recently came across this awesome java game [Minecraft](http://minecraft.net) basically the whole goal of the game (multiplayer that is) is to create and destroy things. At first I was pretty skeptical, the concept is so simple.. until I found myself spending hours recreating Mario, and others pixel by pixel, and creating a staircase to lava.

@@ -2,6 +2,7 @@
 title: "Game Dev Movement cheatsheet with examples"
 date: "2013-11-13"
 teaser: "This is my movement cheat sheet for 2D games, with runnable examples. It covers distance checks, angle math, pursuit, projecting points (like gun barrels), rotation while moving, and Asteroids-style heading movement with friction."
+tags: "javascript, game development, tutorial"
 ---
 
 #### aka My Cheat Sheet of Helpful Code

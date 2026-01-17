@@ -2,6 +2,7 @@
 title: "Quick Canvas Game"
 date: "2009-03-14"
 teaser: "I've been hearing things about this canvas element lately and I found some really cool uses. Mostly I found examples of charts that use it, which makes sense because in some browsers its not very fast rendering real time elements onto it, and IE browsers do not natively support it. After doing some more research and seeing as its in the HTML 5 specification I figured I would try my hand at making something quick with it..."
+tags: "javascript, canvas, game development"
 ---
 
 \[caption id="attachment\_38" align="alignleft" width="284" caption="Canvas Invaders"\][![](images/canvasinvaders-284x300.png "canvasinvaders")](http://www.somethinghitme.com/projects/canvasinvaders/)\[/caption\]

@@ -2,6 +2,7 @@
 title: "Turning canvas games into executables"
 date: "2012-03-29"
 teaser: "I wrapped an HTML5 canvas game into a self-contained executable using Qt WebKit and embedded resources so the assets are not exposed. This is the quick write-up of the approach and what I wanted to test next (dependencies and performance)."
+tags: "javascript, canvas, tools, game development"
 ---
 
 [![](images/ss1333030211.3125-288x300.png "tetris exe")](http://www.somethinghitme.com/wp-content/uploads/2012/03/ss1333030211.3125.png)

@@ -3,6 +3,7 @@ title: "2d Metaballs with canvas!"
 date: "2012-06-07"
 coverImage: "metafeat.png"
 teaser: "I recreated the metaballs effect in JavaScript canvas using radial gradients and an alpha threshold. This post walks through the approach, includes the gists, and links a demo and JSFiddle to play with."
+tags: "javascript, canvas, graphics, tutorial"
 ---
 
 I read this [great article](http://nullcandy.com/2d-metaballs-in-xna/) on creating 2d metaballs with XNA. I never really looked into the concept behind them, but after reading that they seemed pretty simple. I decided to try my hand at it using javascript and canvas. The results were pretty awesome (well in my opinion anyway).

@@ -9,7 +9,10 @@
         gtag('config', 'G-YJDK7X0K15');
     </script>
     <meta charSet="utf-8" />
-    <meta name="description" content="Jason Browns Code, demos and ideas."/>
+    <meta name="description" content="<%= locals.description || 'Jason Browns Code, demos and ideas.' %>"/>
+    <% if (locals.canonical) { %>
+    <link rel="canonical" href="https://somethinghitme.com<%= canonical %>">
+    <% } %>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
