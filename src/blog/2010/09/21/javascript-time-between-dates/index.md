@@ -2,6 +2,7 @@
 title: "JavaScript time between dates"
 date: "2010-09-21"
 teaser: "A person asked a question in my post about sorting dates in Javascript, basically on how to return a measurement of time between dates, such as days, hours, minutes, seconds. I haven't really ever had to do something like this so I figured I would see if it was as easy as I assumed it would be in JS..."
+tags: "javascript, tutorial"
 ---
 
 A person asked a question in my [post about sorting dates in Javascript](http://www.somethinghitme.com/2010/04/12/javascript-sorting-by-date-time/), basically on how to return a measurement of time between dates, such as days, hours, minutes, seconds. I haven't really ever had to do something like this so I figured I would see if it was as easy as I assumed it would be in JS. This is what I came up with.

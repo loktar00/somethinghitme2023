@@ -3,6 +3,7 @@ title: "My SOPA/PIPA Ludum Dare entry"
 date: "2012-01-19"
 coverImage: "screen1.png"
 teaser: "I made a one-day Ludum Dare jam game in JS and canvas, heavily inspired by World Infectonator. You get one chance to convert someone and hope the chain reaction carries the level, with a direct link to play it."
+tags: "javascript, canvas, game development"
 ---
 
 ![](images/screen1.png "screen1")

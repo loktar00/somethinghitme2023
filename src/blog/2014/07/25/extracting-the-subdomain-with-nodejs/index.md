@@ -2,6 +2,7 @@
 title: "Extracting the subdomain with node.js"
 date: "2014-07-25"
 teaser: "A simple Express pattern for reading the host header, pulling out the subdomain, and normalizing hyphens so you can drive behavior off `whatever.yourdomain.com with` a wildcard DNS entry."
+tags: "javascript, node.js, tutorial"
 ---
 
 Years ago I made some novelty sites with php/apache that used the subdomain to display different messages to the user, I decided to remake one of them using node and wanted to share how this could be done, it was much simpler than I thought it would be.

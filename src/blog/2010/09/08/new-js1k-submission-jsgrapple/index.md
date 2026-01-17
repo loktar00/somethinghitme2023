@@ -2,6 +2,7 @@
 title: "New js1k Submission JSGrapple"
 date: "2010-09-08"
 teaser: "Update Submission for the js1k competition. My 3rd, and final one only the last one you enter is judged and I think this is going to be as good as it gets from me that is. I ended up settling on a clone of a cool game I used to play when I was a network admin in the Air Force called Wire Hang Redux..."
+tags: "javascript, canvas, game development"
 ---
 
 [Update Submission](http://js1k.com/demo/755) for the [js1k](js1k.com) competition. My 3rd, and final one only the last one you enter is judged and I think this is going to be as good as it gets from me that is. I ended up settling on a clone of a cool game I used to play when I was a network admin in the Air Force called [Wire Hang Redux](http://www.gingerbeardman.com/wirehang/).

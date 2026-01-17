@@ -2,6 +2,7 @@
 title: "Another Android live wallpaper, Forest Scene"
 date: "2011-10-30"
 teaser: "I created an Android live wallpaper forest scene inspired by a JS1K demo submission."
+tags: "android, graphics"
 ---
 
 ![](images/screen1.PNG "Forest Scene")

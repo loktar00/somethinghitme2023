@@ -2,6 +2,7 @@
 title: "Deep copying in JavaScript"
 date: "2022-04-27"
 teaser: "Deep copying in JavaScript is a mess if you do not know the tradeoffs. This post covers shallow vs deep copies, where JSON stringify and spread/Object.assign break down, and when structuredClone is the right tool."
+tags: "javascript, tutorial"
 ---
 
 ## Deep copying / cloning in JavaScript

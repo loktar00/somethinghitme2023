@@ -1,6 +1,7 @@
 ---
 title: "Jquery Snowfall script updated"
 date: "2010-11-25"
+tags: "javascript, jquery, plugin"
 ---
 
 **[Newer version available](http://www.somethinghitme.com/2011/10/05/jquery-snowfall-1-5-update-now-with-snow-buildup/)**

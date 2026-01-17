@@ -2,6 +2,7 @@
 title: "Floating text from cursor generative demo"
 date: "2022-03-31"
 teaser: "A quick JS/CSS experiment where text trails the cursor, inspired by a tweet. I fed it a random Nostradamus paragraph and called it a nice little deviation."
+tags: "javascript, css, demo"
 ---
 
 Came across [this tweet](https://twitter.com/patakk/status/1501901438674419722) inspired me to try my hand at it with JS/CSS. Grabbed some random paragraph from Nostradamus, turned out to be a nice little deviation.

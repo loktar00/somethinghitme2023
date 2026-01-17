@@ -2,6 +2,7 @@
 title: "Dynamic rotated sprite sheets with JavaScript"
 date: "2010-02-07"
 teaser: "Been working on the single player canvas game this week and got a few cool things accomplished in terms of performance. The main thing I was working on was trying to reduce the slowdown on real time image rotation. What I ended up coming up with was creating rotated sprite sheets on the fly in memory..."
+tags: "javascript, canvas, optimization, game development"
 ---
 
 Been working on the single player canvas game this week and got a few cool things accomplished in terms of performance. The main thing I was working on was trying to reduce the slowdown on real time image rotation.  What I ended up coming up with was creating rotated sprite sheets on the fly in memory.

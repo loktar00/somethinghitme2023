@@ -2,6 +2,7 @@
 title: "Rainbow bright bookmarklet"
 date: "2013-01-03"
 teaser: "A bookmarklet that cycles colors across every element on the page. Drag it to your bookmarks, click it on any site, and enjoy the chaos..."
+tags: "javascript, demo"
 ---
 
 Went a little crazy with a friend of mines bookmarklet he made that would randomly change the colors of all elements on a page.

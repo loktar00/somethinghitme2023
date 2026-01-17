@@ -2,6 +2,7 @@
 title: "Hello everyone.. or just me"
 date: "2009-02-05"
 teaser: "Hello everyone.. or just me: I finally decided to create my own personal blog. I do so many random things throughout the year I figured it's a waste to not share my experiences for anyone who may come across or do something similar. For my first post, I'll share a little about myself. I'm 26 with a wife and 4 kids. By day, I'm a web developer for the government, and by night, I'm a web developer / all-around developer for myself."
+tags: "personal"
 ---
 
 I finally decided to create my own personal blog. I do so many random things throughout the year I figured its a waste to not share my experiences for anyone who may come across or do something similar.

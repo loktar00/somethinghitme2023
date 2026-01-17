@@ -2,6 +2,7 @@
 title: "Jquery Snowfall plugin"
 date: "2009-12-19"
 teaser: "Plugin has been updated to 1.4 please go here for more up to date information. Got bored today and decided to put together a quick snow plugin for Jquery. On my site Undeadgames.com the members look forward to the snow every year. I decided to replace the older one we were using, it was nice overall..."
+tags: "javascript, jquery, plugin"
 ---
 
 ## [**Plugin has been updated to 1.4 please go here for more up to date information**](http://www.somethinghitme.com/2010/12/09/jquery-snowfall-plugin-1-4/)

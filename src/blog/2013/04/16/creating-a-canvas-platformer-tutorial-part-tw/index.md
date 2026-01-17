@@ -2,6 +2,7 @@
 title: "Creating a canvas platformer tutorial part two"
 date: "2013-04-17"
 teaser: "Part two of my canvas platformer series. I add world geometry, detect and resolve collisions by direction, and introduce grounded and jumping state so movement feels right."
+tags: "javascript, canvas, game development, tutorial"
 ---
 
 Wow, so its been a while since I've posted anything. I've been kind of busy, and was forcing myself not to post anything unless it was going to be part two of the tutorial. With that said lets begin! For all the code and fully working demo scroll to the bottom.

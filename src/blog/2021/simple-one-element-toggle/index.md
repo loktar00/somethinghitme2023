@@ -2,6 +2,7 @@
 title: "Simple One Element Toggle"
 date: "2021-10-23"
 teaser: "A minimal toggle built from a single checkbox input. It is pure CSS using pseudo-elements for the track and thumb, so it drops into a form without extra markup."
+tags: "css, demo"
 ---
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="Simple 1 element CSS toggle" src="https://codepen.io/loktar00/embed/RwZpBab?default-tab=css%2Cresult&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">

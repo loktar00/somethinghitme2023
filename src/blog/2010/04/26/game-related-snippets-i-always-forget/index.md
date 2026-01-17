@@ -2,6 +2,7 @@
 title: "Game Related Snippets I always Forget"
 date: "2010-04-26"
 teaser: "When I sit down to prototype something new I always find myself looking up the same snippets to do the same types of things. I figured I might as well record them somewhere so I know an easy place to look when I do forget. All the samples will be in Javascript and should be able to be easily converted to any other language..."
+tags: "javascript, game development, tutorial"
 ---
 
 When I sit down to prototype something new I always find myself looking up the same snippets to do the same types of things. I figured I might as well record them somewhere so I know an easy place to look when I do forget. All the samples will be in Javascript and should be able to be easily converted to any other language.
