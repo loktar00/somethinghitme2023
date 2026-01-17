@@ -7,6 +7,8 @@ import { join } from 'node:path'
 import ejs from 'ejs';
 import showdown from 'showdown';
 import sharp from 'sharp';
+import matter from 'gray-matter';
+import { Feed } from 'feed';
 
 // =============================================================================
 // CONFIGURATION
@@ -140,46 +142,26 @@ const buildTagIndex = (articleData) => {
 // PROCESS MARKDOWN FILES
 // =============================================================================
 
-// Front matter - Information in each of the markdown files that is used to generate the page.
+/**
+ * Parse frontmatter using gray-matter
+ * Returns parsed YAML metadata and cleaned content
+ */
 export const processFrontMatter = (content) => {
     try {
-        const pattern = /---([\s\S]*?)---/;
-        const matches = content.match(pattern);
-        let pageData = {};
+        const { data, content: mdContent } = matter(content);
 
-        if (matches) {
-            for (const match of matches) {
-                const contentBetweenDelimiters = match.replace(/---/g, '').trim();
-                if (contentBetweenDelimiters.trim()) {
-                    contentBetweenDelimiters.split('\n')
-                        .forEach(line => {
-                            try {
-                                // Skip empty lines
-                                if (!line.trim()) {
-                                    return;
-                                }
-
-                                const colonIndex = line.indexOf(':');
-                                if (colonIndex === -1) {
-                                    console.warn(`Warning: Skipping malformed frontmatter line (no colon): "${line}"`);
-                                    return;
-                                }
-
-                                const key = line.substring(0, colonIndex).trim();
-                                const value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, '');
-
-                                if (key) {
-                                    pageData[key] = value;
-                                }
-                            } catch (lineError) {
-                                console.warn(`Warning: Error parsing frontmatter line "${line}":`, lineError.message);
-                            }
-                        });
-                }
-            }
+        // Validate required fields
+        if (!data.title) {
+            console.warn('Warning: Article missing required field "title"');
+        }
+        if (!data.date) {
+            console.warn('Warning: Article missing required field "date"');
         }
 
-        return {pageData, content: content.replace(pattern, '').trim()};
+        return {
+            pageData: data,
+            content: mdContent
+        };
     } catch (error) {
         console.error('Error processing frontmatter:', error.message);
         // Return safe defaults on error
@@ -408,6 +390,106 @@ const generateTagPages = (tagIndex, siteData) => {
 }
 
 // =============================================================================
+// SITEMAP GENERATION
+// =============================================================================
+const generateSitemap = (articleData, siteData) => {
+    // Get the site URL from siteData or use a default
+    const siteUrl = siteData.main?.url || 'https://somethinghitme.com';
+
+    let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+    // Add homepage
+    sitemap += `  <url>\n`;
+    sitemap += `    <loc>${siteUrl}/</loc>\n`;
+    sitemap += `    <changefreq>weekly</changefreq>\n`;
+    sitemap += `    <priority>1.0</priority>\n`;
+    sitemap += `  </url>\n`;
+
+    // Add all articles
+    articleData.forEach(article => {
+        // Convert backslashes to forward slashes for URLs
+        const cleanPath = convertBackslashes(article.path).replace(/\/$/, ''); // Remove trailing slash if present
+        const articleUrl = `${siteUrl}/${cleanPath}/`;
+        const lastmod = new Date(article.date).toISOString().split('T')[0];
+
+        sitemap += `  <url>\n`;
+        sitemap += `    <loc>${articleUrl}</loc>\n`;
+        sitemap += `    <lastmod>${lastmod}</lastmod>\n`;
+        sitemap += `    <changefreq>never</changefreq>\n`;
+        sitemap += `    <priority>0.8</priority>\n`;
+        sitemap += `  </url>\n`;
+    });
+
+    // Add tag pages
+    if (siteData.tagIndex) {
+        Object.values(siteData.tagIndex).forEach(tag => {
+            const tagUrl = `${siteUrl}/tags/${tag.slug}.html`;
+            sitemap += `  <url>\n`;
+            sitemap += `    <loc>${tagUrl}</loc>\n`;
+            sitemap += `    <changefreq>weekly</changefreq>\n`;
+            sitemap += `    <priority>0.7</priority>\n`;
+            sitemap += `  </url>\n`;
+        });
+    }
+
+    sitemap += '</urlset>';
+
+    return sitemap;
+}
+
+// =============================================================================
+// RSS FEED GENERATION (using feed library)
+// =============================================================================
+const generateRSSFeed = (articleData, siteData) => {
+    // Get site info
+    const siteUrl = siteData.main?.url || 'https://somethinghitme.com';
+    const siteTitle = siteData.main?.title || 'Somethinghitme';
+    const siteDescription = siteData.main?.tagline || 'My Code, demos and ideas.';
+    const authorName = siteData.author?.name || 'Author';
+    const authorEmail = siteData.author?.email || '';
+
+    // Create feed using feed library
+    const feed = new Feed({
+        title: siteTitle,
+        description: siteDescription,
+        id: siteUrl,
+        link: siteUrl,
+        language: 'en',
+        image: `${siteUrl}/assets/favicon.svg`,
+        favicon: `${siteUrl}/assets/favicon.svg`,
+        copyright: `© ${new Date().getFullYear()}, ${authorName}`,
+        author: {
+            name: authorName,
+            ...(authorEmail && { email: authorEmail })
+        }
+    });
+
+    // Add articles as feed items
+    articleData.forEach(article => {
+        // Convert backslashes to forward slashes for URLs
+        const cleanPath = convertBackslashes(article.path).replace(/\/$/, '');
+        const articleUrl = `${siteUrl}/${cleanPath}/`;
+
+        feed.addItem({
+            title: article.title,
+            id: articleUrl,
+            link: articleUrl,
+            description: article.teaser || 'No description',
+            content: article.html,
+            author: [{
+                name: authorName,
+                ...(authorEmail && { email: authorEmail })
+            }],
+            date: new Date(article.date),
+            ...(article.tagList && { categories: article.tagList.map(tag => ({ name: tag })) })
+        });
+    });
+
+    return feed.rss2();
+}
+
+// =============================================================================
 // ARTICLE PAGE GENERATION
 // =============================================================================
 const processArticles = (articleData, siteData) => {
@@ -510,6 +592,17 @@ const build = async () => {
 
         // Process the articles
         processArticles(articleData, siteData);
+
+        // Generate sitemap.xml
+        const sitemap = generateSitemap(articleData, siteData);
+        fs.writeFileSync(path.join(CONFIG.publicPath, 'sitemap.xml'), sitemap);
+        console.log('✓ Generated sitemap.xml');
+
+        // Generate RSS feed
+        const rssFeed = generateRSSFeed(articleData, siteData);
+        fs.writeFileSync(path.join(CONFIG.publicPath, 'feed.xml'), rssFeed);
+        console.log('✓ Generated feed.xml');
+
         console.log('✅ Build completed successfully!');
     } catch (error) {
         console.error('❌ Build failed:', error);

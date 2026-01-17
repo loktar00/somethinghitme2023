@@ -1,7 +1,7 @@
 ---
 title: "Recreating gifs for the jsBin Compo"
 date: "2013-08-19"
-teaser: "I recreated a handful of math-y GIFs for the JSBin birthday competition and wrote up the results with demos. This covers a wavy pattern, a crosshatch switch, a P-wave/compression wave, and a "rough seas" variant."
+teaser: 'I recreated a handful of math-y GIFs for the JSBin birthday competition and wrote up the results with demos. This covers a wavy pattern, a crosshatch switch, a P-wave/compression wave, and a "rough seas" variant.'
 tags: "javascript, canvas, demo, animation"
 ---
 

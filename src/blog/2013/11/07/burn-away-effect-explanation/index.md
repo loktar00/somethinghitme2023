@@ -1,7 +1,7 @@
 ---
 title: "Burn Away Effect Explanation"
 date: "2013-11-07"
-teaser: "A simple burn-away effect using pixel "fuel". I build a 2D grid of burn values, decrement neighbors as pixels burn out, and use step-based flags to keep the spread controlled, with an optional flame coloring pass.."
+teaser: 'A simple burn-away effect using pixel "fuel". I build a 2D grid of burn values, decrement neighbors as pixels burn out, and use step-based flags to keep the spread controlled, with an optional flame coloring pass..'
 tags: "javascript, canvas, graphics, tutorial"
 ---
 
