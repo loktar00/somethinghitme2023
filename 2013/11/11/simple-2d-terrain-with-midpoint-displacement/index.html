@@ -60,7 +60,7 @@
 Screenshot from scrolling terrain and shooting stars demo on codepen.io
 </p>
 <p>In a few of my demos I've used 2d terrain. I love the effect and its really easy to do especially in 2d. The algorithm I use most is Diamond Square also known as Midpoint Displacement. What's great about the algorithm besides its easy of use is that it can be used for simple 2d terrain as well as with 3d terrain. For now I will just be talking about generating 2d terrain, in a future article I will discuss how to use the same algorithm to make create height maps that can be used in turn to create 3d terrain.</p>
-<p>Im going to use JavaScript and the canvas element for my examples but the principles can easily be applied to any language or rendering technology.</p>
+<p>I'm going to use JavaScript and the canvas element for my examples but the principles can easily be applied to any language or rendering technology.</p>
 <p>The method I will be describing is midpoint displacement. Its one of the simplest algorithms in my opinion when it comes to making good looking 2d procedural terrain.</p>
 <h2 id="abriefoverviewofhowitworks">A Brief Overview of How it Works</h2>
 <p>For Each Segment
@@ -113,7 +113,7 @@ function terrain(width, height, displace, roughness){
     return points;
 </code></pre>
 <iframe style="width: 540px; height: 300px;" src="https://jsfiddle.net/loktar/5Xdzg/embedded/result,js,html,css/" height="240" width="320" frameborder="0"></iframe>
-<p>In my code I also use a value called displace. This is just to control the maximum distance a point can go this is so II can keep it inside of the canvas area.</p>
+<p>In my code I also use a value called displace. This is just to control the maximum distance a point can go this is so I can keep it inside of the canvas area.</p>
 <h2 id="wrappingterrainandscrolling">Wrapping Terrain and Scrolling</h2>
 <p>Using this algorithm makes it easy to create wrapping terrain, in order to do so you just set the two initial starting points to the same value.</p>
 <p>There are a few ways to create scrolling terrain. In my codepen for example I cheat and just pop and push the points on the array itself which makes the wrapped terrain scroll. However a better approach in my opinion is to use two sets of values and just move them based on an offset. Once the second half reaches the edge of the screen reset the offset to 0 copy the second array to the first, and generate new terrain for the second array, passing in the seed. Below is a fiddle of how I personally achieve the effect.</p>

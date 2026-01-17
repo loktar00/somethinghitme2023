@@ -55,7 +55,7 @@
                     <h1 class="article-title">MySQL Stored Procedures IF NOT EXISTS()</h1>
                 </header>
                 <section>
-                    <p>I have been using MSSQL with ASP.NET alot lately, and I really wanted to get some of the benefits of stored procedures into a PHP application I'm writing. I've known MySQL has supported them for a while but I guess I was always a bit too lazy to go through old code and convert it. I used the tool <a href="http://www.heidisql.com/">HeidiSQL</a> to make the process a bit more painless.</p>
+                    <p>I have been using MSSQL with ASP.NET a lot lately, and I really wanted to get some of the benefits of stored procedures into a PHP application I'm writing. I've known MySQL has supported them for a while but I guess I was always a bit too lazy to go through old code and convert it. I used the tool <a href="http://www.heidisql.com/">HeidiSQL</a> to make the process a bit more painless.</p>
 <p>The first stored procedure I attempted to write accepted 3 parameters and based on one of them checks a lookup table, and creates a new value in it if the same value does not already exist. Normally I would use an IF NOT EXISTS clause, which in Microsoft SQL would look like this</p>
 <pre><code class="sql language-sql">CREATE PROCEDURE someProc
 @SomeParam varchar(50),

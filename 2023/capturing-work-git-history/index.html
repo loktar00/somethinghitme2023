@@ -156,7 +156,7 @@ const filenames = ['Whatever', 'Files', 'You', 'Want'];
 <pre><code class="JavaScript language-JavaScript">    execSync(`echo "${commit}" &gt;&gt; history.txt`);
     execSync(`git add . &amp;&amp; git commit --quiet --date "${commit}" -m "Activity Commit ${commit}"`);
 </code></pre>
-<p>The first modifies a file called <code>history.txt</code> and adds a line with the commit so we actually have some changed data. The next line ads the cile, creates a commit with the actual date of the commit.</p>
+<p>The first modifies a file called <code>history.txt</code> and adds a line with the commit so we actually have some changed data. The next line adds the file, creates a commit with the actual date of the commit.</p>
 <p>All we need to do after the script runs is push the changes to github and we're done!</p>
 <h3 id="conclusion">Conclusion</h3>
 <p>You don't have to lose all of your commit history when you leave a job, and you don't have to wonder how your graph might be looking if you had been using github. This is a quick and easy way to capture your work history and add it to your github activity graph that I've been using for years.</p>
