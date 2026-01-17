@@ -17,4 +17,4 @@ alert((today-dob)/86400000);
 alert(((today-dob)/86400000)/365);
 ```
 
-Returns pretty accurate results, Im not accounting for leap years so it thinks I'm already 28 even though I still have a few days to go.
+Returns pretty accurate results, I'm not accounting for leap years so it thinks I'm already 28 even though I still have a few days to go.

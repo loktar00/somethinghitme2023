@@ -6,7 +6,7 @@ teaser: "I share what I ended up submitting for JS1k #3 and the ideas I tried be
 
 Below is what I ended up settling on for an entry for the JS1k.
 
-My ideas ranged for a rainbow road (similar to the Mario Kart level), to a 3d tombstone that said dysentary, a terrain generator, then a wave generator.
+My ideas ranged for a rainbow road (similar to the Mario Kart level), to a 3d tombstone that said dysentery, a terrain generator, then a wave generator.
 
 I ended up just combining the last two ideas and came up with below.
 

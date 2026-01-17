@@ -6,7 +6,7 @@ teaser: "A simple burn-away effect using pixel "fuel". I build a 2D grid of burn
 
 This explanation doesn't show any code more of just an overview of how to achieve a simple but cool looking effect.
 
-I've seen variations this effect used in different places, one of the more recent examples I can think of is the loading screens from Red Orchestra 2. RO2's effect definitely uses a different method than mine but it gave me an idea to try something similar. I ended up with a similiar effect using pixel manipulation, and a tiny bit of Cellular Automaton.
+I've seen variations this effect used in different places, one of the more recent examples I can think of is the loading screens from Red Orchestra 2. RO2's effect definitely uses a different method than mine but it gave me an idea to try something similar. I ended up with a similar effect using pixel manipulation, and a tiny bit of Cellular Automaton.
 
 [This is what I ended up with.](http://cdpn.io/kriFg "Burn Away Effect on Codepen") (heh yeah I'm a huge Spartacus fan)
 

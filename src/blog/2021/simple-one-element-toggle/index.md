@@ -12,7 +12,7 @@ teaser: "A minimal toggle built from a single checkbox input. It is pure CSS usi
 
 Needed a pretty quick toggle for a project I was working on, definitely could have copied one of the hundreds of toggles out there that exist, but what's the fun in that?
 
-The main purpose was to allow it to be used as a checkbox with a single element rquiring no extra elements or correct placement of container or child elements.
+The main purpose was to allow it to be used as a checkbox with a single element requiring no extra elements or correct placement of container or child elements.
 
 ```html
 <input type="checkbox" class="toggle">

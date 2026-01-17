@@ -12,6 +12,6 @@ I've been hearing things about this [canvas](https://developer.mozilla.org/En/Ca
 
 After completing this it really excites me the direction Javascript seems to be going. I definitely think one day in the distant future it will be able to replace Flash for most anything. Especially if browsers continue to implement faster JS engines, and MS really does ditch its IE platform.
 
-For some good tutorials on using canvas check this site out, its has some  useful information.
+For some good tutorials on using canvas check this site out, it has some  useful information.
 
 [https://developer.mozilla.org/En/Canvas\_tutorial](https://developer.mozilla.org/En/Canvas_tutorial)

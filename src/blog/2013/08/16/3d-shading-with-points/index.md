@@ -20,8 +20,8 @@ The following function is what's used to generate the planets.
 function drawPlanet(rad, xc, yc, color) {
     color = color || { r: 0, g: 100, b: 160 };
     ctx.fillStyle = "#000"; ctx.beginPath();
-    ctx.arc(xc, yc, rad, 0, Math.PI \* 2); c
-    tx.fill();
+    ctx.arc(xc, yc, rad, 0, Math.PI \* 2);
+    ctx.fill();
     ctx.closePath();
 
     ctx.fillStyle = `rgb(${color.r},${color.g},${color.b})`;

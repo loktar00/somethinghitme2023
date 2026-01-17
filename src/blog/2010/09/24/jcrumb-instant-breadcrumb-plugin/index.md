@@ -8,6 +8,6 @@ Just finished up a new plugin for jQuery. I wanted some breadcrumbs for some pag
 
 [Live Demo](http://www.somethinghitme.com/projects/jCrumb/index.html)
 
-[Jquery plugin page](http://plugins.jquery.com/project/jCrumb)
+[jQuery plugin page](http://plugins.jquery.com/project/jCrumb)
 
 [Google Code Page](http://code.google.com/p/jcrumb/)

@@ -4,7 +4,7 @@ date: "2012-01-26"
 teaser: "I am working on a canvas shoot 'em up where the graphics and the level are generated from a seed. Use the same seed as someone else and you get the same run, with a link to the WIP build."
 ---
 
-Posting my most current project (well my most current that happens to be cool anyway). Its a canvas shootemup, not really sure what Ill settle on for a title, but heres a screeny
+Posting my most current project (well my most current that happens to be cool anyway). Its a canvas shootemup, not really sure what I'll settle on for a title, but heres a screeny
 
 [![](images/shmup.png "shmup")](http://www.somethinghitme.com/wp-content/uploads/2012/01/shmup.png)
 

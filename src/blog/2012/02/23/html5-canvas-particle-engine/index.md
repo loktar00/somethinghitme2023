@@ -4,7 +4,7 @@ date: "2012-02-24"
 teaser: "Progress on a basic canvas particle engine tied into my game framework. I share a screenshot, a demo link, and my plan to build a small editor so I can tune effects visually."
 ---
 
-In my attempt to make a post weekly figured I would post some progress on my current project, which is a side project for the shmup Im working on.
+In my attempt to make a post weekly figured I would post some progress on my current project, which is a side project for the shmup I'm working on.
 
 [![](images/particles-300x265.png "particles")](http://www.somethinghitme.com/wp-content/uploads/2012/02/particles.png)
 

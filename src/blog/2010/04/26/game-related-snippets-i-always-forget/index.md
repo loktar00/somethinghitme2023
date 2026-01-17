@@ -52,7 +52,7 @@ for(x=0; x<width; x++){ for(y=0; y<width; y++){ arr\[y * 10 + x\] = x + y; //Or 
 
 ```
 
-**Move towards and object at a constant speed**
+**Move towards an object at a constant speed**
 
 ```javascript
  var tx = targetX - x, ty = targetY - y, dist = Math.sqrt(tx * tx+ty * ty), rad = Math.atan2(ty,tx), angle = rad / Math.PI * 180;;

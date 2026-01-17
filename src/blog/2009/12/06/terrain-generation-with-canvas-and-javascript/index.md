@@ -18,6 +18,6 @@ That ended up only being a small part of the project however, you'll notice I ad
 
 The last few things to implement are wrapping height maps, and a better color map, and some sort of progress bar. Hopefully after that my obsessions with height maps will be over for a while. These things are pretty addicting, you get such cool results from just a few numbers. Feel free to check out the code, if you have any improvements let me know, I know its by no means even close to perfect. Also if you happen to use it for anything please give credit where its due.
 
-Ill most likely write up yet another midpoint displacement tutorial, because even the current ones left me scratching my head at some points. Then off to working on my canvas zombie game for [zombiegames.net!](http://www.zombiegames.net)
+I'll most likely write up yet another midpoint displacement tutorial, because even the current ones left me scratching my head at some points. Then off to working on my canvas zombie game for [zombiegames.net!](http://www.zombiegames.net)
 
 Special thanks to Yutt for testing it out and helping me work on the stupid color bug.

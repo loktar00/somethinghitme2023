@@ -4,7 +4,7 @@ date: "2010-05-06"
 teaser: "I have been using MSSQL with ASP.NET a lot lately, and I really wanted to get some of the benefits of stored procedures into a PHP application I'm writing. I've known MySQL has supported them for a while but I guess I was always a bit too lazy..."
 ---
 
-I have been using MSSQL with ASP.NET alot lately, and I really wanted to get some of the benefits of stored procedures into a PHP application I'm writing. I've known MySQL has supported them for a while but I guess I was always a bit too lazy to go through old code and convert it. I used the tool [HeidiSQL](http://www.heidisql.com/) to make the process a bit more painless.
+I have been using MSSQL with ASP.NET a lot lately, and I really wanted to get some of the benefits of stored procedures into a PHP application I'm writing. I've known MySQL has supported them for a while but I guess I was always a bit too lazy to go through old code and convert it. I used the tool [HeidiSQL](http://www.heidisql.com/) to make the process a bit more painless.
 
 The first stored procedure I attempted to write accepted 3 parameters and based on one of them checks a lookup table, and creates a new value in it if the same value does not already exist. Normally I would use an IF NOT EXISTS clause, which in Microsoft SQL would look like this
 

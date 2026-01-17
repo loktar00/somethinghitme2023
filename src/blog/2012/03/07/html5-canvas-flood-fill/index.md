@@ -4,7 +4,7 @@ date: "2012-03-07"
 teaser: "I implemented a recursive flood fill for a Rampart-ish canvas prototype and broke down how it works. Includes the core function, how I call it on a 2D array, and a JSFiddle to try it (plus a quick note on stack limits for large maps)."
 ---
 
-Messing around in JS today (surprising eh?) making an HTML5 vs of rampart-ish. The more I do the less it becomes like rampart. Today I decied to tackle the flood fill portion which is a major part of the gameplay.
+Messing around in JS today (surprising eh?) making an HTML5 vs of rampart-ish. The more I do the less it becomes like rampart. Today I decided to tackle the flood fill portion which is a major part of the gameplay.
 
 Here is the workhorse function
 

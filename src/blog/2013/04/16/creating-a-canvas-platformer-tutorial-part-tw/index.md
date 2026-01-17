@@ -76,7 +76,7 @@ function colCheck(shapeA, shapeB) {
 }
 ```
 
-The code is easy to figure out if you stare at it for a bit, but Ill go ahead and give a quick explanation of whats going on. First we need to calculate the current vector from the center of our objects, which is done in the very beginning.
+The code is easy to figure out if you stare at it for a bit, but I'll go ahead and give a quick explanation of whats going on. First we need to calculate the current vector from the center of our objects, which is done in the very beginning.
 
 ![](images/fig1.png "fig1")
 

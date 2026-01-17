@@ -13,4 +13,4 @@ Needed the date picker in a project today and noticed it doesn't integrate well 
     .button({icons:{primary : 'ui-icon-calendar'}});
 ```
 
-By default the datepicker button call automatically inserts three ellipses to the button, so the text('') is needed to remove the text from the default button. So there you go a fully theme away calendar button. Now if only they would make this easier by having the datepicker do it all for you.
+By default the datepicker button call automatically inserts three ellipses to the button, so the text('') is needed to remove the text from the default button. So there you go a fully themed calendar button. Now if only they would make this easier by having the datepicker do it all for you.

@@ -6,7 +6,7 @@ teaser: "This is my movement cheat sheet for 2D games, with runnable examples. I
 
 #### aka My Cheat Sheet of Helpful Code
 
-I created [a blog post way back](http://www.somethinghitme.com/2010/04/26/game-related-snippets-i-always-forget/ "Game Related Snippets I always Forget") title Game Snippets I Always Forget. I put it up basically as a dumping ground for random game related bits of code I found myself looking up over.. and over. A few of them are a bit cryptic but that's mostly due to me quickly logging in and pasting before Id forget. While now I have (most) memorized I figured I would revisit the article and add some examples that may help others out. The following are examples dealing with movement, angles, and directions.
+I created [a blog post way back](http://www.somethinghitme.com/2010/04/26/game-related-snippets-i-always-forget/ "Game Related Snippets I always Forget") title Game Snippets I Always Forget. I put it up basically as a dumping ground for random game related bits of code I found myself looking up over.. and over. A few of them are a bit cryptic but that's mostly due to me quickly logging in and pasting before I'd forget. While now I have (most) memorized I figured I would revisit the article and add some examples that may help others out. The following are examples dealing with movement, angles, and directions.
 
 As a disclaimer I am not claiming to be an expert in this, I’m sure there are better ways to do some of these and if there are feel free to comment and let me know.
 
@@ -100,8 +100,8 @@ velY += Math.sin(currentAngle) * thrust;
 You will most likely want to set the thrust to a lower number in the above example since you are adding it each time rather than setting it once. One tip if you are using Asteroids style movement is to apply friction or your object will go on forever. This is easily done by doing the following way.
 
 ```javascript
-velX * = 0.98;
-velY * = 0.98;
+velX *= 0.98;
+velY *= 0.98;
 ```
 
 Note you can use any value less than one to apply friction the lower the number the faster you will glide to a stop.
