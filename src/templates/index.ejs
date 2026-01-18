@@ -24,9 +24,9 @@
                                     <time class="article-date">
                                         ${new Date(article.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"})}
                                     </time>
-                                    ${article.tagList ? article.tagList.map((tag, idx) =>
+                                    ${article.tagList ? `<div class="article-tags">${article.tagList.map((tag, idx) =>
                                         `<a href="/tags/${article.tagSlugs[idx]}.html" class="article-tag">${tag}</a>`
-                                    ).join('') : ''}
+                                    ).join('')}</div>` : ''}
                                 </div>
                                 <a href="/${article.path}">
                                     <h2 class="article-title">${article.title}</h2>

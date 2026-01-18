@@ -326,6 +326,12 @@ canvas#demo-canvas {
     color: var(--text-muted);
 }
 
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+}
+
 .article-tag {
     display: flex;
     align-items: center;
@@ -615,14 +621,16 @@ canvas#demo-canvas {
         font-size: var(--font-size-3xl);
     }
 
-    /* Article page */
+    /* Article list - stack date and tags on mobile */
+    .article-meta {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
 
-    .article-meta-row {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-xl);
-        font-family: var(--font-code);
-        font-size: var(--font-size-base);
-        color: var(--text-muted);
+    /* Projects - stack title and meta on mobile */
+    .project-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
     }
 }
