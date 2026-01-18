@@ -12,11 +12,13 @@
                         <time datetime="<%- data.date %>">
                             <%- new Date(data.date).toLocaleDateString('en-us', { timeZone: 'UTC', weekday:"long", year:"numeric", month:"short", day:"numeric"}) -%>
                         </time>
-                        <span>&bull;</span>
-                        <% if (data.tagList && data.tagSlugs) { %>
-                            <% data.tagList.forEach((tag, idx) => { %>
-                                <a href="/tags/<%= data.tagSlugs[idx] %>.html" class="article-tag"><%= tag %></a>
-                            <% }); %>
+                        <% if (data.tagList && data.tagSlugs && data.tagList.length > 0) { %>
+                            <span class="meta-separator">&bull;</span>
+                            <div class="article-tags">
+                                <% data.tagList.forEach((tag, idx) => { %>
+                                    <a href="/tags/<%= data.tagSlugs[idx] %>.html" class="article-tag"><%= tag %></a>
+                                <% }); %>
+                            </div>
                         <% } %>
                     </div>
                     <h1 class="article-title"><%-data.title -%></h1>
