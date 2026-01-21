@@ -1,5 +1,5 @@
 ---
-title: "vLLM Memory Tuning For Low Memory"
+title: "vLLM Tuning For Low Memory"
 date: "2026-01-20"
 teaser: "GLM-4.7-Flash has been released! a 30B-A3B MoE model, I surely can run this on two 5090s... or can I?"
 tags: "llm, ai, tutorial"
@@ -11,7 +11,7 @@ tags: "llm, ai, tutorial"
 
 I have two AI nodes, one is running two 5090s the other two 3090s with NVLink. They're running Proxmox and containers so it's easy to try different configs, restore backups, etc. Altogether, between these machines, I have 112GB of VRAM, that amount of VRAM allows running of a couple of smaller models or large ones split across all of them via llama.cpp using rpc and vLLM.
 
-There's a big difference between vLLM and llama.cpp however, and reasons to use one over the other.
+> There's a big difference between vLLM and llama.cpp however, and reasons to use one over the other.
 
 ### vLLM
 
@@ -21,13 +21,13 @@ If you want fast inference supporting multiple users (or agents) at once the bes
 
 If you're ok not having blazing speed via tensor parallel and aren't supporting many users (or agents) and are unsure how much context you're going to end up using anyway, llama.cpp is a great option. With all of this, it truly pools your VRAM meaning in my systems I can load a model right up to the 112GB VRAM limit, it also supports using system RAM by default. You still get the speed penalty but there's no hoops to jump through to get it working.
 
-### How does this relate to GLM-4.7-flash and getting it working on 64GB of VRAM?
+### How does this relate to GLM-4.7-flash?
 
 vLLM is fast like mentioned, really fast. It's able to be so fast due to tensor parallelism. However with tensor parallelism you don't get pooling up to 64GB, you get 32GB (or whatever the size of your cards are). Here's where the issue comes in. Using a 30B BF16 model means it's going to take up roughly 30GB of VRAM leaving you with 2-ish for KV cache. KV cache refers to your context. There's also minor overhead that comes with certain options.
 
 When I tried running the BF16 I was extremely limited, at the end of the day I did get it to work with a context size of 8000 but it wasn't pretty. I soon jumped on the NVFP4 quant that came out a few hours later giving me much more breathing room for context.
 
-#### Some helpful knobs and switches to get the most out of your VRAM with vLLM
+### Helpful knobs and switches to get the most out of your VRAM with vLLM
 
 Spoiler, my config that ended up finally working:
 
@@ -66,7 +66,7 @@ This basically tells PyTorch's CUDA memory allocator to use expandable memory se
 tldr; it allows you to use your free RAM more efficiently.
 
 
-#### In closing
+### In closing
 
 At the end of the day like mentioned I was able to run the NVFP4 with the following config
 
@@ -87,7 +87,7 @@ uv run vllm serve GadflyII/GLM-4.7-Flash-NVFP4 \
 
 Able to run with 82000 context which is plenty for the work I'm doing. At the end of the day it's important to understand the differences between vLLM and llama.cpp and not to be afraid of tweaking the settings to get one working. As models are released vLLM is generally supported first, so it's good to understand and learn if you're on the bleeding edge. Just remember all GPUs !== pooled VRAM with vLLM.
 
-#### The Models
+### The Models
 * [GLM 4.7 Flash](https://huggingface.co/zai-org/GLM-4.7-Flash)
 * [GLM 4.7 Flash NVFP4](https://huggingface.co/GadflyII/GLM-4.7-Flash-NVFP4)
 
