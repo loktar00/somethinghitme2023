@@ -157,7 +157,7 @@ a:hover {
 .site-header {
     padding: var(--spacing-3xl) 0 var(--spacing-lg) 0;
     display: flex;
-    align-items: center;
+    align-items: fkex-start;
 }
 
 /* Logo as Button */
@@ -197,7 +197,73 @@ body.dark-mode .logo-icon {
     filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5));
 }
 
+/* Bulb Container */
+.bulb-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Pull String */
+.pull-string {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    animation: sway 3s ease-in-out infinite;
+}
+
+.string-line {
+    width: 2px;
+    height: 12px;
+    background: var(--text-muted);
+    opacity: 0.6;
+    transition: background var(--transition-normal);
+}
+
+.string-handle {
+    width: 4px;
+    height: 4px;
+    background: var(--text-muted);
+    border-radius: var(--radius-full);
+    opacity: 0.7;
+    transition: background var(--transition-normal);
+}
+
+.logo-trigger:hover .string-line,
+.logo-trigger:hover .string-handle {
+    background: var(--accent-color);
+}
+
+.logo-trigger:hover .string-line,
+.logo-trigger:hover .string-handle {
+    opacity: 1;
+}
+
+/* Dark mode string styling */
+body.dark-mode .string-line {
+    background: var(--color-bulb);
+    opacity: 0.5;
+}
+
+body.dark-mode .string-handle {
+    background: var(--color-bulb);
+    opacity: 0.7;
+}
+
+/* Sway animation */
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(2deg);
+    }
+    50% {
+        transform: rotate(-2deg);
+    }
+}
+
 a.logo-text {
+    padding-top: 8px;
     font-family: var(--font-ui);
     font-weight: 700;
     font-size: var(--font-size-xl);
@@ -599,7 +665,6 @@ canvas#demo-canvas {
 
 @media (max-width: 600px) {
     .site-header {
-        flex-direction: column;
         gap: var(--spacing-lg);
     }
 
