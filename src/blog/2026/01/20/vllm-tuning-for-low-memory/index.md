@@ -59,7 +59,10 @@ There's a few things to notice here.
 * `--kv-cache-dtype fp8` alright we're getting desperate, this drops kv-cache to fp8 from BF16 saving us a little space.
 * `--swap-space` we're now on our last legs, we're telling vLLM to offload a bit, it's ok to admit defeat here if this doesn't work but it's worth a shot. This is generally when it's time to go to llama.cpp.
 
-And (although deprecated) I threw this in for good measure `export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` you can use this instead `export PYTORCH_ALLOC_CONF=expandable_segments:True`.
+And (although deprecated) I threw this in for good measure -
+`export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`
+you can use this instead
+`export PYTORCH_ALLOC_CONF=expandable_segments:True`.
 
 This basically tells PyTorch's CUDA memory allocator to use expandable memory segments instead of using fixed chunks of VRAM too early. For example, if you have a barge with shipping containers of all different sizes without this flag we'd just carve up the barge into fixed-size chunks based on our largest container... meaning our small ones would take up the same amount of parked space. That's not good. What this does is says hey, let's not chop this up early, let's fit these in here like Tetris.
 

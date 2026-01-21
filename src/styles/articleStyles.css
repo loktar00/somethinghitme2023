@@ -161,7 +161,6 @@
 /* Responsive */
 @media (max-width: 600px) {
     .site-header {
-        flex-direction: column;
         gap: var(--spacing-lg);
     }
     .article-title {
