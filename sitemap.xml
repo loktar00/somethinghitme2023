@@ -6,6 +6,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://somethinghitme.com/2026/01/20/vllm-tuning-for-low-memory/</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://somethinghitme.com/2026/01/16/im-not-a-real-engineering-manager-player-coach/</loc>
     <lastmod>2026-01-16</lastmod>
     <changefreq>never</changefreq>
@@ -474,6 +480,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://somethinghitme.com/tags/llm.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://somethinghitme.com/tags/ai.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://somethinghitme.com/tags/tutorial.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://somethinghitme.com/tags/leadership.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -540,11 +561,6 @@
   </url>
   <url>
     <loc>https://somethinghitme.com/tags/personal.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://somethinghitme.com/tags/tutorial.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -37,9 +37,15 @@
             <header class="container">
     <nav class="site-header">
         <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
-            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
-            </svg>
+            <div class="bulb-container">
+                <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
+                </svg>
+                <div class="pull-string">
+                    <div class="string-line"></div>
+                    <div class="string-handle"></div>
+                </div>
+            </div>
         </button>
         <a href="/" class="logo-text">SomethingHitMe</a>
     </nav>
@@ -75,6 +81,19 @@
                         <span class="label-small-caps"><a name="archive"></a>The Archive</span>
                     </header>
                     <article class="article-card">
+                                <div class="article-meta">
+                                    <time class="article-date">
+                                        Sunday, May 2, 2010
+                                    </time>
+                                    <div class="article-tags"><a href="/tags/personal.html" class="article-tag">personal</a><a href="/tags/game-development.html" class="article-tag">game development</a></div>
+                                </div>
+                                <a href="/2010/05/02/minecraft-fun-and-editing/">
+                                    <h2 class="article-title">Minecraft fun and editing</h2>
+                                    <p class="article-synopsis">
+                                         Recently came across this awesome java game Minecraft basically the whole goal of the game (multiplayer that is) is to create and destroy things. At first I was pretty skeptical, the concept is so simple.. until I found myself spending hours recreating Mario...
+                                    </p>
+                                </a>
+                            </article><article class="article-card">
                                 <div class="article-meta">
                                     <time class="article-date">
                                         Friday, Apr 30, 2010
@@ -191,19 +210,6 @@
                                         A while back I posted a link to a Flash game I was working on, it was going to be multiplayer using Nanoba. Unfortunately I gave up on it pretty quickly, I'm not a big fan of Flash and I wanted to learn something totally different, so I decided to try and remake the game using Canvas...
                                     </p>
                                 </a>
-                            </article><article class="article-card">
-                                <div class="article-meta">
-                                    <time class="article-date">
-                                        Monday, Dec 21, 2009
-                                    </time>
-                                    <div class="article-tags"><a href="/tags/javascript.html" class="article-tag">javascript</a><a href="/tags/jquery.html" class="article-tag">jquery</a><a href="/tags/plugin.html" class="article-tag">plugin</a></div>
-                                </div>
-                                <a href="/2009/12/20/snowfall-plugin-updated/">
-                                    <h2 class="article-title">Snowfall Plugin Updated</h2>
-                                    <p class="article-synopsis">
-                                        Updated the snowfall plugin that was released yesterday with a few more features. The primary new feature allows you to specify which elements you want the snow to appear in. An example of this can be seen below. View a full page demonstration. In addition to snowing within elements there are some more options available, properties available are...
-                                    </p>
-                                </a>
                             </article>                </section>
                 <!-- Pagination -->
                 <nav class="pagination">
@@ -223,124 +229,76 @@
     </header>
     <div class="tag-cloud">
         
-            <a href="/tags/career.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                career
-            </a>
-        
-            <a href="/tags/plugin.html" class="tag-cloud-tag" style="font-size: 1.14rem;">
-                plugin
-            </a>
-        
-            <a href="/tags/web-design.html" class="tag-cloud-tag" style="font-size: 1.01rem;">
-                web design
-            </a>
-        
-            <a href="/tags/programming.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
-                programming
-            </a>
-        
-            <a href="/tags/demo.html" class="tag-cloud-tag" style="font-size: 1.20rem;">
-                demo
-            </a>
-        
-            <a href="/tags/nodejs.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
-                node.js
-            </a>
-        
-            <a href="/tags/multiplayer.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                multiplayer
-            </a>
-        
-            <a href="/tags/opengl.html" class="tag-cloud-tag" style="font-size: 1.01rem;">
-                opengl
+            <a href="/tags/security.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                security
             </a>
         
             <a href="/tags/canvas.html" class="tag-cloud-tag" style="font-size: 1.40rem;">
                 canvas
             </a>
         
-            <a href="/tags/graphics.html" class="tag-cloud-tag" style="font-size: 1.20rem;">
-                graphics
-            </a>
-        
-            <a href="/tags/javascript.html" class="tag-cloud-tag" style="font-size: 1.50rem;">
-                javascript
-            </a>
-        
-            <a href="/tags/optimization.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                optimization
-            </a>
-        
-            <a href="/tags/jquery.html" class="tag-cloud-tag" style="font-size: 1.16rem;">
-                jquery
-            </a>
-        
-            <a href="/tags/library.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
-                library
+            <a href="/tags/cloudflare.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                cloudflare
             </a>
         
             <a href="/tags/css.html" class="tag-cloud-tag" style="font-size: 1.01rem;">
                 css
             </a>
         
-            <a href="/tags/personal.html" class="tag-cloud-tag" style="font-size: 1.18rem;">
-                personal
-            </a>
-        
-            <a href="/tags/hosting.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                hosting
-            </a>
-        
-            <a href="/tags/algorithms.html" class="tag-cloud-tag" style="font-size: 1.08rem;">
-                algorithms
-            </a>
-        
             <a href="/tags/local.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
                 local
             </a>
         
-            <a href="/tags/static-generation.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                static generation
+            <a href="/tags/opengl.html" class="tag-cloud-tag" style="font-size: 1.01rem;">
+                opengl
             </a>
         
-            <a href="/tags/blog.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
-                blog
+            <a href="/tags/library.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
+                library
             </a>
         
-            <a href="/tags/android.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
-                android
+            <a href="/tags/javascript.html" class="tag-cloud-tag" style="font-size: 1.50rem;">
+                javascript
             </a>
         
-            <a href="/tags/github.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                github
-            </a>
-        
-            <a href="/tags/cloudflare.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                cloudflare
-            </a>
-        
-            <a href="/tags/game-development.html" class="tag-cloud-tag" style="font-size: 1.32rem;">
-                game development
-            </a>
-        
-            <a href="/tags/security.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                security
-            </a>
-        
-            <a href="/tags/c.html" class="tag-cloud-tag" style="font-size: 0.95rem;">
-                c#
+            <a href="/tags/plugin.html" class="tag-cloud-tag" style="font-size: 1.14rem;">
+                plugin
             </a>
         
             <a href="/tags/procedural-generation.html" class="tag-cloud-tag" style="font-size: 1.08rem;">
                 procedural generation
             </a>
         
+            <a href="/tags/tutorial.html" class="tag-cloud-tag" style="font-size: 1.30rem;">
+                tutorial
+            </a>
+        
+            <a href="/tags/ai.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                ai
+            </a>
+        
+            <a href="/tags/tools.html" class="tag-cloud-tag" style="font-size: 1.01rem;">
+                tools
+            </a>
+        
+            <a href="/tags/multiplayer.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                multiplayer
+            </a>
+        
             <a href="/tags/coaching.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
                 coaching
             </a>
         
+            <a href="/tags/web-design.html" class="tag-cloud-tag" style="font-size: 1.01rem;">
+                web design
+            </a>
+        
             <a href="/tags/flash.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
                 flash
+            </a>
+        
+            <a href="/tags/leadership.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                leadership
             </a>
         
             <a href="/tags/git.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
@@ -351,16 +309,72 @@
                 animation
             </a>
         
-            <a href="/tags/tools.html" class="tag-cloud-tag" style="font-size: 1.01rem;">
-                tools
+            <a href="/tags/jquery.html" class="tag-cloud-tag" style="font-size: 1.16rem;">
+                jquery
             </a>
         
-            <a href="/tags/tutorial.html" class="tag-cloud-tag" style="font-size: 1.29rem;">
-                tutorial
+            <a href="/tags/c.html" class="tag-cloud-tag" style="font-size: 0.95rem;">
+                c#
             </a>
         
-            <a href="/tags/leadership.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
-                leadership
+            <a href="/tags/graphics.html" class="tag-cloud-tag" style="font-size: 1.20rem;">
+                graphics
+            </a>
+        
+            <a href="/tags/blog.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
+                blog
+            </a>
+        
+            <a href="/tags/llm.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                llm
+            </a>
+        
+            <a href="/tags/android.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
+                android
+            </a>
+        
+            <a href="/tags/algorithms.html" class="tag-cloud-tag" style="font-size: 1.08rem;">
+                algorithms
+            </a>
+        
+            <a href="/tags/nodejs.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
+                node.js
+            </a>
+        
+            <a href="/tags/personal.html" class="tag-cloud-tag" style="font-size: 1.18rem;">
+                personal
+            </a>
+        
+            <a href="/tags/hosting.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                hosting
+            </a>
+        
+            <a href="/tags/optimization.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                optimization
+            </a>
+        
+            <a href="/tags/programming.html" class="tag-cloud-tag" style="font-size: 0.88rem;">
+                programming
+            </a>
+        
+            <a href="/tags/game-development.html" class="tag-cloud-tag" style="font-size: 1.32rem;">
+                game development
+            </a>
+        
+            <a href="/tags/demo.html" class="tag-cloud-tag" style="font-size: 1.20rem;">
+                demo
+            </a>
+        
+            <a href="/tags/career.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                career
+            </a>
+        
+            <a href="/tags/github.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                github
+            </a>
+        
+            <a href="/tags/static-generation.html" class="tag-cloud-tag" style="font-size: 0.75rem;">
+                static generation
             </a>
         
     </div>
