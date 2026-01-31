@@ -66,7 +66,3 @@ tags: "javascript, node"
 GitHub Actions workflow (`.github/workflows/main.yml`) runs on push/PR to main:
 - Tests with Node.js 18.x
 - Builds and deploys to GitHub Pages
-
-## PR Guidelines
-
-- Do not include "Generated with Claude Code" footer in PR descriptions
