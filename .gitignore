@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 public
+
+# Claude Code local settings
+.claude/
