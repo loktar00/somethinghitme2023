@@ -1,8 +1,8 @@
 # somethinghitme2023
 Personal blog updated to use markdown, and node
 
-[![Build & Deploy](https://github.com/anthonydgrant/somethinghitme2023/actions/workflows/main.yml/badge.svg)](https://github.com/anthonydgrant/somethinghitme2023/actions/workflows/main.yml)
-[![Tests](https://github.com/anthonydgrant/somethinghitme2023/actions/workflows/tests.yml/badge.svg)](https://github.com/anthonydgrant/somethinghitme2023/actions/workflows/tests.yml)
+[![Tests](https://github.com/loktar00/somethinghitme2023/actions/workflows/tests.yml/badge.svg)](https://github.com/loktar00/somethinghitme2023/actions/workflows/tests.yml)
+[![Build & Deploy](https://github.com/loktar00/somethinghitme2023/actions/workflows/main.yml/badge.svg)](https://github.com/loktar00/somethinghitme2023/actions/workflows/main.yml)
 
 ## Running and setup
 
