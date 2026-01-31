@@ -1,4 +1,3 @@
-````markdown
 ---
 title: "Creating Local Claude Code Plugins"
 date: "2026-01-31"
@@ -78,11 +77,11 @@ I'm not going to go in any detail about plugins here, honestly the official docs
 
 ## Installing at user scope (no admin)
 As long as you have the above setup you can launch Claude Code, type `/plugins` move over to marketplaces and you should see yours show up.
-[![marketplace](images/example.png)](images/example.png)
+[![marketplace](images/example.PNG)](images/example.PNG)
 
 Select your marketplace and you should see your plugin ready to install
 
-[![marketplace](images/example2.png)](images/example2.png)
+[![marketplace](images/example%202.PNG)](images/example%202.PNG)
 
 Select the plugin and install for your user.
 
@@ -94,4 +93,3 @@ If you don't see the plugin you should see an error, the beauty of it all is you
 
 ## Closing
 Things are moving so fast, that this article is already out of date, Ralph Wiggum isn't even the cool hot thing anymore, it's been a week, however the principles will be the same regardless. There's always a problem to solve and if you can ask the right questions the barrier is incredibly low to create or have solutions created.
-````
