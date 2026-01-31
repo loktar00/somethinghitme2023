@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+    <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJDK7X0K15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YJDK7X0K15');
+    </script>
+    <meta charSet="utf-8" />
+    <meta name="description" content="Jason Browns Code, demos and ideas."/>
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="/assets/favicon.svg">
+    <link rel="manifest" href="/assets/manifest.webmanifest">
+    <link rel="apple-touch-icon" sizes="48x48" href="/assets/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/assets/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/assets/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/assets/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/icon-512x512.png">
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/prism.css" rel="stylesheet" />
+    <script src='/js/prism.js'></script>
+    <title>Creating Local Claude Code Plugins - Somethinghitme</title>
+</head>    <link href="/styles/articleStyles.css" rel="stylesheet" />
+  <body>
+    <div class="layout">
+        <header class="container">
+    <nav class="site-header">
+        <button id="theme-trigger" class="logo-trigger" aria-label="Toggle Dark Mode">
+            <div class="bulb-container">
+                <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12,2A7,7,0,0,0,5,9C5,11.38,6.19,13.47,8,14.74V17A1,1,0,0,0,9,18H15A1,1,0,0,0,16,17V14.74C17.81,13.47,19,11.38,19,9A7,7,0,0,0,12,2M9,21a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1V20H9v1Z"/>
+                </svg>
+                <div class="pull-string">
+                    <div class="string-line"></div>
+                    <div class="string-handle"></div>
+                </div>
+            </div>
+        </button>
+        <a href="/" class="logo-text">SomethingHitMe</a>
+    </nav>
+</header>        <main class="container">
+            <article class="article-content">
+                <header class="article-header">
+                    <div class="article-meta-row">
+                        <time datetime="2026-01-31">
+                            Saturday, Jan 31, 2026                        </time>
+                        
+                            <span class="meta-separator">&bull;</span>
+                            <div class="article-tags">
+                                
+                                    <a href="/tags/claude.html" class="article-tag">claude</a>
+                                
+                                    <a href="/tags/ai.html" class="article-tag">ai</a>
+                                
+                                    <a href="/tags/plugins.html" class="article-tag">plugins</a>
+                                
+                                    <a href="/tags/tutorial.html" class="article-tag">tutorial</a>
+                                
+                            </div>
+                        
+                    </div>
+                    <h1 class="article-title">Creating Local Claude Code Plugins</h1>
+                </header>
+                <section>
+                    <p><a href="/2026/01/31/creating-local-claude-code-plugins/images/hero.webp"><img src="/2026/01/31/creating-local-claude-code-plugins/images/hero.webp" alt="hero image" /></a></p>
+<h2 id="whatiwantedandwhy">What I wanted (and why)</h2>
+<p>I'm on Windows primarily for my normal day to day… I know this is considered weird for many developers. I'm just a creature of habit. All my AI machines are running Linux but there's something that just makes me move faster in Windows.</p>
+<p>With that I generally have to wait until support is added from the developer community on plugins, projects, etc. Not anymore with AI! The Ralph Wiggum loop is one of the coolest things I've tried out in a while, and I wanted access on my local work machine, however the issue is it's Bash scripts. Sure I could run it in WSL or Git Bash, but meh why not just use AI to do the entire conversion for me?</p>
+<p>That was relatively simple which still feels so crazy to say in this day and age, the things we can do as creatives with an idea and some prompt structure is just amazing.</p>
+<p>The next thing I had to figure out was how can I have this accessible at the user scope level so I could use it everywhere?</p>
+<h2 id="howcanirunthis">How can I run this?</h2>
+<p>You can start Claude Code with the plugin loaded automatically by passing in the path like so:</p>
+<p><code>claude --plugin-dir ./my-first-plugin</code> (from the docs)</p>
+<p>This is the best way to test and just make sure the plugin is working as expected… but this isn't something you want to do every time.</p>
+<h2 id="thesimplestsolutionalocalmarketplace">The simplest solution: a local marketplace</h2>
+<p>I couldn't find this in the docs.. I stumbled upon it randomly searching, but to get around this you need to add your plugin to a marketplace. Fortunately a marketplace can live anywhere to include your personal machine. I ended up pushing it to GitHub with the thousands of others because I love tracking my contributions over the year of course.</p>
+<ul>
+<li>Source: https://github.com/loktar00/my-claude-plugins</li>
+</ul>
+<p>The following is the structure of a plugin marketplace (a single json file), and a plugin.</p>
+<pre><code class="text language-text">my-claude-plugins/
+├── loktar-marketplace/
+│   ├── .claude-plugin/
+│   │   └── marketplace.json
+│   ├── my-first-plugin/
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json
+│   │   ├── commands/
+│   │   │   └── hello.md
+│   │   ├── hooks/
+│   │   │   └── hooks.json
+│   │   └── scripts/
+│   │       └── hello.ps1
+└── README.md
+</code></pre>
+<h2 id="marketplacemanifestmarketplacejson">Marketplace manifest (marketplace.json)</h2>
+<p>This is really all you need it establishes your marketplace, who owns it, and any of the plugins being offered. What's most important (besides the obvious valid JSON) is the location of the plugins, I tried a few ways such as having the marketplace as a peer of the plugin directory, however what ended up working for me was putting the plugins under the marketplace.</p>
+<pre><code class="json language-json">{
+  "name": "loktar-dev",
+  "owner": { "name": "Jason" },
+  "plugins": [
+    {
+      "name": "my-first-plugin",
+      "source": "./my-first-plugin",
+      "description": "TODO: one-line description"
+    }
+  ]
+}
+</code></pre>
+<p>Now add the marketplace, launch Claude Code and type the following</p>
+<p><code>/plugin marketplace add ./marketplace-name</code></p>
+<p>In my case it was the following, and I was in the parent directory.</p>
+<p><code>/plugin marketplace add ./loktar-dev</code></p>
+<h2 id="claudecodeplugins">Claude Code Plugins</h2>
+<p>I'm not going to go in any detail about plugins here, honestly the official docs do a pretty good job of describing them, and the plugins that exist are great examples. The issue I was facing was all about getting them installed easily so I could access in all instances.</p>
+<h2 id="installingatuserscopenoadmin">Installing at user scope (no admin)</h2>
+<p>As long as you have the above setup you can launch Claude Code, type <code>/plugins</code> move over to marketplaces and you should see yours show up.
+<a href="/2026/01/31/creating-local-claude-code-plugins/images/example.webp"><img src="/2026/01/31/creating-local-claude-code-plugins/images/example.webp" alt="marketplace" /></a></p>
+<p>Select your marketplace and you should see your plugin ready to install</p>
+<p><a href="/2026/01/31/creating-local-claude-code-plugins/images/example%202.webp"><img src="/2026/01/31/creating-local-claude-code-plugins/images/example%202.webp" alt="marketplace" /></a></p>
+<p>Select the plugin and install for your user.</p>
+<p>Now you should have access to the plugin in any instance you open, such as <code>&gt; /ralph-wiggum-windows:help</code> in this example.</p>
+<h2 id="troubleshootingandgotchas">Troubleshooting and Gotchas</h2>
+<p>If you don't see the plugin you should see an error, the beauty of it all is you can ask Claude Code what's going on. In general it's a pathing or unexpected formatting of the JSON.</p>
+<h2 id="closing">Closing</h2>
+<p>Things are moving so fast, that this article is already out of date, Ralph Wiggum isn't even the cool hot thing anymore, it's been a week, however the principles will be the same regardless. There's always a problem to solve and if you can ask the right questions the barrier is incredibly low to create or have solutions created.</p>                </section>
+            </article>
+            <hr/>
+            <footer>
+                <!-- Author -->
+<section class="author-section">
+    <img src="/assets/avatar.jpg" alt="Jason Brown" class="author-avatar">
+    <div class="author-info">
+        <h3 class="author-name">Jason Brown (Loktar)</h3>
+        <p class="author-bio">
+            Christian, Grandfather, Veteran, lover of everything tech.
+        </p>
+        <div class="social-row">
+            <a href="https://github.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10,0,0,0,2,12C2,16.42,4.87,20.17,8.84,21.5C9.34,21.58,9.5,21.27,9.5,21C9.5,20.77,9.5,20.14,9.5,19.31C6.73,19.91,6.14,17.97,6.14,17.97C5.68,16.81,5.03,16.5,5.03,16.5C4.12,15.88,5.1,15.9,5.1,15.9C6.1,15.97,6.63,16.93,6.63,16.93C7.5,18.45,8.97,18,9.54,17.76C9.63,17.11,9.89,16.67,10.17,16.42C7.95,16.17,5.62,15.31,5.62,11.5C5.62,10.39,6,9.5,6.65,8.79C6.55,8.54,6.2,7.5,6.75,6.15C6.75,6.15,7.59,5.88,9.5,7.17C10.29,6.95,11.15,6.84,12,6.84C12.85,6.84,13.71,6.95,14.5,7.17C16.41,5.88,17.25,6.15,17.25,6.15C17.8,7.5,17.45,8.54,17.35,8.79C18,9.5,18.38,10.39,18.38,11.5C18.38,15.32,16.04,16.16,13.81,16.41C14.17,16.72,14.5,17.33,14.5,18.26C14.5,19.6,14.5,20.68,14.5,21C14.5,21.27,14.66,21.59,15.17,21.5C19.14,20.16,22,16.42,22,12A10,10,0,0,0,12,2Z"/></svg>
+                GitHub
+            </a>
+            <a href="https://twitter.com/loktar00" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                @loktar00
+            </a>
+            <a href="https://codepen.io/loktar00" class="social-link">
+                <svg class='codepen' viewBox="0 1 22 24" fill="none" stroke-width="2"><path transform="translate(-22 0)" d="M22 9.3L33 2l11 7.3v7.4L33 24l-11-7.3z m0 0 11 7.4 11-7.4 m0 7.4L33 9.3l-11 7.4 M33 2v7.3 m0 7.4V24" /></svg>
+                CodePen
+            </a>
+            <a href="https://stackoverflow.com/users/322395/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M18.986 21.865v-6.404h2.134V24H1.844v-8.539h2.13v6.404h15.012zM6.111 19.731H16.85v-2.137H6.111v2.137zm.259-4.852l10.48 2.189.451-2.07-10.48-2.189-.451 2.07zm1.359-5.056l9.705 4.53.903-1.95-9.705-4.53-.903 1.95zm2.715-4.785l8.217 6.855 1.359-1.62-8.217-6.855-1.359 1.62zM15.841 0l-1.791.973 6.503 5.977 1.791-.973L15.841 0z"/></svg>
+                Stack Overflow
+            </a>
+            <a href="https://www.dwitter.net/u/loktar" class="social-link">
+                <svg viewBox="0 0 24 24"><path d="M6 4v16h2V4H6zm5 0v16h2V4h-2zm5 0v16h2V4h-2z"/></svg>
+                Dwitter
+            </a>
+        </div>
+    </div>
+</section>            </footer>
+            <nav class="post-footer">
+    <a class="footer-link" rel="prev" href="/">← All Articles</a>
+    <a class="footer-link" rel="prev" href="/2026/01/20/vllm-tuning-for-low-memory/">vLLM Tuning For Low Memory →</a></nav>        </main>
+        <footer class="site-footer">
+    <div class="footer-content">
+        <p>© 2026, Built by <a href="https://github.com/loktar00">Jason Brown - Loktar</a></p>
+        <div class="footer-links">
+            <a href="/feed.xml" class="feed-link" title="RSS Feed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+                RSS
+            </a>
+        </div>
+    </div>
+</footer>    </div>
+    <script src='/js/main.js'></script>
+  </body>
+</html>
