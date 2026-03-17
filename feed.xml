@@ -4,7 +4,7 @@
         <title>Somethinghitme</title>
         <link>https://somethinghitme.com</link>
         <description>My Code, demos and ideas.</description>
-        <lastBuildDate>Sat, 31 Jan 2026 20:52:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 17 Mar 2026 17:21:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -14,6 +14,93 @@
             <link>https://somethinghitme.com</link>
         </image>
         <copyright>© 2026, Jason Brown</copyright>
+        <item>
+            <title><![CDATA[How can I get free vibes!! AI coding for free guide]]></title>
+            <link>https://somethinghitme.com/2026/03/17/how-can-i-get-free-vibes/</link>
+            <guid isPermaLink="false">https://somethinghitme.com/2026/03/17/how-can-i-get-free-vibes/</guid>
+            <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Lots of new shiney tools are coming out people are building great stuff, but there's a cost, how you can get started for free!]]></description>
+            <content:encoded><![CDATA[<p><a href="/2026/03/17/how-can-i-get-free-vibes/images/hero.webp"><img src="/2026/03/17/how-can-i-get-free-vibes/images/hero.webp" alt="hero image" /></a></p>
+<h2 id="thebarriertoentryisgone">The barrier to entry is… gone?</h2>
+<p>Everyone's talking about vibe coding, everyone's also talking about thousands in tokens, thousands of dollars in local setups. If you're just getting started and want to experiment, and have a budget of $0, where can you even begin? Good news you can get started for the low low price of $0!</p>
+<p>There are free models available right now from multiple providers. Some are cloud-hosted, some you can run locally if you have the hardware. Pair them with the right coding harness and you've got a working setup without spending a dime.</p>
+<p>This isn't a step-by-step walkthrough. I'll cover the options, the trade-offs, and point you to the right links. You're smart enough to follow setup docs.</p>
+<h2 id="thefreemodelproviders">The Free Model Providers</h2>
+<h3 id="openroutertheeasiestonramp">OpenRouter - The easiest on-ramp</h3>
+<p><a href="https://openrouter.ai">OpenRouter</a> acts like a gateway. One account, one API key, access to a ton of models. Some of them are free.</p>
+<p>Sign up, grab your API key, and browse the free models here: <a href="https://openrouter.ai/models?q=free">https://openrouter.ai/models?q=free</a></p>
+<p>A couple worth looking at right now
+<strong>NOTE: this was written 3/17/2026 these will change and can go away at any time. I'll try to update when this happens.</strong></p>
+<ul>
+<li><strong><a href="https://openrouter.ai/openrouter/healer-alpha">Healer Alpha</a></strong> - 262k context window, solid for longer sessions</li>
+<li><strong><a href="https://openrouter.ai/openrouter/hunter-alpha">Hunter Alpha</a></strong> - 1 trillion parameter model, designed specifically for AI agents</li>
+</ul>
+<p>One thing to know: individual free models get hammered. They're rate-limited and sometimes just unavailable because everyone's hitting them. OpenRouter has a <strong>"free model router"</strong> option that spreads your requests across whatever free models are currently available. It's more reliable than pinning to a single model.</p>
+<p>There's a caveat floating around that you might need $10 of credit in your OpenRouter account for the free tier to work. I've seen it work without it, but if you're getting errors that's a good first thing to try.</p>
+<p>The nice part about OpenRouter is the upgrade path. If you outgrow free models you can switch to something like <strong>MiniMax MoE 2.5</strong> which is strong for coding and way cheaper than Claude Opus. Same API key, just change the model name.</p>
+<h3 id="nvidiabuildfreetierseriousmodels">NVIDIA Build - Free tier, serious models</h3>
+<p>NVIDIA has their own model hosting at <a href="https://build.nvidia.com/models">build.nvidia.com/models</a>. Create an account, get an API key, pick a model.</p>
+<p>Worth checking out:</p>
+<ul>
+<li><strong>GLM 5</strong></li>
+<li><strong>Kimi K-25</strong></li>
+<li><strong>MiniMax</strong></li>
+</ul>
+<p><strong>Make sure to select the Free Endpoint filter</strong></p>
+<p><a href="/2026/03/17/how-can-i-get-free-vibes/images/nvidia.webp"><img src="/2026/03/17/how-can-i-get-free-vibes/images/nvidia.webp" alt="nvidia" style="max-height: 200px; width: auto;" /></a></p>
+<p>I <a href="/blog/2026/01/20/vllm-tuning-for-low-memory/">wrote about running GLM-4.7-Flash locally</a> with vLLM and all the VRAM tuning that goes with it. With NVIDIA's API you can hit these same model families without owning any hardware at all. That's a big deal if you just want to get coding.</p>
+<h3 id="lmstudiollamacppthepoweruserpath">LM Studio &amp; llama.cpp - The power-user path</h3>
+<p>This section is for people who have GPUs and want full control. No rate limits, no internet dependency, no one else's terms of service.</p>
+<p><strong><a href="https://lmstudio.ai/">LM Studio</a></strong> is the easy button for running models locally. Download it, search for a model, click run, and you've got an OpenAI-compatible API on localhost. It has a clean UI for managing models and tweaking settings without touching the command line. If you've never run a local model before, start here.</p>
+<p><strong><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></strong> gives you maximum flexibility. It truly pools your VRAM across GPUs which means if you have multiple cards you can use all of it. I covered the differences between vLLM and llama.cpp in my <a href="/blog/2026/01/20/vllm-tuning-for-low-memory/">vLLM tuning article</a>. The short version: llama.cpp pools your VRAM and is more forgiving for single-user setups. vLLM is faster for multi-user but each GPU is its own island.</p>
+<p><strong><a href="https://ollama.com/">ollama</a></strong> Ollama is great for beginners… however it has some issues only recommended if the above options just don't work.</p>
+<p>If you're going the local route, the <a href="https://huggingface.co/collections/unsloth/qwen35">Qwen 3.5 models</a> are worth looking into. The 9B is very capable and can run on a 3060 with 12GB of VRAM. The 27B is a step up in quality but you'll need something beefier like a 24GB card. Both punch well above their size for coding tasks.</p>
+<p>The trade-off is obvious. You need the hardware. But you own the whole stack and nobody can rate-limit you.</p>
+<h2 id="theharnesseswherethevibesactuallyhappen">The Harnesses - Where the vibes actually happen</h2>
+<p>A model by itself doesn't do much for you. You need something that connects it to your codebase, your terminal, your files. That's what these tools do.</p>
+<h3 id="claudecode">Claude Code</h3>
+<p><a href="/2026/03/17/how-can-i-get-free-vibes/images/claude.webp"><img src="/2026/03/17/how-can-i-get-free-vibes/images/claude.webp" alt="nvidia" style="max-height: 200px; width: auto;" /></a></p>
+<p>This is what I use daily. I <a href="/blog/2026/01/31/creating-local-claude-code-plugins/">wrote about creating local plugins for it</a> and it's become central to how I work. The same tool can be pointed at free models through OpenRouter or NVIDIA.</p>
+<p>The setup is a <code>settings.json</code> with your API key, base URL, and model name. You can scope it to a single project or set it globally. The <a href="https://docs.anthropic.com/en/docs/claude-code/settings">official docs on third-party model configuration</a> cover the specifics.</p>
+<p>I'll be honest though. Claude Code works best with Claude models. Free models won't give you the same experience as Sonnet or Opus. But for learning how vibe coding works and building smaller projects, it's more than enough to get your feet wet.</p>
+<h3 id="factorydroid">Factory Droid</h3>
+<p><a href="/2026/03/17/how-can-i-get-free-vibes/images/droid.webp"><img src="/2026/03/17/how-can-i-get-free-vibes/images/droid.webp" alt="nvidia" style="max-height: 200px; width: auto;" /></a></p>
+<p><a href="https://factory.ai/">Factory Droid</a> is another agent harness similar to Claude Code. It connects to your codebase and lets you work through natural language, same concept but a different tool with its own take on the workflow.</p>
+<p>It supports OpenRouter, LM Studio, and any OpenAI-compatible endpoint. Worth trying alongside Claude Code to see which one clicks for you.</p>
+<p>Honestly… it's also much cooler looking ;).</p>
+<h2 id="thehonesttradeoffs">The honest trade-offs</h2>
+<p>Let me be real about what you're getting here.</p>
+<p>Free models will not perform like Sonnet 4.6, Opus, or Codex 5.4, but you don't always NEED that level anyway, it can be like using a Bazooka to hunt a bunny… sure it will work but a slingshot would as well.</p>
+<p>Another thing to keep in mind you'll hit rate limits. Models will be unavailable at peak times. Responses will be slower and less accurate on complex tasks.</p>
+<p>Local models need hardware. If you don't have a decent GPU you're looking at cloud options only.</p>
+<p>But for learning, prototyping, side projects, and just seeing what this whole vibe coding thing is about? Free is more than enough to get started. And the upgrade path is smooth. Start with OpenRouter's free tier, and when you're ready to pay for better performance the switch is changing one line in your config.</p>
+<h2 id="cheapnotfreenextstepswhenyouwanttovibeharder">Cheap (not free) Next steps when you want to VIBE HARDER!</h2>
+<ul>
+<li><a href="https://z.ai/subscribe?ic=CASNIDH7IX">The Best one by far (and the cheapest) - z.ai</a> - Referral link for $10 a month and it gives me some free credits! Z.ai is responsible for the GLM models.</li>
+<li><a href="https://www.kimi.com/code">Kimi Code</a> - Another great option starting at $20 a month.</li>
+<li><a href="https://chatgpt.com/codex">OpenAI Codes</a> - The $20 option is surprisingly good and limits are doubled until April 2nd 2026!</li>
+</ul>
+<h2 id="wheretogofromhere">Where to go from here</h2>
+<p><strong>Model providers:</strong></p>
+<ul>
+<li><a href="https://openrouter.ai">OpenRouter</a> - <a href="https://openrouter.ai/models?q=free">Free models</a></li>
+<li><a href="https://build.nvidia.com/models">NVIDIA Build</a></li>
+<li><a href="https://lmstudio.ai/">LM Studio</a></li>
+<li><a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a></li>
+</ul>
+<p><strong>Coding harnesses:</strong></p>
+<ul>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a></li>
+<li><a href="https://factory.ai/">Factory Droid</a></li>
+<li><a href="https://github.com/openai/codex">Codex CLI</a></li>
+</ul>
+<p><strong>My previous articles if you want to go deeper:</strong></p>
+<ul>
+<li><a href="/blog/2026/01/20/vllm-tuning-for-low-memory/">vLLM Tuning For Low Memory</a> - getting the most out of local models with limited VRAM</li>
+<li><a href="/blog/2026/01/31/creating-local-claude-code-plugins/">Creating Local Claude Code Plugins</a> - extending your harness with custom tools</li>
+</ul>]]></content:encoded>
+            <author>Jason Brown</author>
+        </item>
         <item>
             <title><![CDATA[Creating Local Claude Code Plugins]]></title>
             <link>https://somethinghitme.com/2026/01/31/creating-local-claude-code-plugins/</link>

@@ -6,6 +6,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://somethinghitme.com/2026/03/17/how-can-i-get-free-vibes/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://somethinghitme.com/2026/01/31/creating-local-claude-code-plugins/</loc>
     <lastmod>2026-01-31</lastmod>
     <changefreq>never</changefreq>
@@ -486,7 +492,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://somethinghitme.com/tags/claude.html</loc>
+    <loc>https://somethinghitme.com/tags/llm.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -496,17 +502,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://somethinghitme.com/tags/plugins.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://somethinghitme.com/tags/tutorial.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://somethinghitme.com/tags/llm.html</loc>
+    <loc>https://somethinghitme.com/tags/claude.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://somethinghitme.com/tags/plugins.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
